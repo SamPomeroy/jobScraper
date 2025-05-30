@@ -6,10 +6,12 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Horoscope from "./components/Horoscope/Horoscope"; // Import the Horoscope component
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         {[
@@ -39,6 +41,4 @@ function App() {
 
 export default App;
 
-{
-  /* <Home/> */
-}
+

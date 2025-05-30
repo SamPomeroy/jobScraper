@@ -1,228 +1,93 @@
-/* .horoscope-button-container {
-    margin-top: 50px;
-display: flex;
-flex-direction: column;
-justify-content:space-evenly;
-align-items: center;
-
+.sign-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 5px;
+  justify-items: center; 
+  align-items: center; 
+  margin-top: 20px;
 }
 
-.horoscope-li-container {}
-
-.horoscope-container {
-    display: flex;
-    margin-top: 100px;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    width: 100%;
+.sign-buttons-grid button {
+  padding: 12px;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background: #F28B82;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+.horoscope-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  max-width: 800px;
+  width: 90%;
+  margin: auto;
+  text-align: center;
 }
 
-.horoscope-button-container {
-    justify-content:space-evenly;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-
-}
-.horoscope-ul-container{
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-}
-.main-container {
-    margin-top: 100px;
-   display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-}
-.horoscope-button-container {
-   height: 50px;
-} */
-
-/* 
-.main-container {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    padding: 30px;
-    border-radius: 12px;
-    color: #fff;
+/* Center Horoscope Content */
+.horoscope-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers everything */
+  text-align: center;
 }
 
-.horoscope-button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    border: none;
+/* Bigger Font Sizes */
+h2 {
+  font-size: 2rem; /* Bigger heading */
+  font-weight: bold;
 }
 
-.horoscope-button-container:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
+h3 {
+  font-size: 1.5rem;
 }
 
-.horoscope-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+p {
+  font-size: 1.2rem;
+  max-width: 700px; /* Prevents super-wide text */
 }
 
-.horoscope-ul-container {
-    margin-top: 30px;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    max-width: 600px;
-    text-align: center;
+.daily-section, .monthly-section, .yearly-section {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
 }
 
-.horoscope-li {
-    font-size: 1.2rem;
-    line-height: 1.8;
+/* Ensure Buttons Are Centered */
+.sign-buttons-grid {
+  justify-content: center;
 }
 
-.selected-sign-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.2);
+.horoscope-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-img {
-    width: 80px;
-    transition: transform 0.3s ease-in-out;
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
-img:hover {
-    transform: scale(1.1);
-} */
-:root {
-    --primary-blue: #1E3A8A;
-    --secondary-green: #2E8B57;
-    --accent-light: #50C878;
-    --background-dark: #0D1B2A;
-   
+.tab-buttons button {
+  padding: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #4A90E2;
+  color: white;
+  text-align: center;
 }
-.main-container {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--background-gradient);
-    padding: 30px;
-    border-radius: 12px;
-
-}
-
-.horoscope-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.horoscope-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--secondary-green);
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.horoscope-button-container:hover {
-    background: #50C878;
-    transform: scale(1.1);
-}
-
-.selected-sign-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-    /* text-align: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px; */
-/* } */
-.horoscope-ul-container {
-    margin-top: 30px;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    max-width: 600px;
-    text-align: center;
-}
-.horoscope-card {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    text-align: center;
-    
-}
-.horoscope-li {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-img {
-    width: 80px;
-    transition: transform 0.3s ease-in-out;
-}
-
-img:hover {
-    transform: scale(1.1);
-} 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.loading-svg {
-    animation: spin 2s linear infinite;
-}
-
-
-  
