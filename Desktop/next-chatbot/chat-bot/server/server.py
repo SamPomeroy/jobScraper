@@ -17,6 +17,12 @@ from jose import jwt
 import pyttsx3
 from gtts import gTTS
 import time
+from supabase.client import Client  # use correct import
+
+
+from typing import cast
+from requests import Response
+
 
 
 logging.basicConfig(level=logging.INFO)
@@ -31,7 +37,8 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 N8N_WEBHOOK = os.getenv("N8N_WEBHOOK")
 N8N_SECRET = os.getenv("N8N_SECRET")
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY) if SUPABASE_URL and SUPABASE_KEY else None
+supabase: Optional[Client] = create_client(SUPABASE_URL, SUPABASE_KEY) if SUPABASE_URL and SUPABASE_KEY else None
+
 
 
 try:
@@ -95,11 +102,11 @@ def upload_audio_to_supabase(user_id: str, audio_file: str) -> Optional[str]:
             f"{user_id}/response.mp3", file_data, {"content-type": "audio/mpeg"}
         )
 
-        if response.status_code == 200:
+        if response.status_code == 200:  # type: ignore[attr-defined]
             logger.info(f"Uploaded voice response for {user_id} successfully.")
-            return f"https://YOUR_SUPABASE_URL/storage/v1/object/public/audio_responses/{user_id}/response.mp3"
+            return f"{SUPABASE_URL}/storage/v1/object/public/audio_responses/{user_id}/response.mp3"
         else:
-            logger.error(f"Error uploading audio: {response.json()}")
+            logger.error(f"Error uploading audio: {response.json()}") # type: ignore
             return None
     except Exception as e:
         logger.error(f"Supabase upload failed: {e}")

@@ -5,7 +5,7 @@ import { supabase } from '../../utils/supabase/client';
 import { fetchChatResponse } from '../api/chat';
 import type { User } from '@supabase/supabase-js';
 
-// Speech Recognition type declarations
+
 declare global {
   interface Window {
     SpeechRecognition: new () => SpeechRecognition;
@@ -73,14 +73,13 @@ type Message = {
   isVoice?: boolean;
 };
 
-// Guest user configuration
+
 const GUEST_USER: Partial<User> = {
   id: 'guest',
   email: 'guest@example.com',
   user_metadata: { display_name: 'Guest User' }
 };
 
-// Voice configuration
 const VOICE_CONFIG = {
   speechRecognition: {
     lang: 'en-US',
@@ -96,8 +95,8 @@ const VOICE_CONFIG = {
   }
 };
 
-// Google TTS Configuration - Replace with your API key
-const GOOGLE_TTS_API_KEY = 'YOUR_GOOGLE_API_KEY'; // Replace this with your actual API key
+
+// const GOOGLE_TTS_API_KEY = process.env.key; 
 
 export default function ChatBot() {
   const [query, setQuery] = useState('');
@@ -107,18 +106,18 @@ export default function ChatBot() {
   const [authLoading, setAuthLoading] = useState(true);
   const [isGuestMode, setIsGuestMode] = useState(false);
   
-  // Voice-related state
+
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [voiceSupported, setVoiceSupported] = useState(false);
   const [speechError, setSpeechError] = useState<string | null>(null);
   const [useGoogleTTS, setUseGoogleTTS] = useState(false);
   
-  // Refs for voice functionality
+
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Check authentication and voice support
+
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -131,7 +130,7 @@ export default function ChatBot() {
           setUser(session.user);
           setIsGuestMode(false);
         } else {
-          // Check if user wants guest mode
+        
           const guestMode = localStorage.getItem('guest-mode') === 'true';
           if (guestMode) {
             setUser(GUEST_USER as User);
@@ -148,7 +147,7 @@ export default function ChatBot() {
       }
     };
 
-    // Check voice support
+
       const checkVoiceSupport = () => {
         if (typeof window !== 'undefined') {
           const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -169,7 +168,7 @@ export default function ChatBot() {
     checkAuth();
     checkVoiceSupport();
 
-    // Listen for auth changes
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
@@ -192,12 +191,12 @@ export default function ChatBot() {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Auto-scroll to bottom when new messages arrive
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Load guest chat history on mount
+
   useEffect(() => {
     if (isGuestMode) {
       const savedHistory = localStorage.getItem('guest-chat-history');
@@ -215,14 +214,14 @@ export default function ChatBot() {
     }
   }, [isGuestMode]);
 
-  // Save guest chat history when messages change
+
   useEffect(() => {
     if (isGuestMode && messages.length > 0) {
       localStorage.setItem('guest-chat-history', JSON.stringify(messages));
     }
   }, [messages, isGuestMode]);
 
-  // Initialize speech recognition
+
   const initializeSpeechRecognition = () => {
     const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
     
@@ -243,7 +242,7 @@ export default function ChatBot() {
       const transcript = event.results[0][0].transcript;
       setQuery(transcript);
       
-      // Auto-send voice messages
+
       if (transcript.trim()) {
         handleSend(transcript, true);
       }
@@ -262,14 +261,14 @@ export default function ChatBot() {
     recognitionRef.current = recognition;
   };
 
-  // Start listening for voice input
+
   const startListening = () => {
     if (!voiceSupported || !recognitionRef.current) {
       setSpeechError('Voice recognition not available');
       return;
     }
 
-    // Stop any ongoing speech synthesis
+
     if (isSpeaking) {
       stopSpeaking();
     }
@@ -282,14 +281,13 @@ export default function ChatBot() {
     }
   };
 
-  // Stop listening
+
   const stopListening = () => {
     if (recognitionRef.current && isListening) {
       recognitionRef.current.stop();
     }
   };
 
-  // Google Text-to-Speech function
   const speakWithGoogleTTS = async (text: string) => {
     if (!GOOGLE_TTS_API_KEY || GOOGLE_TTS_API_KEY === 'YOUR_GOOGLE_API_KEY') {
       console.warn('Google TTS API key not configured, falling back to browser TTS');
@@ -344,19 +342,19 @@ export default function ChatBot() {
       console.error('Google TTS error:', error);
       setIsSpeaking(false);
       
-      // Fallback to browser TTS
+     
       speak(text);
     }
   };
 
-  // Browser Text-to-speech function
+
   const speak = (text: string) => {
     if (!voiceSupported || !window.speechSynthesis) {
       console.warn('Text-to-speech not supported');
       return;
     }
 
-    // Stop any ongoing speech
+
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -375,7 +373,7 @@ export default function ChatBot() {
     window.speechSynthesis.speak(utterance);
   };
 
-  // Stop speaking
+
   const stopSpeaking = () => {
     if (window.speechSynthesis) {
       window.speechSynthesis.cancel();
@@ -383,7 +381,7 @@ export default function ChatBot() {
     }
   };
 
-  // Handle sending messages
+
   const handleSend = async (messageText?: string, isVoiceMessage = false) => {
     const textToSend = messageText || query;
     if (!textToSend.trim() || (!user && !isGuestMode)) return;
@@ -399,10 +397,10 @@ export default function ChatBot() {
     };
 
     try {
-      // Add user message immediately
+
       setMessages((prev) => [...prev, userMessage]);
       
-      // Get AI response
+     
       const reply = await fetchChatResponse(textToSend);
       
       const assistantMessage: Message = {
@@ -413,7 +411,7 @@ export default function ChatBot() {
       
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Auto-speak assistant responses for voice conversations
+    
       if (isVoiceMessage && voiceSupported) {
         setTimeout(() => {
           if (useGoogleTTS) {
@@ -457,7 +455,7 @@ export default function ChatBot() {
         setIsGuestMode(false);
       }
       setMessages([]);
-      // Redirect to sign in page
+     
       window.location.href = '/signin';
     } catch (error) {
       console.error('Error signing out:', error);
@@ -471,7 +469,6 @@ export default function ChatBot() {
     setIsGuestMode(true);
   };
 
-  // Show loading spinner while checking auth
   if (authLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
@@ -483,7 +480,6 @@ export default function ChatBot() {
     );
   }
 
-  // Show login prompt if not authenticated and not in guest mode
   if (!user && !isGuestMode) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
@@ -511,7 +507,6 @@ export default function ChatBot() {
     );
   }
 
-  // Main chat interface
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto">
@@ -552,7 +547,6 @@ export default function ChatBot() {
           </p>
         </div>
 
-        {/* Error Display */}
         {speechError && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
             {speechError}
@@ -636,10 +630,10 @@ export default function ChatBot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
+    
           <div className="p-6 bg-white border-t">
             <div className="flex items-center space-x-3">
-              {/* Voice Button */}
+           
               {voiceSupported && (
                 <button
                   onClick={isListening ? stopListening : startListening}
@@ -655,7 +649,6 @@ export default function ChatBot() {
                 </button>
               )}
 
-              {/* Text Input */}
               <div className="flex-1">
                 <textarea
                   value={query}
@@ -668,7 +661,7 @@ export default function ChatBot() {
                 />
               </div>
 
-              {/* Send Button */}
+    
               <button
                 onClick={() => handleSend()}
                 disabled={isLoading || !query.trim() || isListening}
@@ -681,7 +674,7 @@ export default function ChatBot() {
                 )}
               </button>
 
-              {/* Stop Speaking Button */}
+          
               {isSpeaking && (
                 <button
                   onClick={stopSpeaking}
@@ -693,7 +686,7 @@ export default function ChatBot() {
               )}
             </div>
 
-            {/* Status Indicators */}
+ 
             {voiceSupported && (
               <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
                 <div className="flex items-center space-x-4">
@@ -718,7 +711,7 @@ export default function ChatBot() {
           </div>
         </div>
 
-        {/* Footer */}
+       
         {isGuestMode && (
           <div className="mt-6 text-center text-sm text-gray-500">
             <p>

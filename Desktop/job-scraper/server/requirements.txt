@@ -1,0 +1,11 @@
+selenium
+undetected-chromedriver
+webdriver-manager
+requests
+beautifulsoup4
+python-dotenv
+fake-useragent
+fastapi
+uvicorn
+python-dotenv 
+psycopg2

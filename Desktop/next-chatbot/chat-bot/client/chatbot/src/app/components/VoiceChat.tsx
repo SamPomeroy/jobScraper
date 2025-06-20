@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 interface SpeechRecognition extends EventTarget {
   grammars: SpeechGrammarList;
@@ -30,25 +30,31 @@ interface IWindow extends Window {
 
 declare let window: IWindow;
 
-const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGuestMode: boolean }) => {
+const VoiceChatWindow = ({
+  onClose,
+  isGuestMode,
+}: {
+  onClose: () => void;
+  isGuestMode: boolean;
+}) => {
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [speechError, setSpeechError] = useState<string | null>(null);
   const [animationIntensity, setAnimationIntensity] = useState(0);
-  
+
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const animationRef = useRef<number | null>(null);
 
-  // Initialize speech recognition
   useEffect(() => {
-    const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
-    
+    const SpeechRecognitionClass =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
     if (SpeechRecognitionClass) {
       const recognition = new SpeechRecognitionClass();
-      recognition.lang = 'en-US';
+      recognition.lang = "en-US";
       recognition.continuous = false;
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
@@ -56,7 +62,7 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
       recognition.onstart = () => {
         setIsListening(true);
         setSpeechError(null);
-        setCurrentText('Listening...');
+        setCurrentText("Listening...");
       };
 
       recognition.onresult = (event) => {
@@ -66,10 +72,10 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
       };
 
       recognition.onerror = (event) => {
-        console.error('Speech recognition error:', event.error);
+        console.error("Speech recognition error:", event.error);
         setSpeechError(`Voice recognition error: ${event.error}`);
         setIsListening(false);
-        setCurrentText('');
+        setCurrentText("");
       };
 
       recognition.onend = () => {
@@ -92,26 +98,26 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
     };
   }, []);
 
-  // Handle voice input and get AI response
   const handleVoiceInput = async (transcript: string) => {
     setIsProcessing(true);
-    setCurrentText('Processing your request...');
-    
+    setCurrentText("Processing your request...");
+
     try {
-      const token = localStorage.getItem('sb-access-token');
+      const token = localStorage.getItem("sb-access-token");
       const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       };
-      
+
       if (token && !isGuestMode) {
-        headers['Authorization'] = `Bearer ${token}`;
+        headers["Authorization"] = `Bearer ${token}`;
       }
 
-      // Call your Python backend voice endpoint
       const response = await fetch(
-        `http://localhost:8000/chat_voice?query=${encodeURIComponent(transcript)}&include_audio=true`,
+        `http://localhost:8000/chat_voice?query=${encodeURIComponent(
+          transcript
+        )}&include_audio=true`,
         {
-          method: 'GET',
+          method: "GET",
           headers: headers,
         }
       );
@@ -121,84 +127,78 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
       }
 
       const data = await response.json();
-      
+
       setCurrentText(data.response);
-      
-      // Play the audio response if available
+
       if (data.audio) {
         playAudioResponse(data.audio, data.response);
       } else {
-        // Fallback to browser speech synthesis
         speakText(data.response);
       }
-      
     } catch (error) {
-      console.error('Error getting voice response:', error);
-      setSpeechError('Failed to get AI response');
-      setCurrentText('Sorry, I encountered an error. Please try again.');
+      console.error("Error getting voice response:", error);
+      setSpeechError("Failed to get AI response");
+      setCurrentText("Sorry, I encountered an error. Please try again.");
     } finally {
       setIsProcessing(false);
     }
   };
 
-  // Play audio response from backend
   const playAudioResponse = (audioUrl: string, text: string) => {
     setIsSpeaking(true);
     setCurrentText(text);
-    
+
     const audio = new Audio(audioUrl);
     audioRef.current = audio;
-    
+
     audio.onplay = () => {
       startVoiceAnimation();
     };
-    
+
     audio.onended = () => {
       setIsSpeaking(false);
       stopVoiceAnimation();
-      setCurrentText('Click the microphone to speak again');
+      setCurrentText("Click the microphone to speak again");
     };
-    
+
     audio.onerror = () => {
-      console.error('Audio playback failed, falling back to browser TTS');
+      console.error("Audio playback failed, falling back to browser TTS");
       setIsSpeaking(false);
       stopVoiceAnimation();
       speakText(text);
     };
-    
-    audio.play().catch(error => {
-      console.error('Audio play failed:', error);
+
+    audio.play().catch((error) => {
+      console.error("Audio play failed:", error);
       speakText(text);
     });
   };
 
-  // Fallback browser speech synthesis
   const speakText = (text: string) => {
     if (window.speechSynthesis) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.9;
       utterance.pitch = 1;
       utterance.volume = 1;
-      
+
       utterance.onstart = () => {
         setIsSpeaking(true);
         startVoiceAnimation();
       };
-      
+
       utterance.onend = () => {
         setIsSpeaking(false);
         stopVoiceAnimation();
-        setCurrentText('Click the microphone to speak again');
+        setCurrentText("Click the microphone to speak again");
       };
-      
+
       window.speechSynthesis.speak(utterance);
     }
   };
 
-  // Voice animation
   const startVoiceAnimation = () => {
     const animate = () => {
-      setAnimationIntensity(prev => {
+      setAnimationIntensity((prev) => {
         const newIntensity = 0.3 + Math.random() * 0.7;
         return newIntensity;
       });
@@ -215,19 +215,22 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
     setAnimationIntensity(0);
   };
 
-  // Start listening
   const startListening = () => {
-    if (recognitionRef.current && !isListening && !isSpeaking && !isProcessing) {
+    if (
+      recognitionRef.current &&
+      !isListening &&
+      !isSpeaking &&
+      !isProcessing
+    ) {
       try {
         recognitionRef.current.start();
       } catch (error) {
-        console.error('Failed to start speech recognition:', error);
-        setSpeechError('Failed to start voice recognition');
+        console.error("Failed to start speech recognition:", error);
+        setSpeechError("Failed to start voice recognition");
       }
     }
   };
 
-  // Stop current audio
   const stopAudio = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -238,13 +241,12 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
     }
     setIsSpeaking(false);
     stopVoiceAnimation();
-    setCurrentText('Click the microphone to speak again');
+    setCurrentText("Click the microphone to speak again");
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
-        {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800">🎤 Voice Chat</h2>
           <button
@@ -255,66 +257,81 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
           </button>
         </div>
 
-        {/* Animated Voice Display */}
         <div className="text-center mb-8">
           <div className="relative mx-auto w-32 h-32 mb-4">
-            {/* Main circle */}
-            <div 
+            <div
               className={`absolute inset-0 rounded-full transition-all duration-150 ${
-                isSpeaking ? 'bg-blue-500' : isListening ? 'bg-red-500' : isProcessing ? 'bg-yellow-500' : 'bg-gray-300'
+                isSpeaking
+                  ? "bg-blue-500"
+                  : isListening
+                  ? "bg-red-500"
+                  : isProcessing
+                  ? "bg-yellow-500"
+                  : "bg-gray-300"
               }`}
               style={{
                 transform: `scale(${1 + animationIntensity * 0.3})`,
-                opacity: 0.8
+                opacity: 0.8,
               }}
             />
-            
-            {/* Outer ring */}
-            <div 
+
+            <div
               className={`absolute inset-0 rounded-full border-4 transition-all duration-150 ${
-                isSpeaking ? 'border-blue-300' : isListening ? 'border-red-300' : isProcessing ? 'border-yellow-300' : 'border-gray-200'
+                isSpeaking
+                  ? "border-blue-300"
+                  : isListening
+                  ? "border-red-300"
+                  : isProcessing
+                  ? "border-yellow-300"
+                  : "border-gray-200"
               }`}
               style={{
                 transform: `scale(${1.2 + animationIntensity * 0.5})`,
-                opacity: 0.4
+                opacity: 0.4,
               }}
             />
-            
-            {/* Inner icon */}
+
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-4xl text-white">
-                {isSpeaking ? '🔊' : isListening ? '🎤' : isProcessing ? '⚡' : '🤖'}
+                {isSpeaking
+                  ? "🔊"
+                  : isListening
+                  ? "🎤"
+                  : isProcessing
+                  ? "⚡"
+                  : "🤖"}
               </span>
             </div>
           </div>
 
-          {/* Status text */}
           <div className="h-16 flex items-center justify-center">
             <p className="text-gray-600 text-center leading-relaxed">
-              {currentText || 'Click the microphone to start speaking'}
+              {currentText || "Click the microphone to start speaking"}
             </p>
           </div>
         </div>
 
-        {/* Error Display */}
         {speechError && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
             {speechError}
           </div>
         )}
 
-        {/* Controls */}
         <div className="flex justify-center space-x-4">
           <button
             onClick={startListening}
             disabled={isListening || isSpeaking || isProcessing}
             className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
               isListening || isSpeaking || isProcessing
-                ? 'bg-gray-300 cursor-not-allowed'
-                : 'bg-blue-500 hover:bg-blue-600 text-white transform hover:scale-105'
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-600 text-white transform hover:scale-105"
             }`}
           >
-            {isListening ? 'Listening...' : isProcessing ? 'Processing...' : '🎤 Speak'}
+            {isListening
+              ? "Listening..."
+              : isProcessing
+              ? "Processing..."
+              : "🎤 Speak"}
           </button>
 
           {isSpeaking && (
@@ -327,7 +344,6 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
           )}
         </div>
 
-        {/* Status indicators */}
         <div className="mt-4 text-center">
           <div className="flex justify-center space-x-4 text-xs text-gray-500">
             {isListening && (
@@ -351,7 +367,6 @@ const VoiceChatWindow = ({ onClose, isGuestMode }: { onClose: () => void; isGues
           </div>
         </div>
 
-        {/* Instructions */}
         <div className="mt-6 text-center text-xs text-gray-400">
           <p>Speak naturally and I'll respond with voice!</p>
           <p>Make sure your backend is running on localhost:8000</p>
