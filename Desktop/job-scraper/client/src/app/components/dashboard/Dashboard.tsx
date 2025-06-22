@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Search, FileText, Bell, Settings, LogOut, Home, Mail, Info, Shield } from 'lucide-react';
-
+import 
 import type { AuthUser } from '../../types/auth';
 
 
@@ -243,7 +243,16 @@ export default function Dashboard({ user }: { user: AuthUser }) {
       {activeTab === 'settings' && (
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-lg font-semibold text-gray-900">Settings</h2>
-          <p className="text-sm text-gray-600">Settings panel coming soon.</p>
+         
+         <p className="text-sm text-gray-600">Settings panel coming soon.</p>
+           <div>
+      <Switch
+        checked={settings.darkMode}
+        onCheckedChange={(val) => handleSettingsChange({ darkMode: val })}
+        label="Dark Mode"
+      />
+    </div>
+
         </div>
       )}
 

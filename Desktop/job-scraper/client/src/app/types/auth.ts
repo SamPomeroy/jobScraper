@@ -11,3 +11,16 @@ type UserType = {
   email: string;
   name: string;
 } | null;
+
+interface SettingsProps {
+  user: AuthUser;
+  onSettingsChange: (settings: {
+    darkMode: boolean;
+    notifications: boolean;
+    emailAlerts: boolean;
+    soundAlerts: boolean;
+    autoSave: boolean;
+    defaultCategory: string;
+    jobAlertFrequency: string;
+  }) => void;
+}

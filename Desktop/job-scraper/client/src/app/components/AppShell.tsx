@@ -8,8 +8,8 @@ import HomePage from '@/app/pages/home/HomePage';
 import AboutPage from '../pages/about/AboutPage';
 import ContactPage from '../pages/contact/ContactPage'
 import AuthForm from '@/app/components/AuthForm';
-import Dashboard from '../components/dashboard/Dashboard'
-import Footer from '../components/footer/Footer';
+import Dashboard from './dashboard/Dashboard'
+import Footer from './footer/Footer';
 import type { AuthUser } from '../types/auth';
 
 const supabase = createClient(
