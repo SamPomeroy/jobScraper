@@ -1,5 +1,7 @@
 // tailwind.config.mjs
 export default {
+  darkMode: 'class',
+
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,7 +12,7 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [],
 
 
 }

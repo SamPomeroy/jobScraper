@@ -1,11 +1,11 @@
 'use client';
 
 
-
+import { useTheme } from '../../context/ThemeContext';
+import { Switch } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Search, FileText, Bell, Settings, LogOut, Home, Mail, Info, Shield } from 'lucide-react';
-import 
 import type { AuthUser } from '../../types/auth';
 
 
@@ -28,6 +28,8 @@ export default function Dashboard({ user }: { user: AuthUser }) {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
+  const { darkMode, toggleDarkMode } = useTheme();
+
 
   useEffect(() => {
     const fetchJobs = async (page: number) => {
@@ -246,11 +248,21 @@ export default function Dashboard({ user }: { user: AuthUser }) {
          
          <p className="text-sm text-gray-600">Settings panel coming soon.</p>
            <div>
-      <Switch
-        checked={settings.darkMode}
-        onCheckedChange={(val) => handleSettingsChange({ darkMode: val })}
-        label="Dark Mode"
-      />
+     <label className="flex items-center justify-between mt-4">
+  <span className="text-sm text-gray-700">Dark Mode</span>
+  <Switch
+    checked={darkMode}
+    onChange={toggleDarkMode}
+    className="w-10 h-6 bg-gray-300 rounded-full relative data-[state=checked]:bg-blue-600"
+  >
+    <span
+      className={`block w-4 h-4 bg-white rounded-full shadow absolute top-1 transition-transform ${
+        darkMode ? 'translate-x-4 left-5' : 'left-1'
+      }`}
+    />
+  </Switch>
+</label>
+
     </div>
 
         </div>

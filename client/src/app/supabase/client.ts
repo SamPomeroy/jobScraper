@@ -21,7 +21,3 @@ async function fetchJobs() {
     console.log("Fetched jobs:", data);
   }
 }
-
-// fetchJobs(); // Uncomment and call this function from a React component or useEffect when needed
-
-// export const supabase = createClient(supabaseUrl, supabaseAnonKey)
