@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
 import type { Job, JobFilterState } from "@/app/types/jobs";
-import DashboardStats from "../dashboard/DashboardStats";
+import DashboardStats from "./DashboardStats";
 import JobFilter from "../job-filter/JobFilter";
 import JobApplicationTracker from "../job-tracker/JobApplicationTracker";
 

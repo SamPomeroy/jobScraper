@@ -2,7 +2,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { createClient } from './supabase/server';
-import ThemeChange from '../app/components/ThemeChange'; // client component
+import ThemeChange from './components/ThemeChange'; // client component
 import { cookies } from 'next/headers';
 import React from 'react';
 
