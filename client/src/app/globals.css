@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+/* Example: global body background override */
+html {
+  /* Light mode defaults */
+  background-color: #ffffff;
+  color: #111827;
+}
+
+html.dark {
+  /* Dark mode overrides */
+  background-color: #1F2937;
+  color: #F3F4F6;
+}
+
+
+/* Define default (light mode) variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111827;
+}
+
+/* Override for dark mode */
+html.dark {
+  --bg-color: #1F2937;
+  --text-color: #F3F4F6;
+}
+
+/* Optionally, you can set global backgrounds and text using these variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

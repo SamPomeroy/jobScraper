@@ -9,50 +9,130 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      contact_messages: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          message: string
+          name: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          message: string
+          name: string
+          subject: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       jobs: {
         Row: {
           applied: boolean | null
+          category: string | null
           company: string | null
           date: string | null
           id: string
           job_description: string | null
           job_location: string | null
           job_state: string | null
+          priority: string | null
           salary: string | null
+          saved: boolean | null
           search_term: string | null
           site: string | null
+          status: string | null
           title: string
           url: string | null
+          user_id: string | null
         }
         Insert: {
           applied?: boolean | null
+          category?: string | null
           company?: string | null
           date?: string | null
           id?: string
           job_description?: string | null
           job_location?: string | null
           job_state?: string | null
+          priority?: string | null
           salary?: string | null
+          saved?: boolean | null
           search_term?: string | null
           site?: string | null
+          status?: string | null
           title: string
           url?: string | null
+          user_id?: string | null
         }
         Update: {
           applied?: boolean | null
+          category?: string | null
           company?: string | null
           date?: string | null
           id?: string
           job_description?: string | null
           job_location?: string | null
           job_state?: string | null
+          priority?: string | null
           salary?: string | null
+          saved?: boolean | null
           search_term?: string | null
           site?: string | null
+          status?: string | null
           title?: string
           url?: string | null
+          user_id?: string | null
         }
         Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          message: string
+          read: boolean | null
+          title: string
+          type: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          message: string
+          read?: boolean | null
+          title: string
+          type?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          message?: string
+          read?: boolean | null
+          title?: string
+          type?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       users: {
         Row: {

@@ -1,4 +1,4 @@
-interface Resume {
+export interface Resume {
   id: string;
   name: string;
   file_name: string;

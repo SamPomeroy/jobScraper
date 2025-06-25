@@ -1,24 +1,12 @@
-
-
 // src/app/page.tsx
 import { getUserServer } from '@/app/supabase/user';
-import AppShell from '@/app/components/AppShell';
-import { createClient } from '@supabase/supabase-js';
+import AppShell from '@/app/components/AppShell'; // or Dashboard if directly
 import type { AuthUser } from '@/app/types/auth';
-
 
 export default async function Page() {
   const user = await getUserServer();
   return <AppShell initialUser={user as AuthUser | null} />;
-}  
-
-
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
+}
 
 
 

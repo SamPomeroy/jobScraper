@@ -1,34 +1,38 @@
+// src/app/context/ThemeContext.tsx
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 
-type ThemeContextType = {
+interface ThemeContextProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
-};
+}
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextProps>({
+  darkMode: false,
+  toggleDarkMode: () => {},
+});
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark') setDarkMode(true);
-  }, []);
+  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
+  // Add a 'dark' class to <html> when darkMode is true.
   useEffect(() => {
     const root = document.documentElement;
     if (darkMode) {
       root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
     } else {
       root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
-
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
@@ -37,8 +41,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) throw new Error('useTheme must be used within a ThemeProvider');
-  return context;
-};
+export const useTheme = () => useContext(ThemeContext);
+
+
+
+
+

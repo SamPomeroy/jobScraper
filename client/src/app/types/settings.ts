@@ -19,3 +19,12 @@ interface SettingsProps {
     jobAlertFrequency: string;
   }) => void;
 }
+export type SettingsState = {
+  darkMode: boolean;
+  notifications: boolean;
+  emailAlerts: boolean;
+  soundAlerts: boolean;
+  autoSave: boolean;
+  defaultCategory: string;
+  jobAlertFrequency: string;
+};

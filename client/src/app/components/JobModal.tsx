@@ -34,7 +34,11 @@ export default function JobModal({
   return (
     <>
       
-      <div
+      <div  style={{
+        backgroundColor: 'var(--bg-color)',
+        color: 'var(--text-color)'
+      }}
+
         className="fixed inset-0 bg-black bg-opacity-40 z-40"
         onClick={onCloseAction}
       />
