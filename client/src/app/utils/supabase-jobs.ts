@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import { supabase } from '@/app/supabase/client';
 import { Job } from '../types/jobs';
 
