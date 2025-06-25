@@ -115,27 +115,25 @@ const JobFilter: React.FC<Props> = ({ filters, onFilterChange, darkMode = false 
         </div>
 
         {/* Clear Filters */}
-        <button
-          onClick={() =>
-          onFilterChange({
-  filter: "all",
-  priority: "all",
-  category: "all",
-  status: "all",
-  searchTerm: "",
-  fromDate: "",
-  toDate: ""
-});
-          
-          }
-          className={`px-4 py-2 text-sm rounded hover:bg-opacity-80 transition-colors ${
-            darkMode
-              ? "bg-gray-600 text-gray-100 hover:bg-gray-500"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-          }`}
-        >
-          Clear Filters
-        </button>
+<button
+  onClick={() =>
+    onFilterChange({
+      category: "all",
+      status: "all",
+      searchTerm: "",
+      fromDate: "",
+      toDate: "",
+      filter: ""
+    })
+  }
+  className={`px-4 py-2 text-sm rounded hover:bg-opacity-80 transition-colors ${
+    darkMode
+      ? "bg-gray-600 text-gray-100 hover:bg-gray-500"
+      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+  }`}
+>
+  Clear Filters
+</button>
       </div>
     </div>
   );
