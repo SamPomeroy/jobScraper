@@ -121,7 +121,7 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
   return (
     <>
       <DashboardStats stats={dashboardStats} darkMode={darkMode} />
-      <JobFilter filters={filters} onFilterChange={setFilters} darkMode={darkMode} />
+      <JobFilter filters={filters} onFilterChange={(newFilters) => setFilters(newFilters)} darkMode={darkMode} />
       <JobApplicationTracker
         jobs={filteredJobs}
         onJobUpdate={onJobUpdateAction}
