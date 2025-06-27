@@ -1,8 +1,8 @@
 {
   "node": {
-    "44a9d8a0db359563a4b364b6c2a30d3050c472fc": {
+    "804d2c3c529c957ec3b036b85eb3d434ad0c1272": {
       "workers": {
-        "app/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5CShandea%5C%5CDesktop%5C%5CjobScraper-1%5C%5Cclient%5C%5Csrc%5C%5Capp%5C%5Csupabase%5C%5Cuser.ts%22%2C%5B%22getUserServer%22%5D%5D%5D&__client_imported__=!"
+        "app/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Csaman%5C%5COneDrive%5C%5CProjects%5C%5CBanyan%5C%5CjobScraper%5C%5Cclient%5C%5Csrc%5C%5Capp%5C%5Csupabase%5C%5Cuser.ts%22%2C%5B%22getUserServer%22%5D%5D%5D&__client_imported__=!"
       },
       "layer": {
         "app/page": "rsc"
@@ -10,5 +10,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "GlMJSJiatOPOv1UKe9tha5M93i4nEA5JFPVz92x+X4A="
+  "encryptionKey": "LDrLowK0ZbsK7e9s2nk7F4NU2GfnthWT7ZVaQQ/V96Y="
 }

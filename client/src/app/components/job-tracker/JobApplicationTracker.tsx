@@ -56,13 +56,12 @@ const JobApplicationTracker: React.FC<Props> = ({
       {jobs.map((job) => (
         <div
           key={job.id}
-          className={`p-4 rounded border transition-opacity duration-700 opacity-0 animate-fade-in delay-[${jobs.indexOf(job) * 100}ms] ${
+          className={`p-4 rounded border transition-all duration-300 opacity-0 animate-fade-in delay-100 ${
             darkMode
               ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
               : "bg-white border-gray-200 hover:bg-gray-50"
           }`}
         >
-
           <div className="flex items-center justify-between">
             <div className="flex-1">
               <div className="flex items-center space-x-3 mb-1">
@@ -99,36 +98,39 @@ const JobApplicationTracker: React.FC<Props> = ({
             </div>
 
             <div className="flex items-center space-x-2 ml-4">
+              {/* View Button */}
               <button
                 onClick={() => {
                   setSelectedJob(job);
                   setShowModal(true);
                 }}
-                className={`p-2 rounded ${
+                className={`p-2 rounded transform transition duration-200 ${
                   darkMode
-                    ? "hover:bg-gray-700 text-gray-400"
-                    : "hover:bg-gray-100 text-gray-500"
+                    ? "hover:bg-gray-300 text-gray-400 hover: scale-110"
+                    : "hover:bg-gray-300 text-gray-500 hover:scale-110"
                 }`}
               >
                 <Eye className="w-4 h-4" />
               </button>
 
+              {/* Apply Button */}
               <button
                 onClick={() => handleApplyClick(job)}
-                className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-3 py-1 text-sm bg-blue-600 text-white rounded transform transition duration-200 hover:brightness-120 active:scale-95 hover: scale-110"
               >
                 <ExternalLink className="w-4 h-4 inline mr-1" />
                 Apply
               </button>
 
+              {/* Save Button */}
               <button
                 onClick={() => onJobUpdate(job.id, { saved: !job.saved })}
-                className={`p-2 rounded ${
+                className={`p-2 rounded transform transition duration-200 hover:scale-105 active:scale-95 ${
                   job.saved
-                    ? "text-blue-600"
+                    ? "text-blue-600 hover: scale-110"
                     : darkMode
-                    ? "text-gray-400 hover:text-blue-400"
-                    : "text-gray-500 hover:text-blue-600"
+                    ? "text-gray-400 hover:text-blue-400 hover:scale-110"
+                    : "text-gray-500 hover:text-blue-600 hover:scale-110"
                 }`}
               >
                 <Save className="w-4 h-4" />
