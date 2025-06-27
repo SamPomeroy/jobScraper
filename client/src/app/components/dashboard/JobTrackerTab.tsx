@@ -24,14 +24,13 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
     priority: "all",
     status: "all",
     searchTerm: "",
-    fromDate: "",
-    toDate: "",
+   fromDate: undefined,
+toDate: undefined,
   });
 
   const [pendingJobId, setPendingJobId] = useState<string | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
-  // ✅ Prompt if pending application is stored in localStorage
+// ✅ Prompt if pending application is stored in localStorage
   useEffect(() => {
     const stored = localStorage.getItem("pendingApplicationJobId");
     if (stored) {
@@ -157,101 +156,3 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
 };
 
 export default JobTrackerTab;
-
-
-
-// "use client";
-
-// import React, { useState, useMemo } from "react";
-// import type { Job, JobFilterState } from "@/app/types/jobs";
-// import DashboardStats from "../dashboard/DashboardStats";
-// import JobFilter from "../job-filter/JobFilter";
-// import JobApplicationTracker from "../job-tracker/JobApplicationTracker";
-
-// export interface JobTrackerTabProps {
-//   jobs: Job[];
-//   onJobUpdateAction: (jobId: string, update: Partial<Job>) => void;
-//   onApplyStatusChangeAction: (jobId: string, applied: boolean) => void;
-//   darkMode: boolean;
-// }
-
-// export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
-//   jobs,
-//   onJobUpdateAction,
-//   onApplyStatusChangeAction,
-//   darkMode,
-// }) => {
-//   const [filters, setFilters] = useState<JobFilterState>({
-//     filter: "all",
-//     category: "all",
-//     priority: "all",
-//     status: "all",
-//     searchTerm: "",
-//   });
-
-//   const filteredJobs = useMemo(() => {
-//     return jobs.filter((job) => {
-//       if (filters.filter !== "all") {
-//         switch (filters.filter) {
-//           case "pending":
-//             if (job.applied) return false;
-//             break;
-//           case "applied":
-//             if (!job.applied) return false;
-//             break;
-//           case "saved":
-//             if (!job.saved) return false;
-//             break;
-//           case "interview":
-//             if (job.status !== "interview") return false;
-//             break;
-//           case "offer":
-//             if (job.status !== "offer") return false;
-//             break;
-//           case "rejected":
-//             if (job.status !== "rejected") return false;
-//             break;
-//         }
-//       }
-//       if (filters.category !== "all" && job.category !== filters.category) return false;
-//       if (filters.priority !== "all" && job.priority !== filters.priority) return false;
-//       if (filters.status !== "all" && job.status !== filters.status) return false;
-//       if (filters.searchTerm) {
-//         const query = filters.searchTerm.toLowerCase();
-//         const match =
-//           job.title.toLowerCase().includes(query) ||
-//           job.company?.toLowerCase().includes(query) ||
-//           job.job_location?.toLowerCase().includes(query);
-//         if (!match) return false;
-//       }
-//       return true;
-//     });
-//   }, [jobs, filters]);
-
-//   const dashboardStats = {
-//     totalJobs: jobs.length,
-//     appliedJobs: jobs.filter((j) => j.applied).length,
-//     savedJobs: jobs.filter((j) => j.saved).length,
-//     pendingJobs: jobs.filter((j) => !j.applied).length,
-//     interviewJobs: jobs.filter((j) => j.status === "interview").length,
-//     offerJobs: jobs.filter((j) => j.status === "offer").length,
-//   };
-// console.log("✅ Filtered jobs in view:", filteredJobs.length);
-
-
-//   return (
-//     <>
-//       <DashboardStats stats={dashboardStats} darkMode={darkMode} />
-//       <JobFilter filters={filters} onFilterChange={setFilters} darkMode={darkMode} />
-//       <JobApplicationTracker
-//         jobs={filteredJobs}
-//         onJobUpdate={onJobUpdateAction}
-//         onApplyStatusChange={onApplyStatusChangeAction}
-//         onJobsUpdate={() => {}}
-//         darkMode={darkMode}
-//       />
-//     </>
-//   );
-// };
-
-// export default JobTrackerTab;
