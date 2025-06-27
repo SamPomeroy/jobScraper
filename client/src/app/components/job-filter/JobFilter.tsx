@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Filter, Search, CalendarDays } from 'lucide-react';
-import { JobFilterState } from '@/app/types/application';
+import { JobFilterState } from '@/app/types/jobs';
 
 interface Props {
   filters: JobFilterState;
@@ -123,7 +123,8 @@ const JobFilter: React.FC<Props> = ({ filters, onFilterChange, darkMode = false 
       searchTerm: "",
       fromDate: "",
       toDate: "",
-      filter: ""
+      filter: "",
+      priority: "all"
     })
   }
   className={`px-4 py-2 text-sm rounded hover:bg-opacity-80 transition-colors ${
