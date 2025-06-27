@@ -22,8 +22,8 @@ export interface Job {
   inserted_at?: string; // when the job was inserted (for deduplication)
   last_verified?: string;
   [key: string]: any;
-  skills?: string[];
-  user_id?: string;
+  // skills?: string[];
+  // user_id?: string;
 }
 
 export interface DashboardStats {
@@ -60,19 +60,23 @@ export type SettingsState = {
   defaultCategory: string;
   jobAlertFrequency: string;
 };
-
-interface SettingsProps {
+export interface SettingsProps {
   user: AuthUser;
-  onSettingsChange: (settings: {
-    darkMode: boolean;
-    notifications: boolean;
-    emailAlerts: boolean;
-    soundAlerts: boolean;
-    autoSave: boolean;
-    defaultCategory: string;
-    jobAlertFrequency: string;
-  }) => void;
+  onSettingsChange: (settings: SettingsState) => void;
 }
+
+// interface SettingsProps {
+//   user: AuthUser;
+//   onSettingsChange: (settings: {
+//     darkMode: boolean;
+//     notifications: boolean;
+//     emailAlerts: boolean;
+//     soundAlerts: boolean;
+//     autoSave: boolean;
+//     defaultCategory: string;
+//     jobAlertFrequency: string;
+//   }) => void;
+// }
 
 export interface Resume {
   id: string;
@@ -111,18 +115,6 @@ export interface JobStats {
   interviews: number;
   offers: number;
   rejected: number;
-}
-interface SettingsProps {
-  user: AuthUser;
-  onSettingsChange: (settings: {
-    darkMode: boolean;
-    notifications: boolean;
-    emailAlerts: boolean;
-    soundAlerts: boolean;
-    autoSave: boolean;
-    defaultCategory: string;
-    jobAlertFrequency: string;
-  }) => void;
 }
 
 // export type Database = {

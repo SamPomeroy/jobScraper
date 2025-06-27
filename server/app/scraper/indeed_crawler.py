@@ -15,7 +15,7 @@ from app.db.cleanup import cleanup
 from app.scraper.indeed_scraper import TECH_KEYWORDS 
 
 LOCATION = "remote"
-MAX_DAYS = 15
+MAX_DAYS = 5
 
 
 def configure_webdriver():

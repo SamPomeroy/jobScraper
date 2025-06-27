@@ -1,0 +1,213 @@
+title,company,job_location,job_state,date,site,job_description,salary,url,applied,search_term
+"Senior Back-end Developer - PHP, Payments Team (Remote in EMEA)",Printify,Remote,remote,2025-06-27,Indeed,"Remote, Poland
+Group: Office
+Location: Remote, Poland
+
+In November 2024, Printful and Printify came together as two equals and merged to form a global on-demand powerhouse. This role will involve working across our two platforms and brands, a unique and special challenge. To learn more about the merger, check out our blog post.
+About Us:
+Both Printify and Printful are pioneering production on-demand companies and platforms established in Latvia but with a global customer base.
+Printify is bringing the dream of financial freedom and business ownership to the world by connecting e-commerce entrepreneurs with over 100 print-on-demand facilities around the globe.
+Printful has built world-class in-house production facilities and helps people to build their brands, empowering thousands of businesses—including iconic names like Coca-Cola and MTV.
+Our team is at the heart of our success. You’ll be part of a culture where everyone is respected, included, and encouraged to grow. We value continuous learning, uphold a high work ethic, and have fun along the way.
+About the Team:
+The Payments Product Squad is dedicated to ensuring a seamless and efficient payment experience for both our merchants and their customers. Key Responsibilities - Payment Method Integration, Payment Routing, Back-Office Support, Subscription Management, Multicurrency Support, User Experience, Collaboration (with our sister squads - Finance and Fraud).
+About the Role:
+As a Senior Back-end Software Engineer, your main task is to improve our Payments systems, ensuring they are scalable, robust, and capable of handling the growing demands of the organization.
+Your role involves enhancing the extracting of the existing payments system, porting it to Temporal.io workflows, to manage high loads efficiently. You'll focus on creating a smooth and accurate payment experience for our merchants, including reliable financial transactions and reporting. Additionally, you will add new payment options and work on a Payment Orchestration Platform.
+A key part of your job is to transform the Payments module into a separate Payments service, ing best practices from Domain-Driven Design (DDD) and Event Sourcing.
+Your Daily Tasks Will Entail:
+You will work alongside the product teams and product managers to iterate on new features within the joint organization
+You will take responsibility in the design and execution of your own initiatives
+You will help identify areas of improvement in the codebase and help contribute to making it better
+You will frequently pair with teammates to give and receive feedback from a code review to boost knowledge-sharing, and learning and improve the platform
+You will fix any prioritized bugs/issues tracked within the platforms
+You will participate as a presenter or attendee, in weekly coding or knowledge-sharing sessions
+You will learn, develop your soft skills and spend time discussing best practices and technologies with your peers
+
+Your Qualifications:
+
+Good level of English (spoken and written)
+5+ years' experience with PHP
+Experience with DDD (Domain-Driven Design)
+Experience with CQRS (Command Query Responsibility Segregation)
+Experience with Distributed Systems
+Quality-oriented: follow best practices (Testing (ideally TDD), pair programming, continuous integration/deployment, Agile methodologies) and SOLID principles
+Experience with mentoring team members
+Preferred Qualifications:
+
+Experience with Event Sourcing
+Experience with Monolith extraction into Microservices
+Our Tech Stack:
+
+Backend: PHP 8.1+, Symfony, Laravel & Yii2, Doctrine, PhpUnit, static code analysis tools.
+Databases: MySQL, PostgreSQL, MongoDB, Redis.
+Engineering Tools: Postman, Git, GitLab, GitHub Copilot, PhpStorm, Grafana, Kibana, Prometheus, AWS, Kubernetes, Docker,
+Remote work Tools: Tuple, Jira, Miro, Google Workspace, Slack.
+Development Practices: Pair Programming, Code Reviews, Continuous Integration/Deployment.
+What We Offer:
+
+Be part of a friendly, inclusive, and global team
+An opportunity to work remotely or in a modern and welcoming office in Rīga or Tallinn, or our co-working space in Barcelona
+Flexible working hours (start your day as late as 11 a.m.)
+Health insurance
+Access to mentorship, internal meetups, and hackathons both on-site and online
+Exciting team-building events and parties you’ll never forget!
+Free and healthy lunch if you work from the Rīga office
+Apple MacBook laptop as your standard work equipment
+We are an equal-opportunity workplace. We’re committed to diversity and inclusion and make hiring decisions based solely on qualifications, merit, and work experience.
+If you think you’d excel in this role, send us your resume in English, showing us why you are the right person for the job.
+Interested, but don’t think this is the right fit for you? Feel free to share it with friends and check out other open positions at our career site. We’re always looking for creative and driven minds to join our ever-growing team!
+AS Printful Latvia (Reģ.nr. LV40203050078)",N/A,https://www.indeed.com/viewjob?jk=fba5aef32ba634b8,False,back-end developer
+Full-Stack Developer,California Society of Certified Public Accountants,Remote,remote,2025-06-27,Indeed,"Title: Full-Stack Developer
+Location: Remote – USA only
+Meet CalCPA
+Company | Nonprofit | 1 - 100 Employees
+We are a mission-based organization that strives to increase the value and promote the integrity of the CPA profession. We work as a team to contribute to the success of our 43,000+ members; and strengthen our client, employer, public and government trust in CalCPA member advice, work products and expert opinions.
+Position Summary
+We are seeking a remote Full-Stack Developer to join our collaborative software development team. As a Full-Stack Developer, you will build and enhance features for our Web Apps, including eCommerce platform, AI-powered tools, email-deliverability services, and third-party integrations using React and Next.js plus Node.js on the back end. We’re looking for someone who is curious, passionate about software development, and ready to make a big impact. We are a small, fast-moving team where your code ships to production every week and directly impacts customers. If you love diving into technical details, leveraging AI to code faster, and owning features end-to-end, we’d love to meet you!
+Duties and Responsibilities:
+Develop and enhance features using TypeScript, CSS, React, and Next.js.
+Design and build REST/GraphQL APIs and server-side logic with Node.js / Next.js API routes.
+Model and query data in SQL (PostgreSQL/MySQL) or NoSQL (MongoDB/Firebase) as appropriate.
+Write high-quality, testable, and maintainable code.
+Write unit, integration, and end-to-end tests (Jest, Playwright/Cypress) and participate in Test-Driven Development where practical.
+Collaborate with other members of the development team to plan and implement features.
+Troubleshoot and debug issues.
+Own features end-to-end, from the UI through deployment on Netlify/Vercel and CI/CD pipelines (AzureDevOps, GitHub Actions).
+Participate in code reviews and architecture discussions.
+Communicate clearly in our remote-first culture—async updates, video stand-ups, and written documentation.
+Required Qualifications:
+Proficiency in TypeScript and JavaScript.
+Strong knowledge of HTML and CSS.
+Experience with React and Next.js.
+Solid Node.js experience (Express/Nest or Next.js API routes) and comfort building scalable back-end services.
+Hands-on database experience (PostgreSQL, MySQL, or MongoDB/Firebase).
+Proficiency with AI-assisted code editors (e.g., Cursor, Claude, GitHub Copilot, Windsurf).
+Proficiency with Git (branching, PR reviews, CI hooks).
+Attention to detail.
+Willingness and ability to learn and use new technologies.
+Excellent written and verbal communication for distributed teamwork.
+Preferred Qualifications:
+Familiarity with end-to-end testing frameworks like Cypress, Playwright, or WebDriver.io.
+Experience with Salesforce.
+Experience with OpenAI-compatible APIs.
+Knowledge of real-time and media protocols: WebSockets, WebRTC.
+Familiarity with Retrieval-Augmented Generation (RAG) application development and prompt engineering techniques using the OpenAI API or similar LLM platforms.
+Salary:
+$115,000 - $130,000 base salary.
+Benefits:
+Competitive Medical, Dental and Vision Insurance
+401(k) + Employer Match + profit sharing
+Life Insurance
+Long-Term Disability Insurance
+Pet Insurance
+Paid Leave of Absence
+Generous PTO
+16 Paid Holidays
+Gratitude Days
+Gym Membership
+Monthly remote-work reimbursement to power your Internet
+Company Retreats
+Holiday Events
+Tuition Reimbursement
+Free CalCPA classes and events
+It is the policy of CalCPA to provide equal employment opportunities without regard to race, color, religion, sex, national origin, age, disability, marital status, veteran status, sexual orientation, genetic information, or any other protected characteristic under applicable law. This policy relates to all phases of employment, including, but not limited to, recruiting, employment, placement, promotion, transfer, demotion, reduction of workforce and termination, rates of pay or other forms of compensation, selection for training, the use of all facilities, and participation in all company-sponsored employee activities.",N/A,https://www.indeed.com/viewjob?jk=2db637f40d96c81b,False,back-end developer
+Full-Stack Developer,California Society of Certified Public Accountants,Remote,remote,2025-06-27,Indeed,"Title: Full-Stack Developer
+Location: Remote – USA only
+Meet CalCPA
+Company | Nonprofit | 1 - 100 Employees
+We are a mission-based organization that strives to increase the value and promote the integrity of the CPA profession. We work as a team to contribute to the success of our 43,000+ members; and strengthen our client, employer, public and government trust in CalCPA member advice, work products and expert opinions.
+Position Summary
+We are seeking a remote Full-Stack Developer to join our collaborative software development team. As a Full-Stack Developer, you will build and enhance features for our Web Apps, including eCommerce platform, AI-powered tools, email-deliverability services, and third-party integrations using React and Next.js plus Node.js on the back end. We’re looking for someone who is curious, passionate about software development, and ready to make a big impact. We are a small, fast-moving team where your code ships to production every week and directly impacts customers. If you love diving into technical details, leveraging AI to code faster, and owning features end-to-end, we’d love to meet you!
+Duties and Responsibilities:
+Develop and enhance features using TypeScript, CSS, React, and Next.js.
+Design and build REST/GraphQL APIs and server-side logic with Node.js / Next.js API routes.
+Model and query data in SQL (PostgreSQL/MySQL) or NoSQL (MongoDB/Firebase) as appropriate.
+Write high-quality, testable, and maintainable code.
+Write unit, integration, and end-to-end tests (Jest, Playwright/Cypress) and participate in Test-Driven Development where practical.
+Collaborate with other members of the development team to plan and implement features.
+Troubleshoot and debug issues.
+Own features end-to-end, from the UI through deployment on Netlify/Vercel and CI/CD pipelines (AzureDevOps, GitHub Actions).
+Participate in code reviews and architecture discussions.
+Communicate clearly in our remote-first culture—async updates, video stand-ups, and written documentation.
+Required Qualifications:
+Proficiency in TypeScript and JavaScript.
+Strong knowledge of HTML and CSS.
+Experience with React and Next.js.
+Solid Node.js experience (Express/Nest or Next.js API routes) and comfort building scalable back-end services.
+Hands-on database experience (PostgreSQL, MySQL, or MongoDB/Firebase).
+Proficiency with AI-assisted code editors (e.g., Cursor, Claude, GitHub Copilot, Windsurf).
+Proficiency with Git (branching, PR reviews, CI hooks).
+Attention to detail.
+Willingness and ability to learn and use new technologies.
+Excellent written and verbal communication for distributed teamwork.
+Preferred Qualifications:
+Familiarity with end-to-end testing frameworks like Cypress, Playwright, or WebDriver.io.
+Experience with Salesforce.
+Experience with OpenAI-compatible APIs.
+Knowledge of real-time and media protocols: WebSockets, WebRTC.
+Familiarity with Retrieval-Augmented Generation (RAG) application development and prompt engineering techniques using the OpenAI API or similar LLM platforms.
+Salary:
+$115,000 - $130,000 base salary.
+Benefits:
+Competitive Medical, Dental and Vision Insurance
+401(k) + Employer Match + profit sharing
+Life Insurance
+Long-Term Disability Insurance
+Pet Insurance
+Paid Leave of Absence
+Generous PTO
+16 Paid Holidays
+Gratitude Days
+Gym Membership
+Monthly remote-work reimbursement to power your Internet
+Company Retreats
+Holiday Events
+Tuition Reimbursement
+Free CalCPA classes and events
+It is the policy of CalCPA to provide equal employment opportunities without regard to race, color, religion, sex, national origin, age, disability, marital status, veteran status, sexual orientation, genetic information, or any other protected characteristic under applicable law. This policy relates to all phases of employment, including, but not limited to, recruiting, employment, placement, promotion, transfer, demotion, reduction of workforce and termination, rates of pay or other forms of compensation, selection for training, the use of all facilities, and participation in all company-sponsored employee activities.",N/A,https://www.indeed.com/viewjob?jk=2db637f40d96c81b,False,full-stack developer
+Laravel Full-Stack Developer,"Termageddon, LLC",Remote,remote,2025-06-27,Indeed,"Welcome to the (booming) privacy industry!
+Over 250,000 websites are launched every single day that are required by law to have a Privacy Policy(1). Termageddon offers a $119/year auto-updating Privacy Policy generator. To say the least, there is a lot of opportunity in this space, and Termageddon is at the forefront of this new industry, already serving tens of thousands of customers.
+Termageddon is an industry recognized, auto-updating website policies generator. Our SaaS tool generates comprehensive Privacy Policies, Terms of Service agreements and more to help businesses comply with privacy laws and avoid fines and lawsuits. We have a silly name but we’re serious about helping clients get protected.
+What’s unique about our software is that we monitor laws, notify our customers of changes, and can even push newly required policy disclosures automatically to our customers’ website policy pages. In other words, we give our customers a strategy to keep up to date with privacy law changes.
+We currently have about 10,000 reseller and affiliate partners spanning five countries and have successfully kept tens of thousands of policies up to date with changing legislation. We are an eight person team (https://termageddon.com/about-us/) that is looking to grow, and you’ll be working with us all directly (including the founders). This is a great opportunity to participate in one of the fastest growing industries around, with a company that is leading the charge.
+We’re headquartered in the western suburbs of Chicago but this job opportunity is fully remote.
+Now is your chance to fulfill your lifelong dream of working at a Privacy Policy generator company!
+(1) “As of June 18, 2021, there are over 1.86 billion websites online, with Siteefy noting that more than 547,200 new websites are created globally every day.” - https://www.techradar.com/news/websites-at-30-how-much-has-the-internet-changed
+66.3% of websites are CMS based, which by default collect at least website visitors’ IP address - https://w3techs.com/technologies/history_overview/content_management/all
+Job description:
+As our Laravel Full-Stack Developer working primarily on the back end, you will be creating and deploying a new product offering from Termageddon (for both desktop and mobile (responsive design)).
+The product you help develop will be deployed onto tens of thousands of customer websites. You will work with a team, including a front end developer and ui/ux designer, under the direction of our CTO.
+Expectations:
+Work hours: Monday-Friday (8am CST - 5pm CST)
+One hour lunch break (any time)
+Must enjoy the solid memes posted in our Slack channel
+Requirements:
+Extensive prior experience with PHP 8 development in Laravel and a solid understanding of OOP & ORM best practices. Must be able to write complex joins using Eloquent as well as raw SQL.
+Prior experience with composer, MySQL, npm and vanilla javascript are essential. The ability to grasp abstract concepts is crucial for success in this role.
+Experience with Git code repository required.
+5+ years of hands-on daily PHP experience
+Preferred: Laravel Nova, Docker, and MongoDB
+3 professional references
+No privacy law experience required.
+Must be authorized to work in the United States.
+Must enjoy the solid memes posted in our Slack chanel
+Pay
+$90,000/year
+Benefits:
+Work from home
+15 days paid time off, +1 extra day per year up to 22 days total
+Home office:
+New computer
+$100/month internet stipend
+Interview process:
+The interview process will consist of one 30 minute introductory interview and one 60 minute technical interview. The technical interview will require a demonstration of your development skills so please join the interview on a laptop or desktop computer as you will need to share your screen and type.
+Application requirements
+As part of your application, you must include a cover letter which includes JavaScript code written by you, which would provide a popup message to a website visitor with YOUR name and email.
+Termageddon is an equal opportunity employer. All applicants will be considered for employment without attention to race, color, religion, sex, sexual orientation, gender identity, national origin, veteran status, disability status, or any other protected classifications.
+Job Type: Full-time
+Pay: $90,000.00 per year
+Benefits:
+Internet reimbursement
+Paid time off
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=fcc7434cc8620b8f,False,full-stack developer

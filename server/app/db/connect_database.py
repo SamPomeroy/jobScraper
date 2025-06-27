@@ -9,6 +9,10 @@ load_dotenv()
 DATABASE_URL = os.getenv("SUPABASE_DATABASE")
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_ANON_KEY")
+
+if url is None or key is None:
+    raise ValueError("SUPABASE_URL and SUPABASE_ANON_KEY environment variables must be set.")
+
 supabase = create_client(url, key)
 
 
