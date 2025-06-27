@@ -97,15 +97,15 @@ const handleApplyStatusChange = (jobId: string, applied: boolean) => {
         {currentPage === "login" && (
           <AuthForm
             mode="login"
-            onSuccess={handleAuthSuccess}
-            setCurrentPage={setCurrentPage}
+            onSuccessAction={handleAuthSuccess}
+            setCurrentPageAction={setCurrentPage}
           />
         )}
         {currentPage === "register" && (
           <AuthForm
             mode="register"
-            onSuccess={handleAuthSuccess}
-            setCurrentPage={setCurrentPage}
+            onSuccessAction={handleAuthSuccess}
+            setCurrentPageAction={setCurrentPage}
           />
         )}
   {currentPage === "dashboard" && user && (

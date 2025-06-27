@@ -15,14 +15,17 @@ export interface Job {
   status?: "pending" | "applied" | "interview" | "rejected" | "offer";
   [key: string]: any;
 }
-
 export interface JobFilterState {
   filter: string;
   category: string;
   priority: string;
   status: string;
   searchTerm: string;
+  fromDate?: string;
+  toDate?: string;
 }
+
+
 
 export interface JobStats {
   total: number;

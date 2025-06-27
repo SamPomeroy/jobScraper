@@ -80,16 +80,82 @@
 #     }
     
     
+# from fastapi import FastAPI, Query
+# from typing import Dict
+
+# from app.scraper.indeed_scraper import scrape_indeed
+# from app.scraper.career_scraper import scrape_careerbuilder
+# from app.scraper.career_scraper import scrape_careerbuilder
+
+# from app.db.cleanup import cleanup
+# from app.db.connect_database import get_db_connection
+# app = FastAPI()
+
+# ─── Endpoint 1: Scrape Indeed ─────────────────────────────────────────────────
+# @app.get("/indeed", summary="Run the Indeed scraper")
+# def run_indeed(
+#     location: str = Query("remote", description="Job location"),
+#     days:     int = Query(15,      description="How many days back to fetch")
+# ) -> Dict:
+#     jobs = scrape_indeed(location, days)
+#     cleanup(days)
+#     return {"source": "indeed", "count": len(jobs), "jobs": jobs}
+
+
+# ─── Endpoint 2: Scrape CareerBuilder ──────────────────────────────────────────
+# @app.get("/careerbuilder", summary="Run the CareerBuilder scraper")
+# def run_careerbuilder(
+#     location: str = Query("remote", description="Job location"),
+#     days:     int = Query(15,      description="How many days back to fetch")
+# ) -> Dict:
+#     jobs = scrape_careerbuilder(location)
+#     cleanup(days)
+#     return {"source": "careerbuilder", "count": len(jobs), "jobs": jobs}
+
+
+# # ─── Endpoint 3: Scrape Both ────────────────────────────────────────────────────
+# @app.get("/all", summary="Run both scrapers")
+# def run_all(
+#     location: str = Query("remote", description="Job location"),
+#     days:     int = Query(15,      description="How many days back to fetch")
+# ) -> Dict:
+#     indeed_jobs = scrape_indeed(location, days)
+#     cb_jobs     = scrape_careerbuilder(location)
+#     cleanup(days)
+#     return {
+#         "indeed":        {"count": len(indeed_jobs)},
+#         "careerbuilder": {"count": len(cb_jobs)}
+#     }
+# @app.get("/")
+# def root():
+#     return {"message": "👋 Job Scraper API is running. Use /docs to access endpoints."}
+
+
+
+
+    
+    
 from fastapi import FastAPI, Query
 from typing import Dict
 
-from app.scraper.indeed_scraper import scrape_indeed
-from app.scraper.career_scraper import scrape_careerbuilder
-from app.db.cleanup import cleanup
-from app.db.connect_database import get_db_connection
-app = FastAPI()
+# from app.scraper.indeed_scraper import scrape_indeed
+from scraper.career_scraper import scrape_careerbuilder
+from scraper.career_crawler import scrape_careerbuilder
 
-# ─── Endpoint 1: Scrape Indeed ─────────────────────────────────────────────────
+from db.cleanup import cleanup
+from scraper.indeed_scraper import scrape_indeed
+from scraper.indeed_crawler import get_jobs_from_crawl4ai
+from db.connect_database import get_db_connection
+from utils.scan_for_duplicates import scan_for_duplicates
+# from app.scraper.
+from fastapi import FastAPI
+from api.skill_routes import router as skill_router
+
+app = FastAPI()
+app.include_router(skill_router)
+
+
+
 @app.get("/indeed", summary="Run the Indeed scraper")
 def run_indeed(
     location: str = Query("remote", description="Job location"),
@@ -127,3 +193,26 @@ def run_all(
 @app.get("/")
 def root():
     return {"message": "👋 Job Scraper API is running. Use /docs to access endpoints."}
+
+
+# @app.get("/all", summary="Run all scrapers")
+# def run_all(location: str = Query("remote"), days: int = Query(15)) -> Dict:
+#     print("📦 Running primary Indeed scraper...")
+#     indeed_jobs = scrape_indeed(location, days)
+
+#     print("🤖 Running Crawl4AI for deeper scrape...")
+#     crawl_jobs = get_jobs_from_crawl4ai(location, days)
+
+#     cleanup(days)
+
+#     return {
+#         "indeed": {"count": len(indeed_jobs)},
+#         "crawl4ai": {"count": len(crawl_jobs)},
+#     }
+# @app.get("/")
+# def root():
+#     return {"message": "👋 Job Scraper API is running. Use /docs to access endpoints."}
+
+if __name__ == "__main__":
+    get_jobs_from_crawl4ai()
+    scan_for_duplicates()

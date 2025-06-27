@@ -19,7 +19,11 @@ export interface Job {
   status?: "pending" | "applied" | "interview" | "rejected" | "offer";
   status_updated_at?: string;
   updated_at?: string;
+  inserted_at?: string; // when the job was inserted (for deduplication)
+  last_verified?: string;
   [key: string]: any;
+  skills?: string[];
+  user_id?: string;
 }
 
 export interface DashboardStats {
@@ -57,9 +61,17 @@ export type SettingsState = {
   jobAlertFrequency: string;
 };
 
-export interface SettingsProps {
+interface SettingsProps {
   user: AuthUser;
-  onSettingsChange: (settings: SettingsState) => void;
+  onSettingsChange: (settings: {
+    darkMode: boolean;
+    notifications: boolean;
+    emailAlerts: boolean;
+    soundAlerts: boolean;
+    autoSave: boolean;
+    defaultCategory: string;
+    jobAlertFrequency: string;
+  }) => void;
 }
 
 export interface Resume {
@@ -81,22 +93,101 @@ export type NotificationProps = {
   created_at: string;
 };
 
-// export interface JobFilterState {
-//   filter: string;
-//   category: string;
-//   priority: string;
-//   status: string;
-//   searchTerm: string;
-//   fromDate?: string;
-//   toDate?: string;
-// }
-
 export interface JobFilterState {
   filter: string;
-
   category: string;
+  priority: string;
   status: string;
   searchTerm: string;
   fromDate?: string;
   toDate?: string;
 }
+
+export interface JobStats {
+  total: number;
+  applied: number;
+  pending: number;
+  saved: number;
+  interviews: number;
+  offers: number;
+  rejected: number;
+}
+interface SettingsProps {
+  user: AuthUser;
+  onSettingsChange: (settings: {
+    darkMode: boolean;
+    notifications: boolean;
+    emailAlerts: boolean;
+    soundAlerts: boolean;
+    autoSave: boolean;
+    defaultCategory: string;
+    jobAlertFrequency: string;
+  }) => void;
+}
+
+// export type Database = {
+//   public: {
+//     Tables: {
+//       jobs: {
+//         Row: {
+//           applied: boolean | null
+//           company: string | null
+//           date: string | null
+//           id: string
+//           job_description: string | null
+//           job_location: string | null
+//           job_state: string | null
+//           salary: string | null
+//           search_term: string | null
+//           site: string | null
+//           title: string
+//           url: string | null
+//           user_id: string | null  // Added this
+//           status: string | null   // If you added this from previous step
+//         }
+//         Insert: {
+//           applied?: boolean | null
+//           company?: string | null
+//           date?: string | null
+//           id?: string
+//           job_description?: string | null
+//           job_location?: string | null
+//           job_state?: string | null
+//           salary?: string | null
+//           search_term?: string | null
+//           site?: string | null
+//           title: string
+//           url?: string | null
+//           user_id?: string | null  // Added this
+//           status?: string | null   // If you added this from previous step
+//         }
+//         Update: {
+//           applied?: boolean | null
+//           company?: string | null
+//           date?: string | null
+//           id?: string
+//           job_description?: string | null
+//           job_location?: string | null
+//           job_state?: string | null
+//           salary?: string | null
+//           search_term?: string | null
+//           site?: string | null
+//           title?: string
+//           url?: string | null
+//           user_id?: string | null  // Added this
+//           status?: string | null   // If you added this from previous step
+//         }
+//         Relationships: [
+//           {
+//             foreignKeyName: "jobs_user_id_fkey"
+//             columns: ["user_id"]
+//             isOneToOne: false
+//             referencedRelation: "users"
+//             referencedColumns: ["id"]
+//           }
+//         ]
+//       }
+//       // ... rest of your schema
+//     }
+//   }
+// }

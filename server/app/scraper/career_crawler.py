@@ -5,50 +5,92 @@ import uuid
 import random
 import csv
 import traceback
-from datetime import datetime
+from datetime import datetime, timedelta
+
+import undetected_chromedriver as uc
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import undetected_chromedriver as uc
 
 from app.db.connect_database import get_db_connection
 from app.db.cleanup import cleanup
+from app.scraper.career_scraper import TECH_KEYWORDS
 
-TECH_KEYWORDS = sys.argv[1].split(",") if len(sys.argv) > 1 else [
-  "software engineer", "front-end developer", "back-end developer", "full-stack developer",
-  "mobile app developer", "web developer", "wordpress developer", "shopify developer",
-  "react developer", "vue.js developer", "angular developer", "javascript developer",
-  "typescript developer", "html/css developer", "ui developer", "ux/ui developer",
-  "web designer", "interaction designer", "accessibility specialist", "devops engineer",
-  "qa engineer", "data analyst", "data scientist", "data engineer", "machine learning engineer",
-  "ai developer", "python engineer", "python developer", "python web developer",
-  "python data scientist", "python full stack developer", "cloud engineer", "cloud architect",
-  "systems administrator", "network engineer", "site reliability engineer", "platform engineer",
-  "product manager", "technical product manager", "ux designer", "ui designer",
-  "cybersecurity analyst", "security engineer", "information security manager", "it support specialist",
-  "help desk technician", "soc analyst", "blockchain developer", "ar/vr developer",
-  "robotics engineer", "prompt engineer", "technical program manager", "database administrator",
-  "etl developer", "solutions architect", "scrum master", "technical writer",
-  "api integration specialist", "web performance engineer", "web accessibility engineer",
-  "seo specialist", "web content manager"
-]
+# sys.argv[1].split(",") if len(sys.argv) > 1 else [
+# TECH_KEYWORDS = [
+#   "software engineer", "front-end developer", "back-end developer", "full-stack developer",
+#   "mobile app developer", "web developer", "wordpress developer", "shopify developer",
+#   "react developer", "vue.js developer", "angular developer", "javascript developer",
+#   "typescript developer", "html/css developer", "ui developer", "ux/ui developer",
+#   "web designer", "interaction designer", "accessibility specialist", "devops engineer",
+#   "qa engineer", "data analyst", "data scientist", "data engineer", "machine learning engineer",
+#   "ai developer", "python engineer", "python developer", "python web developer",
+#   "python data scientist", "python full stack developer", "cloud engineer", "cloud architect",
+#   "systems administrator", "network engineer", "site reliability engineer", "platform engineer",
+#   "product manager", "technical product manager", "ux designer", "ui designer",
+#   "cybersecurity analyst", "security engineer", "information security manager", "it support specialist",
+#   "help desk technician", "soc analyst", "blockchain developer", "ar/vr developer",
+#   "robotics engineer", "prompt engineer", "technical program manager", "database administrator",
+#   "etl developer", "solutions architect", "scrum master", "technical writer",
+#   "api integration specialist", "web performance engineer", "web accessibility engineer",
+#   "seo specialist", "web content manager"
+# ]
 
 LOCATION = "remote"
 PAGES_PER_KEYWORD = 2
 MAX_DAYS = 15
 
 def configure_webdriver():
-    opts = uc.ChromeOptions()
-    opts.add_argument("--headless")
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-dev-shm-usage")
-    return uc.Chrome(options=opts)
+#     opts = uc.ChromeOptions()
+#     opts.add_argument("--headless")
+#     opts.add_argument("--no-sandbox")
+#     opts.add_argument("--disable-dev-shm-usage")
+#     opts.add_argument(
+#     "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+#     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/ 138.0.7204.50 Safari/537.36"
+# )
+#     return uc.Chrome(options=opts, headless=False)
+    options = uc.ChromeOptions()
+    # options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36"
+    )
+
+    driver = uc.Chrome(options=options, headless=False)
+
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": """
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+            })
+        """
+    })
+
+    return driver
+
+def parse_date(raw: str):
+    raw = raw.lower()
+    if "today" in raw or "just posted" in raw:
+        return datetime.today().date()
+    try:
+        days_ago = int(raw.strip().split()[0])
+        return datetime.today().date() - timedelta(days=days_ago)
+    except:
+        return datetime.today().date()
+
+def is_tech_job(title: str) -> bool:
+    return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
+
 
 def insert_job_to_db(job: dict):
-    conn = get_db_connection()
-    cur = conn.cursor()
     try:
+        conn = get_db_connection()
+        cur = conn.cursor()
         cur.execute("""
             INSERT INTO jobs (
                 id, title, company, job_location, job_state, date, site,
@@ -71,7 +113,7 @@ def insert_job_to_db(job: dict):
         cur.close()
         conn.close()
 
-def scrape_careerbuilder(location=LOCATION, pages=PAGES_PER_KEYWORD):
+def scrape_careerbuilder(location=LOCATION, pages=PAGES_PER_KEYWORD, days=30):
     base_url = "https://www.careerbuilder.com"
     driver = configure_webdriver()
     jobs = []

@@ -1,4 +1,4 @@
-// File: C:\Users\Shandea\Desktop\jobScraper-1\client\src\app\page.tsx
+// File: C:\Users\snoep_a5dedf8\Desktop\scraper\jobScraper\client\src\app\page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

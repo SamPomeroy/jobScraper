@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { supabase } from "@/app/supabase/client";
 import type { AuthUser } from "@/app/types/auth";
-import type { Job } from "@/app/types/jobs";
+import type { Job } from "@/app/types/application";
 
 import { TabNavigation } from "@/app/components/dashboard/TabsNavigation";
 import { JobTrackerTab } from "@/app/components/dashboard/JobTrackerTab";
@@ -31,10 +31,11 @@ export default function Dashboard({ user }: DashboardProps) {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const { data, error } = await supabase
-          .from("jobs")
-          .select("*")
-          .order("date", { ascending: false });
+    const { data, error } = await supabase
+  .from("jobs")
+  .select("*")
+  .eq("user_id", user.id) // ensures only that user's jobs
+  .order("date", { ascending: false });
 
         console.log("🛠️ Raw jobs data from Supabase:", data);
 
