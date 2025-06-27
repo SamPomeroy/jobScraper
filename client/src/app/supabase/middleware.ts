@@ -1,8 +1,23 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-import type { Database } from '@/app/types/supabase';
+// import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
+// import { NextResponse } from 'next/server';
+// import type { NextRequest } from 'next/server';
+// import type { Database } from '@/app/types/supabase';
 
+// export async function middleware(req: NextRequest) {
+//   const res = NextResponse.next();
+//   const supabase = createMiddlewareClient<Database>({ req, res });
+//   await supabase.auth.getSession();
+//   return res;
+// }
+
+//  export const config = {
+//   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+// };
+
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import type { Database } from "@/app/types/database";
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient<Database>({ req, res });
@@ -10,6 +25,4 @@ export async function middleware(req: NextRequest) {
   return res;
 }
 
-export const config = {
-  matcher: ['/', '/dashboard', '/home'],
-};
+export const config = { matcher: ["/", "/dashboard", "/home"] };

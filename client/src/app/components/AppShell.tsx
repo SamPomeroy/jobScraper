@@ -10,7 +10,7 @@ import ContactPage from "../pages/contact/ContactPage";
 import AuthForm from "@/app/components/AuthForm";
 import Dashboard from "./dashboard/Dashboard";
 import Footer from "./footer/Footer";
-import type { AuthUser } from "../types/auth";
+import type { AuthUser } from "../types/application";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -97,15 +97,15 @@ const handleApplyStatusChange = (jobId: string, applied: boolean) => {
         {currentPage === "login" && (
           <AuthForm
             mode="login"
-            onSuccess={handleAuthSuccess}
-            setCurrentPage={setCurrentPage}
+            onSuccessAction={handleAuthSuccess}
+            setCurrentPageAction={setCurrentPage}
           />
         )}
         {currentPage === "register" && (
           <AuthForm
             mode="register"
-            onSuccess={handleAuthSuccess}
-            setCurrentPage={setCurrentPage}
+            onSuccessAction={handleAuthSuccess}
+            setCurrentPageAction={setCurrentPage}
           />
         )}
   {currentPage === "dashboard" && user && (

@@ -1,0 +1,162 @@
+title,company,job_location,job_state,date,site,job_description,salary,url,applied,search_term
+Front-End Developer,Alamere Inc,Remote,remote,2025-06-26,Indeed,"Overview
+We are seeking a skilled Front End Developer to join our dynamic team. In this role, you will be responsible for designing and implementing user-friendly web applications that enhance the user experience. You will collaborate closely with designers and back-end developers to create seamless and efficient interfaces. The ideal candidate should have a strong understanding of front-end technologies and a passion for delivering high-quality code.
+Responsibilities
+Develop and maintain responsive web applications using HTML, CSS, and JavaScript.
+Collaborate with UX/UI designers to translate design wireframes into functional user interfaces.
+Implement RESTful APIs to connect front-end applications with back-end services.
+Participate in Agile development processes, including Scrum meetings and sprint planning.
+Conduct code reviews and provide constructive feedback to team members.
+Troubleshoot and debug issues across various browsers and devices.
+Stay updated with emerging technologies and industry trends to enhance development practices.
+Requirements
+Proficiency in HTML, CSS, JavaScript, and frameworks such as React or Angular.
+Experience with server-side languages such as C# or PHP is a plus.
+Familiarity with DevOps practices and tools, particularly in Azure environments.
+Understanding of the Software Development Life Cycle (SDLC) and Agile methodologies.
+Strong problem-solving skills and attention to detail.
+Excellent communication skills and ability to work collaboratively in a team environment.
+Prior experience working in an Agile/Scrum environment is preferred.
+Join us in creating innovative web solutions that drive user engagement and satisfaction!
+Job Type: Full-time
+Pay: From $78,000.00 per year
+Benefits:
+401(k)
+Health insurance
+Compensation Package:
+Yearly pay
+Schedule:
+8 hour shift
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=e6856a16320bfbb3,False,front-end developer
+Graph Data Engineer & Front-End Developer,National Association of State Workforce Agencies,Remote,remote,2025-06-26,Indeed,"Background on NASWA
+The National Association of State Workforce Agencies (NASWA) is the national organization representing all 50 state workforce agencies, D.C. and U.S. territories. These agencies deliver training, employment, career, and business services, in addition to administering unemployment insurance (UI), veteran reemployment, and labor market information programs. NASWA provides policy expertise, shares promising state practices, and promotes state innovation and leadership in workforce development.
+Background on UI Integrity Center
+The NASWA UI Integrity Center (“The Center”) is a component of NASWA Services which provides a wide range of supportive services to NASWA members. The Center provides services to assist states with the detection and prevention of UI fraud and improper payments.
+One of the projects managed by the NASWA UI Integrity Center is the Integrity Data Hub (IDH). The IDH allows participating states to submit Unemployment Insurance (UI) claims data for cross-matching and analysis to support the detection and prevention of UI fraud and improper payments. The IDH contains an increasingly expanding set of data sources to provide advanced data cross-matching and data analytics capabilities.
+--------------------------------------
+We are seeking a talented and experienced Graph Data Engineer & Front-End Developer to join our team and lead our efforts around link analysis. This multifaceted role will involve developing and maintaining complex graph-based systems, utilizing Amazon Neptune for graph database management, and creating advanced queries to extract and manipulate data. Additionally, you will be responsible for building and maintaining dynamic, real-time link analysis visualizations using React.js and Regraph SDK.
+The ideal candidate will have a strong background in both back-end graph database management and front-end development, with the ability to create a seamless integration between the two. You'll be responsible for the entire flow—designing the data models, optimizing queries, and crafting the user interfaces that display this data in an interactive and user-friendly way.
+Key Responsibilities:
+Lead the design, development, and optimization of graph data systems using Amazon Neptune.
+Build and optimize complex queries (including Lambda queries) to mine and manipulate large datasets housed in Redshift and integrated into Neptune.
+Design and implement data models in Amazon Neptune, ensuring that the structure supports efficient link analysis.
+Build, update, and maintain dynamic React.js-based user interfaces for displaying graph data and link analysis visualizations.
+Use the Regraph SDK (or similar graph visualization tools) to create interactive and real-time graph visualizations for internal users.
+Collaborate closely with cross-functional teams to integrate back-end data with front-end visualizations, ensuring a seamless user experience.
+Optimize performance for both back-end queries and front-end visualizations, ensuring a smooth, responsive interface for users interacting with large datasets.
+Provide technical leadership and guidance, mentoring junior team members, as necessary.
+Required Qualifications:
+3+ years of experience in graph database technologies, with a strong focus on Amazon Neptune.
+Proven expertise in Lambda queries and manipulating large datasets in graph databases.
+Strong experience in front-end development using React.js, including building dynamic, data-driven interfaces.
+Proficient in working with Regraph SDK or other graph visualization libraries.
+Solid experience with AWS Redshift and data integration between relational and graph databases.
+Expertise in data modeling for graph databases and knowledge of graph algorithms.
+Ability to work independently and manage both back-end and front-end development tasks within a fast-paced environment.
+Strong problem-solving skills and attention to detail.
+Excellent communication skills, with the ability to clearly explain complex technical concepts to both technical and non-technical stakeholders.
+Strong understanding of JavaScript (ES6+), HTML, and CSS.
+Experience with state management libraries like Redux, Context API, or MobX.
+Strong experience with cloud platforms (e.g., AWS, Azure, GCP).
+Strong experience with other AWS services (e.g., API Gateway, S3, DynamoDB).
+Preferred Qualifications:
+Experience with other graph technologies like Neo4j or Apache TinkerPop.
+Familiarity with AWS Lambda and other AWS services.
+Experience in data analytics or machine learning to enhance link analysis.
+Experience with JavaScript frameworks/libraries (e.g., D3.js, other visualization libraries).
+Education
+Bachelor’s degree in computer science or a related field (or equivalent practical experience).
+Job Details
+Location: Remote/U.S. Based
+Reports to: Data Team Manager – Integrity Data Hub
+Position Type: Full Time
+Salary Range: $115,000-135,000
+Benefits: NASWA offers competitive benefits including a great health care package, 401(k), educational assistance, remote stipend, generous time off and other options.
+Travel: Requires 2-3 trips per year for approximately 2-3 days within the U.S.
+How to Apply: Please send resume and cover letter to recruiting@naswa.org. Position posting will close on 07/09/2025. We are interested in every qualified candidate who is eligible to work in the United States. However, we are not able to sponsor visas at this time.
+This job description is not designed to cover or contain a comprehensive listing of activities, duties or responsibilities that are required of the employee. Duties, responsibilities and activities may change, or new ones may be assigned at any time with or without notice.
+NASWA is an equal opportunity employer. NASWA does not unlawfully discriminate on the basis of race, color, religion, national origin, sex, age, marital status, military status, personal appearance, sexual orientation, gender identity or expression, family responsibilities, genetic information, disability, matriculation, political affiliation or any other characteristic protected by federal or District of Columbia law. Our non-discrimination policy applies to all facets of employment, including recruiting, hiring, employment, promotion, demotion, dismissal, compensation, and training opportunities.
+Job Type: Full-time
+Pay: $115,000.00 - $135,000.00 per year
+Benefits:
+401(k)
+Dental insurance
+Dependent health insurance coverage
+Disability insurance
+Flexible spending account
+Health insurance
+Life insurance
+Paid sick time
+Paid time off
+Prescription drug insurance
+Professional development assistance
+Vision insurance
+Work from home stipend
+Schedule:
+Monday to Friday
+Application Question(s):
+Do you have expertise in Lambda queries and large datasets?
+Education:
+Bachelor's (Preferred)
+Experience:
+Graph Database Technologies: 3 years (Required)
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=554ad7c4fc54d232,False,front-end developer
+Front-End Developer (Angular),PebbleDB,"Remote in Chicago, IL",remote,2025-06-26,Indeed,"Job Description
+We’re seeking an experienced Front-End Developer to join a cloud-first project team building cutting-edge applications. You’ll leverage Angular 20, Cypress automation testing, and modern cloud technologies to deliver high-quality, user-centric solutions in a fully remote environment.
+Responsibilities
+Develop and maintain modern front-end applications using Angular 20.
+Build and execute automated tests using Cypress to ensure application reliability.
+Collaborate with backend teams to integrate APIs and cloud services.
+Partner with UX/UI designers to implement responsive, intuitive interfaces.",N/A,https://www.indeed.com/viewjob?jk=55d056459779e3a9,False,front-end developer
+Front-End Developer,P3S Corporation,"Remote in Fort Meade, MD",remote,2025-06-26,Indeed,"Job Title: Front-End Developer, Senior
+Clearance: TS/SCI
+Location: 100% Onsite – JBSA-Lackland, TX or Fort Meade, MD
+Position Summary:
+The Senior Front-End Developer is responsible for designing, developing, and optimizing user-facing interfaces for the client's system. This role leads agile front-end efforts focused on delivering exceptional UI/UX functionality in support of complex military operations.
+Key Responsibilities:
+Develop advanced GUI components to support mission requirements.
+Design wireframes, mockups, and technical layouts with stakeholder engagement.
+Ensure UI/UX standards are integrated into system design.
+Lead design reviews and participate in full SDLC activities.
+Required Qualifications:
+10 years of experience in front-end development; Bachelor’s required (Master’s may substitute for 2 years).
+10 years software development in object-oriented/scripted languages.
+5 years of recent front-end experience with proven UI/UX design success.
+Demonstrated experience using UX tools (e.g., Sketch, InVision).
+5+ years with Jira, web testing, cloud deployment, Jenkins, GitLab.
+Tool Proficiency (5+ years in at least five):
+NPM, Cypress.io, esbuild, Bun, Apache Tomcat, Maven, SonarQube
+Desired Qualifications:
+Agile Test-Driven development.
+DoD DevSecOps integration.
+CI/CD experience (5+ years).
+5 years of experience working in DoD DevSecOps environment
+5 years of experience with DoD software development
+5 years of experience working with DoD Combatant Commands (CCMD) or Service Cyber Components.
+Experience developing, testing, or sustaining software in a cloud based CI/CD Software development environment.
+Experience with migrating and integrating data from unclassified to classified application deployments using AWS Diode.
+Job Type: Full-time
+Pay: $156,275.00 - $168,522.00 per year
+Benefits:
+401(k) matching
+Dental insurance
+Health insurance
+Life insurance
+Paid time off
+Referral program
+Vision insurance
+Schedule:
+8 hour shift
+Monday to Friday
+No nights
+No weekends
+Application Question(s):
+Are you a US Citizen?
+Do you have DoD experience?
+Do you live within 50 miles from Fort Meade, MD?
+Do you live within 50 miles from San Antonio, TX?
+Education:
+Bachelor's (Preferred)
+Security clearance:
+Top Secret (Preferred)
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=c888ee72c7bac454,False,front-end developer

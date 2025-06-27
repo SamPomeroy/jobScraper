@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { supabase } from "@/app/supabase/client";
 import type { AuthUser } from "@/app/types/auth";
-import type { Job } from "@/app/types/jobs";
+import type { Job } from "@/app/types/application";
 
 import { TabNavigation } from "@/app/components/dashboard/TabsNavigation";
 import { JobTrackerTab } from "@/app/components/dashboard/JobTrackerTab";
@@ -28,20 +28,66 @@ export default function Dashboard({ user }: DashboardProps) {
 
   const { darkMode, toggleDarkMode } = useTheme();
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("jobs")
-          .select("*")
-          .order("date", { ascending: false });
+useEffect(() => {
+  const fetchJobs = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("jobs")
+        .select("*")
+        // .eq("user_id", user.id) // ensures only that user's jobs
+        .order("date", { ascending: false });
 
-        console.log("🛠️ Raw jobs data from Supabase:", data);
+      console.log("🛠️ Raw jobs data from Supabase:", data);
 
-        if (error) {
-          console.error("Error fetching jobs:", error);
-        } else {
-          const transformedJobs: Job[] = (data || []).map((job: any) => ({
+      if (error) {
+        console.error("Error fetching jobs:", error);
+      } else {
+        const transformedJobs: Job[] = (data || []).map((job: any) => ({
+          id: job.id,
+          title: job.title,
+          company: job.company ?? undefined,
+          job_location: job.job_location ?? undefined,
+          salary: job.salary ?? undefined,
+          site: job.site || "",
+          date: job.date || new Date().toISOString().split("T")[0],
+          applied: job.applied === true,
+          saved: job.saved ?? undefined,
+          url: job.url || "",
+          job_description: job.job_description ?? undefined,
+          category: job.category ?? undefined,
+          priority: job.priority ?? undefined,
+          status: job.status ?? undefined,
+          search_term: job.search_term ?? undefined,
+        }));
+
+        setJobs(transformedJobs);
+        setScrapingStatus({
+          active: true,
+          lastRun: new Date().toLocaleString(),
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    }
+  };
+
+  fetchJobs();
+
+  const subscription = supabase
+    .channel('jobs_changes')
+    .on(
+      'postgres_changes',
+      { event: '*', schema: 'public', table: 'jobs' },
+      (payload) => {
+        const { eventType, new: newJob, old: oldJob } = payload;
+
+        // 🚀 Fire toast notification
+        // TODO: Implement toast notification logic here if needed
+        // handleRealtimeToast(eventType, newJob, 'jobs');
+
+        // 🔄 Update local state
+        setJobs((prev) => {
+          const transformJob = (job: any): Job => ({
             id: job.id,
             title: job.title,
             company: job.company ?? undefined,
@@ -57,36 +103,30 @@ export default function Dashboard({ user }: DashboardProps) {
             priority: job.priority ?? undefined,
             status: job.status ?? undefined,
             search_term: job.search_term ?? undefined,
-          }));
-
-          setJobs(transformedJobs);
-          setScrapingStatus({
-            active: true,
-            lastRun: new Date().toLocaleString(),
           });
-        }
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
+
+          switch (eventType) {
+            case 'INSERT':
+              return [transformJob(newJob), ...prev];
+            case 'UPDATE':
+              return prev.map((job) =>
+                job.id === newJob.id ? { ...job, ...transformJob(newJob) } : job
+              );
+            case 'DELETE':
+              return prev.filter((job) => job.id !== oldJob.id);
+            default:
+              return prev;
+          }
+        });
       }
-    };
+    )
+    .subscribe();
 
-    fetchJobs();
+  return () => {
+    subscription.unsubscribe();
+  };
+}, []);
 
-    const subscription = supabase
-      .channel("jobs_changes")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "jobs" },
-        () => {
-          fetchJobs();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
 
   const handleJobsUpdate = (jobId: string, update: Partial<Job>) => {
     setJobs((prev) =>
@@ -129,7 +169,7 @@ export default function Dashboard({ user }: DashboardProps) {
           />
         );
       case "notifications":
-        return <NotificationsTab jobs={jobs} darkMode={darkMode} />;
+        return <NotificationsTab jobs={jobs} darkMode={darkMode}  />;
       default:
         return null;
     }

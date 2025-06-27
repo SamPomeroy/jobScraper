@@ -1,0 +1,134 @@
+[
+  {
+    "category": "Languages & Scripting",
+    "skills": [
+      "python", "javascript", "typescript", "sql", "html", "css", "c++", "go", "java", "graphql",
+      "bash", "powershell", "xml", "json", "yaml", "shell scripting", "markdown", "latex",
+      "coffeescript", "perl", "r", "swift", "kotlin", "objective-c", "scala", "assembly", "vb.net", "matlab"
+    ]
+  },
+  {
+    "category": "Frontend Frameworks & Libraries",
+    "skills": [
+      "react", "react native", "flutter", "next.js", "vue.js", "angular", "svelte", "redux", "vite", "webpack",
+      "storybook", "material-ui", "chakra-ui", "bootstrap", "jQuery", "d3.js", "preact", "lit", "tailwind", "stencil.js", "alpine.js"
+    ]
+  },
+  {
+    "category": "Mobile Development",
+    "skills": [
+      "android", "ios", "flutter", "react native", "xamarin", "cordova", "kotlin", "swift", "expo", "jetpack"
+    ]
+  },
+  {
+    "category": "Backend & API",
+    "skills": [
+      "node.js", "express.js", "nestjs", "adonisjs", "hapi.js", "flask", "django", "fastapi", "rest", "soap", "grpc",
+      "ruby on rails", "laravel", "symfony", "sinatra", "phoenix framework", "blazor", "grails", "spring boot", "dotnet core",
+      "microservices", "soa", "rest apis"
+    ]
+  },
+  {
+    "category": "Databases & Storage",
+    "skills": [
+      "postgresql", "mysql", "mongodb", "oracle", "redis", "sqlite", "cassandra", "elasticsearch",
+      "supabase", "firebase", "dynamodb", "neo4j", "snowflake", "bigquery", "couchdb", "influxdb",
+      "arangodb", "clickhouse", "duckdb"
+    ]
+  },
+  {
+    "category": "ORMs & Data Layers",
+    "skills": [
+      "mongoose", "prisma", "sequelize", "typeorm", "active record", "sqlalchemy", "entity framework"
+    ]
+  },
+  {
+    "category": "Cloud & Infrastructure",
+    "skills": [
+      "aws", "azure", "gcp", "firebase hosting", "heroku", "netlify", "vercel", "digitalocean", "linode",
+      "cloudflare", "fly.io", "render", "lightsail", "elastic beanstalk", "cloudformation", "kustomize",
+      "terraform", "ansible", "vault", "pulumi", "helm", "kubernetes", "argocd", "docker", "docker-compose"
+    ]
+  },
+  {
+    "category": "DevOps & CI/CD",
+    "skills": [
+      "jenkins", "circleci", "gitlab-ci", "travis-ci", "buildkite", "codeship", "bazel", "spinnaker",
+      "ci/cd", "version control", "github actions", "npm", "pnpm", "yarn", "monorepo"
+    ]
+  },
+  {
+    "category": "Security & Identity",
+    "skills": [
+      "oauth2", "saml", "jwt", "rsa", "mfa", "sso", "okta", "auth0", "hashicorp", "fortinet", "check point",
+      "crowdsec", "openvpn", "pfSense", "zero trust", "zscaler", "crowdstrike", "siem", "burp suite",
+      "nmap", "wireshark", "shodan", "fail2ban"
+    ]
+  },
+  {
+    "category": "Testing & QA",
+    "skills": [
+      "jest", "mocha", "chai", "pytest", "selenium", "cypress", "junit", "testng",
+      "postman", "newman", "playwright", "testing-library", "robot framework", "tox", "mockito",
+      "unit testing", "tdd", "bdd", "cucumber", "gherkin"
+    ]
+  },
+  {
+    "category": "Data Science & AI",
+    "skills": [
+      "numpy", "pandas", "scikit-learn", "tensorflow", "pytorch", "keras", "matplotlib", "seaborn",
+      "huggingface", "langchain", "openai", "llamaindex", "llms", "spaCy", "nltk", "prophet", "polars",
+      "weaviate", "pgvector", "ray", "mlflow", "llmops", "vectordb", "pinecone", "embeddings", "chatgpt"
+    ]
+  },
+  {
+    "category": "Project & Tools",
+    "skills": [
+      "jira", "confluence", "notion", "miro", "obsidian", "slack", "figma", "lucidchart", "draw.io",
+      "asciidoc", "clickup", "ms project", "vscode", "intellij", "eclipse", "netbeans"
+    ]
+  },
+  {
+    "category": "Operating Systems",
+    "skills": [
+      "linux", "ubuntu", "centos", "alpine linux", "pop!_os", "raspbian", "macos", "windows server"
+    ]
+  },
+  {
+    "category": "Dev Practices & Concepts",
+    "skills": [
+      "agile", "scrum", "scrum master", "devops", "pair programming", "design patterns",
+      "object-oriented programming", "domain-driven design", "clean architecture", "event sourcing",
+      "serverless", "edge computing", "technical documentation"
+    ]
+  },
+  {
+    "category": "Certifications & Frameworks",
+    "skills": [
+      "CompTIA A+", "CompTIA Network+", "CompTIA Security+", "CompTIA Linux+", "CompTIA Cloud+",
+      "AWS Certified Cloud Practitioner", "AWS Certified Developer – Associate",
+      "AWS Certified Solutions Architect – Associate", "Microsoft Azure Fundamentals",
+      "Google Cloud Digital Leader", "Certified Kubernetes Administrator (CKA)",
+      "Certified ScrumMaster (CSM)", "PMP", "ITIL"
+    ]
+  },
+  {
+    "category": "Soft Skills",
+    "skills": [
+      "problem solving", "critical thinking", "communication", "teamwork", "adaptability", "creativity", "empathy",
+      "resilience", "leadership", "collaboration", "initiative", "accountability", "emotional intelligence",
+      "attention to detail", "time management", "decision making", "negotiation", "conflict resolution",
+      "persuasion", "self-motivation", "active listening", "work ethic", "positive attitude",
+      "customer service", "reliability", "flexibility", "organization", "multitasking", "interpersonal skills",
+      "cultural awareness", "curiosity", "learning agility", "stress management", "presentation skills",
+      "facilitation", "mentorship", "patience", "openness to feedback", "growth mindset",
+      "collaborative mindset", "emotional regulation", "strategic thinking", "vision", "coachability",
+      "professionalism", "sense of humor", "trustworthiness", "adaptable communication", "perspective-taking",
+      "innovation", "cross-functional communication", "initiative taking", "influence", "self-reflection",
+      "goal setting", "delegation", "empowerment", "meeting deadlines", "helpfulness", "respect",
+      "inclusivity", "diplomacy", "transparency", "assertiveness", "decision ownership", "self-awareness",
+      "confidentiality", "supportiveness", "analytical thinking", "proactivity", "honesty", "self-discipline",
+      "humility", "consensus-building", "resolving ambiguity"
+    ]
+  }
+]
