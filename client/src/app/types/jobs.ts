@@ -22,6 +22,8 @@ export interface JobFilterState {
   priority: string;
   status: string;
   searchTerm: string;
+  fromDate: string;
+  toDate: string;
 }
 
 export interface JobStats {
