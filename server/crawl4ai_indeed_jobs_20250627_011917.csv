@@ -1,0 +1,466 @@
+title,company,job_location,job_state,date,site,job_description,salary,url,applied,search_term
+Senior Software Engineer,High Wire Payments,Remote,remote,2025-06-27,Indeed,"Job Summary
+We’re hiring a senior engineer to lead the backend integration of a Fintech-powered payment processor, starting with full API connectivity between two existing platforms, and potentially growing into a long-term technical leadership role within our organization.
+We are launching a white-labeled payment processing solution and require a full integration between our existing IRISCRM (NMI’s Merchant Central) platform another large Fintech’s API Platform (Fintech company would be disclosed upon hiring). It will require functionality such as Merchant Onboarding, KYC Integration, Merchant Settlement, and Disputes APIs.
+Most of the User Interface is already in place and functioning within our existing CRM platform, and your job is to build the “glue” between IRIS and Fintech, likely requiring setting up a PCI compliant data warehouse in between the two platforms. The system must support merchant creation, underwriting/KYC, recurring billing, compliance checks, disputes handling, and financial reporting but as mentioned above the CRM tool will already support most of this functionality natively. You’ll have access to detailed API documentation and will be collaborating with engineers at Fintech, who will help ensure the integration meets certification standards.
+The scope starts with building a merchant onboarding and transaction layer between Fintech and IRIS. This includes implementing webhooks, managing SFTP-based reporting, and supporting high-volume transaction throughput (thousands per hour). You’ll also advise on architecture decisions, such as vaulting, net billing, fraud and risk handling, and partner fee management.
+The client values autonomy, pace, and precision, they move fast, communicate often, and need someone who’s not only a strong coder but also a structured thinker. They’re open to candidates based globally, but cultural alignment with a US-based, high-performance team is essential.
+Long-term, this platform will likely evolve to include AI-native features and spin off other fintech projects.
+This role could scale into a CTO-style position depending on performance and interest.
+Duties
+Lead integration between Fintech’s APIs and IRIS CRM for merchant onboarding, KYC, disputes, and reporting.
+Design backend architecture including vaulting, compliance, and high-volume transactional flows.
+Scope project milestones and define any additional hiring needs (e.g. frontend, QA).
+Work directly with Fintech engineers to ensure technical certification and adherence to best practices.
+Manage version control using tools such as GitHub or SVN, ensuring proper documentation and tracking of changes.
+Facilitate regular team meetings to discuss progress, challenges, and solutions, fostering an open communication culture.
+Weekly code presentation/reviews with other members of the team.
+Requirements
+Senior backend/API engineering experience.
+Strong knowledge of payment processing systems.
+Experience with multi-tenant SaaS systems and compliance-heavy environments
+Able to lead architecture decisions and execute hands-on development.
+Excellent English and communication skills; must be confident engaging with US clients and partners.
+Team leadership experience or interest in a path toward CTO-level responsibilities
+Experience with APIs and software engineering best practices.
+Proficient in version control systems like GitHub or SVN.
+Excellent problem-solving skills and the ability to work under pressure.
+Strong leadership abilities with experience in managing teams effectively.
+Nice to have
+Experience with IRIS CRM or other payment/merchant management platforms
+AI/ML familiarity, especially for fraud detection, document review, or risk scoring
+Previous work in high-risk verticals or regulated financial systems
+Work Highlights
+Duration: Initial 3-6 months of work with potential to expand into broader leadership role
+Workload: Full-time
+Start date and required time zone overlap: ASAP, with consistent overlap to US business hours (EST/PST preferred)
+Join us in this exciting opportunity to lead a talented team while contributing to cutting-edge projects that make a difference. We look forward to your application!
+Job Type: Temporary
+Pay: $120.00 - $160.00 per hour
+Expected hours: No less than 40 per week
+Compensation Package:
+1099 contract
+Schedule:
+10 hour shift
+12 hour shift
+8 hour shift
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=0facd84f615fbb40,False,software engineer
+Software Engineer,Confidential Posting,Remote,remote,2025-06-27,Indeed,"SOFTWARE ENGINEER
+Our firm is currently looking to fill a Software Engineer position. This position is responsible for the completion and tracking of development projects in our web-based recreation registration software.
+Responsibilities and Duties Include:
+· Claim and complete development projects as available in the priority list
+· Meet weekly with the development team to go over progress and workshop roadblocks
+· Track hours spent on projects and code/database areas updated
+· Coordinate with the development team to avoid overlapping projects
+· Assist with the creation and implementation of team and process-improving ideas
+· Troubleshoot ‘on fire’ errors
+· Ask questions on project specifications and bring up concerns as needed
+· Work with testing team members to correct issues found in open projects
+· Complete tasks as assigned by the DSD
+· Assess change requests in conjunction with dev team and assign statuses
+· Update the requests with steps on how to complete new requests
+· Update round table and staff meeting agendas with development items
+· Maintain dev plan of upcoming items, including planning out future projects
+· Assist non-dev staff with dev-related questions as brought to their attention
+· Make small corrections for typos and graphical issues in the system
+· Take lead on PCI and other governance compliance concerns
+Requirements Necessary To Fill This Position:
+· Detail-oriented and thorough
+· Able to document and communicate findings in a clear manner
+· Able to follow instructions, coordinate work, and communicate progress
+· Able to work without supervision and with minimal guidance
+· Able to solve problems and troubleshoot
+· Work with the Sr. Software Engineer to learn other areas of the platform to provide better coverage and support
+Qualifications
+· 5 years in Microsoft .NET, C#, ASP.net and working with uncompiled web forms
+· 3-year MS SQL database experience, including views, stored procedures, functions, etc.
+· 3-year web software experience, preferably eCommerce and/or recreation
+Reports To:
+Director of Software Development (DSD)
+Annual Salary:
+$90,000.00
+Job Type: Full-time
+Pay: $90,000.00 per year
+Benefits:
+401(k)
+Health insurance
+Paid time off
+Work from home
+Compensation Package:
+Yearly pay
+Schedule:
+Day shift
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=0a4739ce99bc2396,False,software engineer
+Graph Data Engineer & Front-End Developer,National Association of State Workforce Agencies,Remote,remote,2025-06-27,Indeed,"Background on NASWA
+The National Association of State Workforce Agencies (NASWA) is the national organization representing all 50 state workforce agencies, D.C. and U.S. territories. These agencies deliver training, employment, career, and business services, in addition to administering unemployment insurance (UI), veteran reemployment, and labor market information programs. NASWA provides policy expertise, shares promising state practices, and promotes state innovation and leadership in workforce development.
+Background on UI Integrity Center
+The NASWA UI Integrity Center (“The Center”) is a component of NASWA Services which provides a wide range of supportive services to NASWA members. The Center provides services to assist states with the detection and prevention of UI fraud and improper payments.
+One of the projects managed by the NASWA UI Integrity Center is the Integrity Data Hub (IDH). The IDH allows participating states to submit Unemployment Insurance (UI) claims data for cross-matching and analysis to support the detection and prevention of UI fraud and improper payments. The IDH contains an increasingly expanding set of data sources to provide advanced data cross-matching and data analytics capabilities.
+--------------------------------------
+We are seeking a talented and experienced Graph Data Engineer & Front-End Developer to join our team and lead our efforts around link analysis. This multifaceted role will involve developing and maintaining complex graph-based systems, utilizing Amazon Neptune for graph database management, and creating advanced queries to extract and manipulate data. Additionally, you will be responsible for building and maintaining dynamic, real-time link analysis visualizations using React.js and Regraph SDK.
+The ideal candidate will have a strong background in both back-end graph database management and front-end development, with the ability to create a seamless integration between the two. You'll be responsible for the entire flow—designing the data models, optimizing queries, and crafting the user interfaces that display this data in an interactive and user-friendly way.
+Key Responsibilities:
+Lead the design, development, and optimization of graph data systems using Amazon Neptune.
+Build and optimize complex queries (including Lambda queries) to mine and manipulate large datasets housed in Redshift and integrated into Neptune.
+Design and implement data models in Amazon Neptune, ensuring that the structure supports efficient link analysis.
+Build, update, and maintain dynamic React.js-based user interfaces for displaying graph data and link analysis visualizations.
+Use the Regraph SDK (or similar graph visualization tools) to create interactive and real-time graph visualizations for internal users.
+Collaborate closely with cross-functional teams to integrate back-end data with front-end visualizations, ensuring a seamless user experience.
+Optimize performance for both back-end queries and front-end visualizations, ensuring a smooth, responsive interface for users interacting with large datasets.
+Provide technical leadership and guidance, mentoring junior team members, as necessary.
+Required Qualifications:
+3+ years of experience in graph database technologies, with a strong focus on Amazon Neptune.
+Proven expertise in Lambda queries and manipulating large datasets in graph databases.
+Strong experience in front-end development using React.js, including building dynamic, data-driven interfaces.
+Proficient in working with Regraph SDK or other graph visualization libraries.
+Solid experience with AWS Redshift and data integration between relational and graph databases.
+Expertise in data modeling for graph databases and knowledge of graph algorithms.
+Ability to work independently and manage both back-end and front-end development tasks within a fast-paced environment.
+Strong problem-solving skills and attention to detail.
+Excellent communication skills, with the ability to clearly explain complex technical concepts to both technical and non-technical stakeholders.
+Strong understanding of JavaScript (ES6+), HTML, and CSS.
+Experience with state management libraries like Redux, Context API, or MobX.
+Strong experience with cloud platforms (e.g., AWS, Azure, GCP).
+Strong experience with other AWS services (e.g., API Gateway, S3, DynamoDB).
+Preferred Qualifications:
+Experience with other graph technologies like Neo4j or Apache TinkerPop.
+Familiarity with AWS Lambda and other AWS services.
+Experience in data analytics or machine learning to enhance link analysis.
+Experience with JavaScript frameworks/libraries (e.g., D3.js, other visualization libraries).
+Education
+Bachelor’s degree in computer science or a related field (or equivalent practical experience).
+Job Details
+Location: Remote/U.S. Based
+Reports to: Data Team Manager – Integrity Data Hub
+Position Type: Full Time
+Salary Range: $115,000-135,000
+Benefits: NASWA offers competitive benefits including a great health care package, 401(k), educational assistance, remote stipend, generous time off and other options.
+Travel: Requires 2-3 trips per year for approximately 2-3 days within the U.S.
+How to Apply: Please send resume and cover letter to recruiting@naswa.org. Position posting will close on 07/09/2025. We are interested in every qualified candidate who is eligible to work in the United States. However, we are not able to sponsor visas at this time.
+This job description is not designed to cover or contain a comprehensive listing of activities, duties or responsibilities that are required of the employee. Duties, responsibilities and activities may change, or new ones may be assigned at any time with or without notice.
+NASWA is an equal opportunity employer. NASWA does not unlawfully discriminate on the basis of race, color, religion, national origin, sex, age, marital status, military status, personal appearance, sexual orientation, gender identity or expression, family responsibilities, genetic information, disability, matriculation, political affiliation or any other characteristic protected by federal or District of Columbia law. Our non-discrimination policy applies to all facets of employment, including recruiting, hiring, employment, promotion, demotion, dismissal, compensation, and training opportunities.
+Job Type: Full-time
+Pay: $115,000.00 - $135,000.00 per year
+Benefits:
+401(k)
+Dental insurance
+Dependent health insurance coverage
+Disability insurance
+Flexible spending account
+Health insurance
+Life insurance
+Paid sick time
+Paid time off
+Prescription drug insurance
+Professional development assistance
+Vision insurance
+Work from home stipend
+Schedule:
+Monday to Friday
+Application Question(s):
+Do you have expertise in Lambda queries and large datasets?
+Education:
+Bachelor's (Preferred)
+Experience:
+Graph Database Technologies: 3 years (Required)
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=554ad7c4fc54d232,False,software engineer
+Netsapien Software Engineer,Toly Digital Networks,Remote,remote,2025-06-27,Indeed,"Position: Netsapien Software Engineer
+Salary & Bonus. Varies based on experience and performance.
+Benefits include: 100% Medical Plan, 100% Dental Plan, Vision, LTD and 401K with match.
+Preferred location Jupiter, Florida office. Open to remote office also.
+Job Summary:
+Toly Digital Networks, a customer focused and driven company, is seeking Class 4 / 5 softswitch engineers to help develop and support our Cloud Switch Architecture. Ideal candidate must have a working knowledge of Class 4 / 5 switch management, dial plans and customer VoIP services (residential & PBX). NetSapiens experience or knowledge a plus. Your softswitch experience, overall Unified Communications knowledge, and ability to build strong Customer relationships, will help Toly continue to grow and support the needs of our Customers.
+Engineer general responsibility:
+· Assist in the design, implementation, and management of cloud-based Class 4 / 5 softswitch platform and related network components.
+· Test, implement, maintain custom VoIP based infrastructure.
+· Coordinate and facilitate Hosted Voice services for resellers and enterprise users. Pre and Post testing of systems and equipment.
+· Working directly with the Engineering team and customers to debug and troubleshoot issues gathering needed information and performing investigative activities.
+· Taking on customer reported issues. Helping to prioritize and set importance on changes affecting all clients.
+· Assist in design of version rollout instructions and new feature documentation.
+· Monitor, verify and notify voice/data network and alarms.
+· Work independently with minimal guidance and demonstrate a sense of urgency for customer impacting issues.
+· This position is interactive, and responsible for serving our customers. Regular and predictable job attendance is an essential function of this position.
+· Willingness to operate in engineering as well as support roles when required.
+· Willingness to travel in United States
+The Ideal Engineer Should Possess Following:
+· 3+ years of experience
+· Class 4/5 Softswitch experience (Netsapians knowledge a plus)
+· Unified Communications, VOIP, Video, and SIP technologies
+· Dial Plan and Dial Translation development and management
+· Cloud computing technologies and concepts
+· Network routers, switches, systems, and tools
+· Knowledge and understanding of Wireshark usage in troubleshooting voice issues
+· Specific in-depth knowledge of Voice over Internet Protocol (VoIP) and related network protocols
+· Ability and desire to take on challenging and previously unknown/unsolved problems
+· Understanding of legacy voice infrastructure and call routing methods
+· Understanding of software version control methodologies and applications
+· Experience with Unix operating systems
+· Database systems. (MySQL a plus)
+· A strong familiarity with Linux utilities a plus
+· Strong organizational and time management skills
+· Excellent verbal and written communication skills
+· Team player with a positive attitude
+Closing
+Now that you have read all the qualifications, experience, and expectations of the job, consider a closing thought:
+We are a family-owned business with over 30 years of growth and success. And proud of it. If you are serious about an opportunity to be part of a company with a unique culture, outstanding benefits, and desire to really be part of its success, then consider applying. If you are someone interested in a lasting future with appreciation and growth, we may be that fit. If you are someone that is serious about solving problems and helping customers, we may be that fit.
+Thank you for considering this opportunity.
+Job Type: Full-time
+Benefits:
+401(k)
+401(k) 4% Match
+Dental insurance
+Health insurance
+Health savings account
+Paid time off
+Vision insurance
+Schedule:
+8 hour shift
+Experience:
+softswitch : 3 years (Preferred)
+Location:
+Remote (Preferred)
+Willingness to travel:
+25% (Required)
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=5cd67dc2f62b893b,False,software engineer
+"Returnship Apprentice, Software Engineering - REMOTE",Home Depot / THD,"Remote in Atlanta, GA",remote,2025-06-27,Indeed,"Position Purpose:
+Returnship Apprentice – Software Engineering
+Are you ready to relaunch your tech career? Our Returnship Program is a 24-week, guided training and immersion experience designed for former experienced (mid to senior-level) software engineers returning to the workforce after a career break of 2–5 years.
+The program begins with a 12-week skills refresh boot camp, featuring a personalized learning plan to help you rebuild confidence and sharpen your technical skills. This is followed by a 12-week team placement for hands-on job shadowing and real-world experience.
+
+Join a supportive environment where your past experience is valued, and your future potential is reignited.
+
+Key Responsibilities:
+20% Solution Development
+Use critical thinking to approach problems and create software application solutions
+Collaborate with OrangeMethod students and teachers on software curriculum projects
+20% Software Development
+Work both independently and collaboratively via pairing to create secure, reliable, scalable software solutions
+Document, review, and ensure that all quality and change control standards are met
+60% Learning
+Participate in learning activities around modern software design and development core practices (communities of practice)
+Work under the direction and guidance of the OrangeMethod instructors to build well-rounded skillsets in server-side and client-side software engineering
+Proactively view articles, tutorials, and videos to learn about new technologies and best practices being used within other technology organizations
+Review and discuss code to understand best practices and design patterns
+Increase business acumen by learning about other parts of the business
+
+Direct Manager/Direct Reports:
+This role reports to a Software Engineer Manager or Sr Manager.
+This position has no direct reports.
+
+Physical Requirements:
+Most of the time is spent sitting in a comfortable position and there is frequent opportunity to move about. On rare occasions there may be a need to move or lift light articles.
+
+Working Conditions:
+Located in a comfortable indoor area. Any unpleasant conditions would be infrequent and not objectionable.
+
+Minimum Qualifications:
+Must be eighteen years of age or older.
+Must be legally permitted to work in the United States.
+Ability to commit to a 26-week full-time course (Monday to Friday during business hours).
+
+Preferred Qualifications:
+Seasoned Talent motivated to re-enter the workforce:
+Absent from the workforce for 2-5 years
+Prior experience acting as a Software Engineer II level or higher
+Ability to learn and adapt to new environments
+
+Minimum Education:
+The knowledge, skills and abilities typically acquired through the completion of a high school diploma and/or GED.
+
+Preferred Education:
+No additional education
+
+Minimum Years of Work Experience:
+2
+
+Preferred Years of Work Experience:
+No additional years of experience
+
+Minimum Leadership Experience:
+None
+
+Preferred Leadership Experience:
+None
+
+Certifications:
+None
+
+Competencies:
+Strong interest in solving technical problems using computers
+Interest in working as part of a collaborative, cross-functional, modern software design and development team
+Cultivates Innovation: Creating new and better ways for the organization to be successful
+Collaborates: Building partnerships and working collaboratively with others to meet shared objectives
+Communicates Effectively: Developing and delivering multi-mode communications that convey a clear understanding of the unique needs of different audiences
+Drives Results: Consistently achieving results, even under tough circumstances
+Interpersonal Savvy: Relating openly and comfortably with diverse groups of people
+Nimble Learning: Actively learning through experimentation when tackling new problems, using both successes and failures as learning fodder
+Self-Development: Actively seeking new ways to grow and be challenged using both formal and informal development channels
+
+Apply End Date: 07/05/2025",N/A,https://www.indeed.com/viewjob?jk=99bf01dce408ee08,False,software engineer
+Senior Software Engineer - AI Trainer,DataAnnotation,"Remote in San Antonio, TX",remote,2025-06-27,Indeed,"We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots that we are building in order to measure their progress, as well as write and evaluate code.
+To apply to this role, you will need to be proficient in either Python and/or JavaScript. Your role will require proficiency in at least one programming language/framework (JavaScript, TypeScript, Python, C, C#, C++, HTML/CSS, React, Go, Java, Kotlin, SQL, or Swift) in order to solve coding problems (think LeetCode, HackerRank, etc). For each coding problem, you must be able to explain how your solution solves the problem.
+As part of the application process, you will be asked to complete an assessment. If you pass, you will gain access to projects. Based on the quality of your work, you will continue to receive projects regularly. We find our most successful candidates work between 5-20 hours per week, up to 40 hours.
+Benefits:
+This is a full-time or part-time REMOTE position
+You’ll be able to choose which projects you want to work on
+You can work on your own schedule
+Projects are paid hourly, with bonuses on high-quality and high-volume work
+Responsibilities:
+Come up with diverse problems and solutions for a coding chatbot
+Write high-quality answers and code snippets
+Evaluate code quality produced by AI models for correctness and performance
+Qualifications:
+Fluency in English
+Proficient in either Python and/or JavaScript
+Detail-oriented
+Excellent writing and grammar skills
+A bachelor's degree (completed or in progress)
+Note: Payment is made via PayPal. We will never ask for any money from you.
+#INDUSSD
+Job Type: Contract
+Pay: From $40.00 per hour
+Benefits:
+Flexible schedule
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=b5f4a038f4b32fe4,False,software engineer
+"Software Engineer, 2",Dotdash Meredith,"Remote in New York, NY",remote,2025-06-27,Indeed,"Job Title
+Software Engineer, 2
+Job Description
+We are looking for a developer with strong interest in Performance Engineering and a drive to excel at improving our observation telemetry, optimizing our custom framework, “Globe”, researching best practices and advocating for each of these throughout the engineering organization. This role requires a drive to build skills in infrastructure management and developer relations in addition to platform development.
+We are looking for a Software Engineer, 2 with a demonstrated track record of innovative thinking, technical mastery, and peer guidance on our Vertical Brands. You will work in a collaborative Agile environment as well as realizing these ideas in code. You will also be improving high-visibility, interactive features on some of our most highly-ranked pages. These features will form an important part in some of our most prominent sites that span across more than 20 brands and reach more than 100 million users each month.
+
+About Your Contributions:
+
+Develop responsive and elegant cross-platform functionality in our custom server-side component framework, built on Java but leveraging SCSS, Freemarker templates, and ES6 on the front-end, with VueJS increasingly used for more interactive components.
+Partner closely with other developers on your scrum team with the support from many others across the organization.
+Keep up with new technologies and approaches to solve problems and improve existing systems.
+Work directly with designers, QA, and our back-end developers in a dedicated scrum team to fully realize the product vision.
+Participate in a well-oiled 2 week agile system to continuously add new features & functionality to the business.
+
+About You:
+
+2+ years building interactive web applications as a front-end or full-stack developer
+You should have a demonstrated track record of technical proficiency with HTML, vanilla Javascript, and CSS/SCSS, ideally with a portfolio and/or examples of work in Github
+Willingness to learn new technologies and grow as a developer
+Ideally, you’ll also have a meticulous eye for design and rigorously check your own work for quality and precision, even before QA and stakeholder review
+Publishing or digital media experience (including work with WordPress) preferred but not required
+Bachelor’s degree in Computer Science, Computer Engineering, Information Technology, or a closely related technical field or foreign equivalent
+
+About Us:
+
+Dotdash Meredith is the largest digital and print publisher in America. From mobile to magazines, nearly 200 million people trust us to help them make decisions, take action, and find inspiration. Dotdash Meredith’s over 40 iconic brands include PEOPLE, Better Homes & Gardens, Verywell, Food & Wine, The Spruce, Allrecipes, Byrdie, REAL SIMPLE, Investopedia, and Southern Living.
+It is the policy of Dotdash Meredith to provide equal employment opportunity (EEO) to all persons regardless of age, color, national origin, citizenship status, physical or mental disability, race, religion, creed, gender, sex, sexual orientation, gender identity and/or expression, genetic information, marital status, status with regard to public assistance, veteran status, or any other characteristic protected by federal, state or local law. In addition, the Company will provide reasonable accommodations for qualified individuals with disabilities. Accommodation requests can be made by emailing
+ddm.hr@dotdashmdp.com
+.
+The Company participates in the federal E-Verify program to confirm the identity and employment authorization of all newly hired employees. For further information about the E-Verify program, please click here:
+https://www.e-verify.gov/employees
+Pay Range
+Salary: New York: $105,000 - $125,000 Remote US: $100,000 - $120,000
+The pay range above represents the anticipated low and high end of the pay range for this position and may change in the future. Actual pay may vary and may be above or below the range based on various factors including but not limited to work location, experience, and performance. The range listed is just one component of Dotdash Meredith’s total compensation package for employees. Other compensation may include annual bonuses, and short- and long-term incentives. In addition, Dotdash Meredith provides to employees (and their eligible family members) a variety of benefits, including medical, dental, vision, prescription drug coverage, unlimited paid time off (PTO), adoption or surrogate assistance, donation matching, tuition reimbursement, basic life insurance, basic accidental death & dismemberment, supplemental life insurance, supplemental accident insurance, commuter benefits, short term and long term disability, health savings and flexible spending accounts, family care benefits, a generous 401K savings plan with a company match program, 10-12 paid holidays annually, and generous paid parental leave (birthing and non-birthing parents), all of which may vary depending on the specific nature of your employment with Dotdash Meredith and your work location. We also offer voluntary benefits such as pet insurance, accident, critical and hospital indemnity health insurance coverage, life and disability insurance.
+#NMG#",N/A,https://www.indeed.com/viewjob?jk=626957bc9b2c0932,False,software engineer
+Senior Software Engineer - AI Trainer,DataAnnotation,"Remote in Springfield, IL",remote,2025-06-27,Indeed,"We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots that we are building in order to measure their progress, as well as write and evaluate code.
+To apply to this role, you will need to be proficient in either Python and/or JavaScript. Your role will require proficiency in at least one programming language/framework (JavaScript, TypeScript, Python, C, C#, C++, HTML/CSS, React, Go, Java, Kotlin, SQL, or Swift) in order to solve coding problems (think LeetCode, HackerRank, etc). For each coding problem, you must be able to explain how your solution solves the problem.
+As part of the application process, you will be asked to complete an assessment. If you pass, you will gain access to projects. Based on the quality of your work, you will continue to receive projects regularly. We find our most successful candidates work between 5-20 hours per week, up to 40 hours.
+Benefits:
+This is a full-time or part-time REMOTE position
+You’ll be able to choose which projects you want to work on
+You can work on your own schedule
+Projects are paid hourly, with bonuses on high-quality and high-volume work
+Responsibilities:
+Come up with diverse problems and solutions for a coding chatbot
+Write high-quality answers and code snippets
+Evaluate code quality produced by AI models for correctness and performance
+Qualifications:
+Fluency in English
+Proficient in either Python and/or JavaScript
+Detail-oriented
+Excellent writing and grammar skills
+A bachelor's degree (completed or in progress)
+Note: Payment is made via PayPal. We will never ask for any money from you.
+#INDUSSD
+Job Type: Contract
+Pay: From $40.00 per hour
+Benefits:
+Flexible schedule
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=0afa82d4f1d0bee7,False,software engineer
+Front-End Developer (Angular),PebbleDB,"Remote in Chicago, IL",remote,2025-06-27,Indeed,"Job Description
+We’re seeking an experienced Front-End Developer to join a cloud-first project team building cutting-edge applications. You’ll leverage Angular 20, Cypress automation testing, and modern cloud technologies to deliver high-quality, user-centric solutions in a fully remote environment.
+Responsibilities
+Develop and maintain modern front-end applications using Angular 20.
+Build and execute automated tests using Cypress to ensure application reliability.
+Collaborate with backend teams to integrate APIs and cloud services.
+Partner with UX/UI designers to implement responsive, intuitive interfaces.",N/A,https://www.indeed.com/viewjob?jk=55d056459779e3a9,False,front-end developer
+Junior Software Engineer,Corporate Tools,"Remote in Spokane, WA",remote,2025-06-27,Indeed,"Overview:
+Corporate Tools is hiring a Junior Software Engineer for $75,000/year. You will be a traditional company employee. This is a full time 40 hour/week position with company benefits in Spokane, Washington.
+Corporate Tools is always hiring great Software Engineers. We primarily code in Ruby, Javascript and use Rails and Vue. We classify this position as an entry level position within our Software Department.
+Our Junior Software Developer job is a path towards becoming an integral part of our software team. This position is geared towards developers with limited experience or a recent college graduate. Through working with our team of developers, this position will put you on the path towards gaining more skills and experience to help you advance within our company.
+Junior Software Engineer Jobs:
+Our Junior Software Engineers spend their first year integrating and hopefully advance to becoming Software Engineers within our company. We offer a guaranteed 6 month assessment with an opportunity for a wage increase based on your proficiency in some key skills. We’ll work with you and bring you along to become a vital part of our group. This is our entry level software developer position and a great way to get started with our company. We’re looking for great people who want to do great work. We understand you might suck at writing resumes or pitching yourself, or most your code might be private. Try your best to explain to us what you can do so we can hopefully find you! If you’re a good person, like learning and improving, and want to grow your skills, we want to find you.
+How to Apply:
+Please apply through the link below. It’s a coding job, so showing us some code would be helpful. Preferably a flavor of Ruby or Javascript, but anything for now will do.
+
+Wage:
+$75,000 a year
+Benefits:
+100% employer-paid medical, dental and vision for employees
+Annual review with raise option
+22 days Paid Time Off accrued annually, and 4 holidays
+After 3 years, PTO increases to 29 days. Employees transition to flexible time off after 5 years with the company—not accrued, not capped, take time off when you want
+The 4 holidays are: New Year’s Day, Fourth of July, Thanksgiving, and Christmas Day
+Paid Maternity and Paternity Leave
+Up to 5% company matching 401(k) with no vesting period
+Quarterly allowance
+Use to make your remote work set up more comfortable, for continuing education classes, a plant for your desk, coffee for your coworker, a massage for yourself... really, whatever
+Open concept office with friendly coworkers
+Creative environment where you can make a difference
+No dumb benefits like free dog walking on the weekends that snobby hipster places have to make you feel cool, but mathematically won't cost the company much money because you won't use it
+Trail Mix Bar
+- oh yeah
+Responsibilities:
+Develop Software
+Have a Growth Mindset, not a Fixed Mindset
+Learn how to become proficient in Ruby, Rails, and Vue
+Requirements:
+BS in Computer Science or at least 2 years of related experience
+At least 1 year of relevant professional experience
+Experience with current software development languages such as Ruby, Python, Java, or Rust, etc.
+Experience with front-end web development languages such as HTML, CSS and Javascript
+Experience with current web application frameworks such as Django, Laravel, or Ruby on Rails (preferred but not required)
+You’re easy-going and willing to learn on the job while also getting stuff done
+Able to work in an agile environment with a focus on continuous integration
+Junior Software Engineer
+Spokane, WA",N/A,https://www.indeed.com/viewjob?jk=a7b123b7b7425908,False,front-end developer
+"Software Engineer, 2",Dotdash Meredith,"Remote in New York, NY",remote,2025-06-27,Indeed,"Job Title
+Software Engineer, 2
+Job Description
+We are looking for a developer with strong interest in Performance Engineering and a drive to excel at improving our observation telemetry, optimizing our custom framework, “Globe”, researching best practices and advocating for each of these throughout the engineering organization. This role requires a drive to build skills in infrastructure management and developer relations in addition to platform development.
+We are looking for a Software Engineer, 2 with a demonstrated track record of innovative thinking, technical mastery, and peer guidance on our Vertical Brands. You will work in a collaborative Agile environment as well as realizing these ideas in code. You will also be improving high-visibility, interactive features on some of our most highly-ranked pages. These features will form an important part in some of our most prominent sites that span across more than 20 brands and reach more than 100 million users each month.
+
+About Your Contributions:
+
+Develop responsive and elegant cross-platform functionality in our custom server-side component framework, built on Java but leveraging SCSS, Freemarker templates, and ES6 on the front-end, with VueJS increasingly used for more interactive components.
+Partner closely with other developers on your scrum team with the support from many others across the organization.
+Keep up with new technologies and approaches to solve problems and improve existing systems.
+Work directly with designers, QA, and our back-end developers in a dedicated scrum team to fully realize the product vision.
+Participate in a well-oiled 2 week agile system to continuously add new features & functionality to the business.
+
+About You:
+
+2+ years building interactive web applications as a front-end or full-stack developer
+You should have a demonstrated track record of technical proficiency with HTML, vanilla Javascript, and CSS/SCSS, ideally with a portfolio and/or examples of work in Github
+Willingness to learn new technologies and grow as a developer
+Ideally, you’ll also have a meticulous eye for design and rigorously check your own work for quality and precision, even before QA and stakeholder review
+Publishing or digital media experience (including work with WordPress) preferred but not required
+Bachelor’s degree in Computer Science, Computer Engineering, Information Technology, or a closely related technical field or foreign equivalent
+
+About Us:
+
+Dotdash Meredith is the largest digital and print publisher in America. From mobile to magazines, nearly 200 million people trust us to help them make decisions, take action, and find inspiration. Dotdash Meredith’s over 40 iconic brands include PEOPLE, Better Homes & Gardens, Verywell, Food & Wine, The Spruce, Allrecipes, Byrdie, REAL SIMPLE, Investopedia, and Southern Living.
+It is the policy of Dotdash Meredith to provide equal employment opportunity (EEO) to all persons regardless of age, color, national origin, citizenship status, physical or mental disability, race, religion, creed, gender, sex, sexual orientation, gender identity and/or expression, genetic information, marital status, status with regard to public assistance, veteran status, or any other characteristic protected by federal, state or local law. In addition, the Company will provide reasonable accommodations for qualified individuals with disabilities. Accommodation requests can be made by emailing
+ddm.hr@dotdashmdp.com
+.
+The Company participates in the federal E-Verify program to confirm the identity and employment authorization of all newly hired employees. For further information about the E-Verify program, please click here:
+https://www.e-verify.gov/employees
+Pay Range
+Salary: New York: $105,000 - $125,000 Remote US: $100,000 - $120,000
+The pay range above represents the anticipated low and high end of the pay range for this position and may change in the future. Actual pay may vary and may be above or below the range based on various factors including but not limited to work location, experience, and performance. The range listed is just one component of Dotdash Meredith’s total compensation package for employees. Other compensation may include annual bonuses, and short- and long-term incentives. In addition, Dotdash Meredith provides to employees (and their eligible family members) a variety of benefits, including medical, dental, vision, prescription drug coverage, unlimited paid time off (PTO), adoption or surrogate assistance, donation matching, tuition reimbursement, basic life insurance, basic accidental death & dismemberment, supplemental life insurance, supplemental accident insurance, commuter benefits, short term and long term disability, health savings and flexible spending accounts, family care benefits, a generous 401K savings plan with a company match program, 10-12 paid holidays annually, and generous paid parental leave (birthing and non-birthing parents), all of which may vary depending on the specific nature of your employment with Dotdash Meredith and your work location. We also offer voluntary benefits such as pet insurance, accident, critical and hospital indemnity health insurance coverage, life and disability insurance.
+#NMG#",N/A,https://www.indeed.com/viewjob?jk=626957bc9b2c0932,False,front-end developer

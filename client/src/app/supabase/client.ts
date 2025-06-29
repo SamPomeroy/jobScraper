@@ -5,6 +5,7 @@
 import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from '@/app/types/supabase';
+import { cookies } from 'next/headers';
 
 export const supabase: SupabaseClient<Database> = createPagesBrowserClient<Database>();
 // Example: Fetch jobs and log the result (remove or modify as needed)

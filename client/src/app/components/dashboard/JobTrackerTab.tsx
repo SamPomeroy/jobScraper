@@ -24,14 +24,13 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
     priority: "all",
     status: "all",
     searchTerm: "",
-    fromDate: "",
-    toDate: "",
+   fromDate: undefined,
+toDate: undefined,
   });
 
   const [pendingJobId, setPendingJobId] = useState<string | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
-  // ✅ Prompt if pending application is stored in localStorage
+// ✅ Prompt if pending application is stored in localStorage
   useEffect(() => {
     const stored = localStorage.getItem("pendingApplicationJobId");
     if (stored) {

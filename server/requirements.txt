@@ -36,3 +36,4 @@ crawl4ai
 chromadb
 ggshield
 unicorn
+undetected-chromedriver
