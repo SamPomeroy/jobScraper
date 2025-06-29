@@ -25,6 +25,8 @@ export default function Dashboard({ user }: DashboardProps) {
     active: false,
     lastRun: null,
   });
+  const [tabDirection, setTabDirection] = useState<"left" | "right">("right");
+  const [previousTab, setPreviousTab] = useState(activeTab);
 
   const { darkMode, toggleDarkMode } = useTheme();
 
@@ -184,10 +186,27 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <TabNavigation
           activeTab={activeTab}
-          onTabChangeAction={setActiveTab}
+          onTabChangeAction={(newTab) => {
+            const order = ["dashboard", "applications", "resumes", "settings", "notifications"];
+            const oldIndex = order.indexOf(activeTab);
+            const newIndex = order.indexOf(newTab);
+            setTabDirection(newIndex > oldIndex ? "right" : "left");
+            setPreviousTab(activeTab);
+            setActiveTab(newTab);
+          }}
           darkMode={darkMode}
         />
-        {renderTabContent()}
+        <div
+          key={activeTab}
+          className={`transition-transform duration-500 ease-in-out ${
+            tabDirection === "right"
+              ? "animate-slide-in-left"
+              : "animate-slide-in-right"
+          }`}
+        >
+          {renderTabContent()}
+        </div>
+
       </div>
     </div>
   );
