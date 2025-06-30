@@ -117,17 +117,6 @@ const JobFilter: React.FC<Props> = ({ filters, onFilterChange, darkMode = false 
         {/* Clear Filters */}
 <button
   onClick={() =>
-
-    onFilterChange({
-      category: "all",
-      status: "all",
-      searchTerm: "",
-      fromDate: "",
-      toDate: "",
-      filter: "",
-      priority: "all"
-    })
-
 onFilterChange({
   category: "all",
   status: "all",
@@ -137,7 +126,6 @@ onFilterChange({
   filter: "all",
   priority: "all", // 👈 fix added
 })
-
   }
   className={`px-4 py-2 text-sm rounded hover:bg-opacity-80 transition-colors ${
     darkMode

@@ -22,6 +22,7 @@ export default function Dashboard({ user }: DashboardProps) {
     active: false,
     lastRun: null as string | null,
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const { darkMode, toggleDarkMode } = useTheme();
   const localKey = `user_preferences_${user.id}`; // Only save user preferences
@@ -236,27 +237,14 @@ export default function Dashboard({ user }: DashboardProps) {
             toggleDarkMode={toggleDarkMode}
             scrapingStatus={scrapingStatus}
           />
-        );
-      case "notifications":
-        return <NotificationsTab jobs={jobs} darkMode={darkMode}  />;
-      default:
-        return null;
-    }
-  };
+        )}
 
-  return (
-    <div
-      className={`min-h-screen ${
-        darkMode ? "bg-gray-900 text-white" : "bg-white text-black"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-        <TabNavigation
-          activeTab={activeTab}
-          onTabChangeAction={setActiveTab}
-          darkMode={darkMode}
-        />
-        {renderTabContent()}
+        {activeTab === "notifications" && (
+          <NotificationsTab 
+            jobs={jobs}
+            darkMode={darkMode} 
+          />
+        )}
       </div>
     </div>
   );
