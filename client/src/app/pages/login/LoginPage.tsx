@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { AuthUser } from "@supabase/supabase-js";
 import { supabase } from "@/app/supabase/client";
+import { signInWithGoogle } from "@/app/api/auth/auth";
+import { Shield } from "lucide-react";
+import HandleOAuthRedirect from '@/app/components/HandleOAuthRedirect';
 
+// import { signIn, signInWithGoogle } from '@/app/auth/api/auth';
 function LoginPage({
   onSuccess,
   setCurrentPage,
@@ -46,6 +50,8 @@ function LoginPage({
       }}
       className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
     >
+        <HandleOAuthRedirect />
+
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -118,6 +124,16 @@ function LoginPage({
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Processing..." : "Sign in"}
+            </button>
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-500 mb-2">Or sign in with</p>
+            <button
+              onClick={signInWithGoogle}
+              className="w-full flex justify-center items-center gap-2 py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white hover:bg-gray-50 text-sm font-medium text-gray-700"
+            >
+              <Shield className="w-5 h-5" />
+              Sign in with Google
             </button>
           </div>
         </form>

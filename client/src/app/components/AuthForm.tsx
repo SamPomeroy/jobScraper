@@ -3,19 +3,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import {
-  Search,
-  FileText,
-  Bell,
-  Settings,
-  User,
-  LogOut,
-  Home,
-  Mail,
-  Info,
-  Shield,
-} from "lucide-react";
+// import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/supabase/client";
+
+import { signInWithGoogle } from "@/app/api/auth/auth";
+
+import { Shield} from "lucide-react";
 interface AuthUser {
   id: string;
   email: string;
@@ -25,16 +18,16 @@ interface AuthUser {
   };
 }
 
-if (
-  !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-  !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-) {
-  throw new Error("Supabase environment variables are not set.");
-}
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+// if (
+//   !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+//   !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// ) {
+//   throw new Error("Supabase environment variables are not set.");
+// }
+// const supabase = createClient(
+//   process.env.NEXT_PUBLIC_SUPABASE_URL,
+//   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// );
 
 export default function AuthForm({
   mode,
@@ -244,6 +237,16 @@ export default function AuthForm({
                 : "Sign up"}
             </button>
           </div>
+            <div className="mt-6 text-center">
+                      <p className="text-sm text-gray-500 mb-2">Or sign in with</p>
+                      <button
+                        onClick={signInWithGoogle}
+                        className="w-full flex justify-center items-center gap-2 py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white hover:bg-gray-50 text-sm font-medium text-gray-700"
+                      >
+                        <Shield className="w-5 h-5" />
+                        Sign in with Google
+                      </button>
+                    </div>
         </form>
       </div>
     </div>

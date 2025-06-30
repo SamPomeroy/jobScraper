@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Filter, Search, CalendarDays } from 'lucide-react';
-import { JobFilterState } from '@/app/types/application';
+import { JobFilterState } from '@/app/types/jobs';
 
 interface Props {
   filters: JobFilterState;
@@ -117,14 +117,15 @@ const JobFilter: React.FC<Props> = ({ filters, onFilterChange, darkMode = false 
         {/* Clear Filters */}
 <button
   onClick={() =>
-    onFilterChange({
-      category: "all",
-      status: "all",
-      searchTerm: "",
-      fromDate: "",
-      toDate: "",
-      filter: ""
-    })
+onFilterChange({
+  category: "all",
+  status: "all",
+  searchTerm: "",
+  fromDate: "",
+  toDate: "",
+  filter: "all",
+  priority: "all", // 👈 fix added
+})
   }
   className={`px-4 py-2 text-sm rounded hover:bg-opacity-80 transition-colors ${
     darkMode

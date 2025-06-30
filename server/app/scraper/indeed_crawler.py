@@ -1,79 +1,236 @@
-import sys
-import time
-import random
-import csv
-import traceback
+# import sys, os, time, csv, json, traceback
+# from datetime import datetime
+
+# import undetected_chromedriver as uc
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from dotenv import load_dotenv
+
+# from app.db.connect_database import get_db_connection
+# from app.db.cleanup import cleanup
+# from app.utils.common import TECH_KEYWORDS
+
+# LOCATION = "remote"
+# MAX_DAYS = 5
+
+# def configure_webdriver():
+#     options = uc.ChromeOptions()
+#     options.add_argument("--no-sandbox")
+#     options.add_argument("--disable-dev-shm-usage")
+#     options.add_argument("--disable-blink-features=AutomationControlled")
+#     options.add_argument(
+#         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+#         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36"
+#     )
+#     driver = uc.Chrome(options=options, headless=False)
+#     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+#         "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+#     })
+#     return driver
+
+# def insert_job_to_db(job):
+#     conn = get_db_connection()
+#     cur = conn.cursor()
+#     try:
+#         cur.execute("""
+#             INSERT INTO jobs (
+#                 id, title, company, job_location, job_state, date, site,
+#                 job_description, salary, url, applied, search_term,
+#                 skills, skills_by_category, inserted_at
+#             ) VALUES (
+#                 gen_random_uuid(), %s, %s, %s, %s, %s, %s,
+#                 %s, %s, %s, %s, %s,
+#                 %s, %s, NOW()
+#             )
+#             ON CONFLICT (url) DO NOTHING;
+#         """, (
+#             job["title"], job["company"], job["job_location"], job["job_state"],
+#             job["date"], job["site"], job["job_description"], job["salary"],
+#             job["url"], job["applied"], job["search_term"],
+#             json.dumps(job["flat_skills"]),  # filled later
+#             json.dumps(job["skills_by_category"])  # filled later
+#         ))
+#         conn.commit()
+#     except Exception as e:
+#         print(f"❌ DB insert error: {e}")
+#         traceback.print_exc()
+#     finally:
+#         cur.close()
+#         conn.close()
+
+# def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
+#     print(f"\n🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
+#     base_url = "https://www.indeed.com"
+#     driver = configure_webdriver()
+#     jobs_scraped = []
+
+#     try:
+#         for keyword in TECH_KEYWORDS:
+#             print(f"\n🔍 Searching for '{keyword}'")
+#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
+
+#             try:
+#                 driver.get(url)
+#                 time.sleep(2)
+#             except Exception as e:
+#                 print(f"🚫 Failed to load job search page: {e}")
+#                 continue
+
+#             while True:
+#                 try:
+#                     WebDriverWait(driver, 12).until(
+#                         EC.presence_of_element_located((By.CSS_SELECTOR, "div.job_seen_beacon"))
+#                     )
+#                 except:
+#                     print("⚠️ Job listings didn’t load.")
+#                     break
+
+#                 cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                 print(f"📄 Found {len(cards)} job cards")
+
+#                 for i in range(len(cards)):
+#                     try:
+#                         cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                         if i >= len(cards):
+#                             break
+#                         card = cards[i]
+
+#                         title = card.find_element(By.CSS_SELECTOR, "h2.jobTitle span").text.strip()
+#                         company = card.find_element(By.CSS_SELECTOR, "[data-testid='company-name']").text.strip()
+#                         location_text = card.find_element(By.CSS_SELECTOR, "[data-testid='text-location']").text.strip()
+#                         job_state = location_text.lower()
+#                         href = card.find_element(By.CSS_SELECTOR, "a").get_attribute("href") or ""
+#                         job_url = href if href.startswith("http") else f"{base_url}{href}"
+
+#                         driver.execute_script("window.open(arguments[0], '_self');", job_url)
+#                         time.sleep(2)
+
+#                         try:
+#                             WebDriverWait(driver, 7).until(
+#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
+#                             )
+#                             description = driver.find_element(By.ID, "jobDescriptionText").text.strip()
+#                         except:
+#                             description = "N/A"
+
+#                         job = {
+#                             "title": title,
+#                             "company": company,
+#                             "job_location": location_text,
+#                             "job_state": job_state,
+#                             "date": datetime.today().date(),
+#                             "site": "Indeed",
+#                             "job_description": description,
+#                             "salary": "N/A",
+#                             "url": job_url,
+#                             "applied": False,
+#                             "search_term": keyword,
+#                             "flat_skills": [],  # to be filled later
+#                             "skills_by_category": {},  # to be filled later
+#                         }
+
+#                         insert_job_to_db(job)
+#                         jobs_scraped.append(job)
+
+#                         driver.execute_script("window.history.go(-1)")
+#                         time.sleep(2)
+
+#                     except Exception as e:
+#                         print(f"❌ Error on job scrape: {e}")
+#                         traceback.print_exc()
+#                         try:
+#                             driver.execute_script("window.history.go(-1)")
+#                             time.sleep(2)
+#                         except:
+#                             pass
+#                         continue
+
+#                 try:
+#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
+#                     if next_btn.is_enabled():
+#                         driver.execute_script("arguments[0].click();", next_btn)
+#                         time.sleep(2)
+#                     else:
+#                         break
+#                 except:
+#                     break
+
+#     finally:
+#         try: driver.quit()
+#         except: pass
+
+#     if jobs_scraped:
+#         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+#         with open(f"crawl4ai_indeed_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
+#             writer = csv.DictWriter(f, fieldnames=list(jobs_scraped[0].keys()))
+#             writer.writeheader()
+#             writer.writerows(jobs_scraped)
+#         print(f"📁 Saved to crawl4ai_indeed_jobs_{ts}.csv")
+
+#     cleanup(days)
+#     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
+#     return jobs_scraped
+
+# if __name__ == "__main__":
+#     jobs = get_jobs_from_crawl4ai()
+#     print(f"🎯 Finished scraping. {len(jobs)} jobs returned.")
+
+
+import sys, os, time, csv, json, traceback
 from datetime import datetime, timedelta
 
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from dotenv import load_dotenv
+
+from app.services.skills_loader import load_all_skills
+from app.services.skills import extract_skills_by_category, extract_skills
+from app.utils.skill_utils import extract_flat_skills
 
 from app.db.connect_database import get_db_connection
 from app.db.cleanup import cleanup
-from app.scraper.indeed_scraper import TECH_KEYWORDS 
+from app.scraper.indeed_scraper import TECH_KEYWORDS
 
 LOCATION = "remote"
 MAX_DAYS = 5
-
+SKILLS = load_all_skills()
 
 def configure_webdriver():
     options = uc.ChromeOptions()
-    # options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36"
-    )
-
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36")
     driver = uc.Chrome(options=options, headless=False)
-
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-        "source": """
-            Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined
-            })
-        """
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     })
-
     return driver
 
-
-def parse_date(raw: str):
-    raw = raw.lower()
-    if "today" in raw or "just posted" in raw:
-        return datetime.today().date()
-    try:
-        days_ago = int(raw.strip().split()[0])
-        return datetime.today().date() - timedelta(days=days_ago)
-    except:
-        return datetime.today().date()
-
-
-def is_tech_job(title: str) -> bool:
-    return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
-
-
-def insert_job_to_db(job: dict):
+def insert_job_to_db(job):
     conn = get_db_connection()
     cur = conn.cursor()
     try:
         cur.execute("""
             INSERT INTO jobs (
                 id, title, company, job_location, job_state, date, site,
-                job_description, salary, url, applied, search_term, inserted_at
+                job_description, salary, url, applied, search_term,
+                skills, skills_by_category, inserted_at
             ) VALUES (
                 gen_random_uuid(), %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s, NOW()
+                %s, %s, %s, %s, %s,
+                %s, %s, NOW()
             )
             ON CONFLICT (url) DO NOTHING;
         """, (
             job["title"], job["company"], job["job_location"], job["job_state"],
             job["date"], job["site"], job["job_description"], job["salary"],
-            job["url"], job["applied"], job["search_term"]
+            job["url"], job["applied"], job["search_term"],
+            json.dumps(job["flat_skills"]),  # save as JSON
+            json.dumps(job["skills_by_category"])  # categorized
         ))
         conn.commit()
     except Exception as e:
@@ -83,90 +240,94 @@ def insert_job_to_db(job: dict):
         cur.close()
         conn.close()
 
-
 def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
-    print(f"🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
+    print(f"\n🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
     base_url = "https://www.indeed.com"
     driver = configure_webdriver()
     jobs_scraped = []
 
     try:
         for keyword in TECH_KEYWORDS:
-            print(f"\n🔍 '{keyword}'")
+            print(f"\n🔍 Searching for '{keyword}'")
             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
-            driver.get(url)
 
-            # Save snapshot for debugging
-            with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
-                f.write(driver.page_source)
-                print(f"📝 Saved HTML snapshot for '{keyword}'")
-
-            time.sleep(3)
+            try:
+                driver.get(url)
+                time.sleep(2)
+            except Exception as e:
+                print(f"🚫 Failed to load job search page: {e}")
+                continue
 
             while True:
                 try:
-                    WebDriverWait(driver, 15).until(
-                        EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'mainContentTable')]"))
+                    WebDriverWait(driver, 12).until(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, "div.job_seen_beacon"))
                     )
                 except:
-                    print("⚠️ Container did not load.")
+                    print("⚠️ Job listings didn’t load.")
                     break
 
-                cards = driver.find_elements(
-                    By.XPATH, "//table[contains(@class,'mainContentTable')]"
-                )
+                cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+                print(f"📄 Found {len(cards)} job cards")
 
-                for table in cards:
+                for i in range(len(cards)):
                     try:
-                        title_el = table.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]/a/span")
-                        title = title_el.text.strip()
-                        if not is_tech_job(title):
-                            continue
+                        cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+                        if i >= len(cards):
+                            break
+                        card = cards[i]
 
-                        company_el = table.find_element(By.XPATH, ".//span[@data-testid='company-name']")
-                        location_el = table.find_element(By.XPATH, ".//div[@data-testid='text-location']")
-                        try:
-                            # Try any known or new selector for posted date
-                            date_el = table.find_element(By.XPATH, ".//span[contains(text(), 'Posted') or contains(text(), 'Just posted')]")
-                            date_posted = parse_date(date_el.text.strip())
-                        except:
-                                date_posted = datetime.today().date()
-                        link_el = table.find_element(By.XPATH, ".//a[@data-jk]")
+                        title = card.find_element(By.CSS_SELECTOR, "h2.jobTitle span").text.strip()
+                        company = card.find_element(By.CSS_SELECTOR, "[data-testid='company-name']").text.strip()
+                        location_text = card.find_element(By.CSS_SELECTOR, "[data-testid='text-location']").text.strip()
+                        job_state = location_text.lower()
+                        href = card.find_element(By.CSS_SELECTOR, "a").get_attribute("href") or ""
+                        job_url = href if href.startswith("http") else f"{base_url}{href}"
 
-                        job_url = f"{base_url}/viewjob?jk={link_el.get_attribute('data-jk') or ''}"
-                        # date_posted = parse_date(date_el.text.strip())
-
-                        driver.execute_script("arguments[0].scrollIntoView(true);", link_el)
-                        driver.execute_script("arguments[0].click();", link_el)
+                        driver.execute_script("window.open(arguments[0], '_self');", job_url)
                         time.sleep(2)
 
                         try:
-                            desc_el = WebDriverWait(driver, 5).until(
+                            WebDriverWait(driver, 7).until(
                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
                             )
-                            description = desc_el.text.strip()
+                            description = driver.find_element(By.ID, "jobDescriptionText").text.strip()
                         except:
                             description = "N/A"
 
+                        flat_skills = extract_flat_skills(description, SKILLS["flat"])
+                        categorized_skills = extract_skills_by_category(description, SKILLS["matrix"])
+
                         job = {
                             "title": title,
-                            "company": company_el.text.strip() or "N/A",
-                            "job_location": location_el.text.strip() or location,
-                            "job_state": location.lower(),
-                            "date": date_posted,
+                            "company": company,
+                            "job_location": location_text,
+                            "job_state": job_state,
+                            "date": datetime.today().date(),
                             "site": "Indeed",
                             "job_description": description,
                             "salary": "N/A",
                             "url": job_url,
                             "applied": False,
-                            "search_term": keyword
+                            "search_term": keyword,
+                            "flat_skills": flat_skills,
+                            "skills_by_category": categorized_skills,
                         }
 
                         insert_job_to_db(job)
                         jobs_scraped.append(job)
 
+                        driver.execute_script("window.history.go(-1)")
+                        time.sleep(2)
+
                     except Exception as e:
-                        print(f"❌ Error parsing job: {e}")
+                        print(f"❌ Error on job scrape: {e}")
+                        traceback.print_exc()
+                        try:
+                            driver.execute_script("window.history.go(-1)")
+                            time.sleep(2)
+                        except:
+                            pass
                         continue
 
                 try:
@@ -180,7 +341,8 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
                     break
 
     finally:
-        driver.quit()
+        try: driver.quit()
+        except: pass
 
     if jobs_scraped:
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -194,6 +356,197 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
     return jobs_scraped
 
+if __name__ == "__main__":
+    jobs = get_jobs_from_crawl4ai()
+    print(f"🎯 Finished scraping. {len(jobs)} jobs returned.")
+
+# import sys, time, csv, json, traceback
+# from datetime import datetime, timedelta
+
+# import undetected_chromedriver as uc
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+
+# from app.services.skills import extract_skills, load_skill_matrix
+# from app.db.connect_database import get_db_connection
+# from app.db.cleanup import cleanup
+# from app.scraper.indeed_scraper import TECH_KEYWORDS
+
+# LOCATION = "remote"
+# MAX_DAYS = 5
+# skill_matrix = load_skill_matrix()
+
+
+# def configure_webdriver():
+#     options = uc.ChromeOptions()
+#     options.add_argument("--no-sandbox")
+#     options.add_argument("--disable-dev-shm-usage")
+#     options.add_argument("--disable-blink-features=AutomationControlled")
+#     options.add_argument(
+#         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+#         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36"
+#     )
+#     driver = uc.Chrome(options=options, headless=False)
+#     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+#         "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+#     })
+#     return driver
+
+
+# def insert_job_to_db(job):
+#     conn = get_db_connection()
+#     cur = conn.cursor()
+#     try:
+#         cur.execute("""
+#             INSERT INTO jobs (
+#                 id, title, company, job_location, job_state, date, site,
+#                 job_description, salary, url, applied, search_term, skills, inserted_at
+#             ) VALUES (
+#                 gen_random_uuid(), %s, %s, %s, %s, %s, %s,
+#                 %s, %s, %s, %s, %s, %s, NOW()
+#             )
+#             ON CONFLICT (url) DO NOTHING;
+#         """, (
+#             job["title"], job["company"], job["job_location"], job["job_state"],
+#             job["date"], job["site"], job["job_description"], job["salary"],
+#             job["url"], job["applied"], job["search_term"],
+#             json.dumps(job["skills"])  # ⬅️ cast to JSON
+#         ))
+#         conn.commit()
+#     except Exception as e:
+#         print(f"❌ DB insert error: {e}")
+#         traceback.print_exc()
+#     finally:
+#         cur.close()
+#         conn.close()
+
+
+# def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
+#     print(f"\n🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
+#     base_url = "https://www.indeed.com"
+#     driver = configure_webdriver()
+#     jobs_scraped = []
+
+#     try:
+#         for keyword in TECH_KEYWORDS:
+#             print(f"\n🔍 Searching for '{keyword}'")
+#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
+
+#             try:
+#                 driver.get(url)
+#                 time.sleep(2)
+#             except Exception as e:
+#                 print(f"🚫 Failed to load job search page: {e}")
+#                 continue
+
+#             while True:
+#                 try:
+#                     WebDriverWait(driver, 12).until(
+#                         EC.presence_of_element_located((By.CSS_SELECTOR, "div.job_seen_beacon"))
+#                     )
+#                 except:
+#                     print("⚠️ Job listings didn’t load.")
+#                     break
+
+#                 # ⬇️ Always re-fetch job cards to prevent stale references
+#                 card_elements = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                 print(f"📄 Found {len(card_elements)} job cards")
+
+#                 for i in range(len(card_elements)):
+#                     try:
+#                         # 🧼 Re-fetch the card element on each loop
+#                         cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                         if i >= len(cards):
+#                             break
+#                         card = cards[i]
+
+#                         title = card.find_element(By.CSS_SELECTOR, "h2.jobTitle span").text.strip()
+#                         company = card.find_element(By.CSS_SELECTOR, "[data-testid='company-name']").text.strip()
+#                         location_text = card.find_element(By.CSS_SELECTOR, "[data-testid='text-location']").text.strip()
+#                         job_state = location_text.lower()
+#                         href = card.find_element(By.CSS_SELECTOR, "a").get_attribute("href") or ""
+#                         job_url = href if href.startswith("http") else f"{base_url}{href}"
+
+#                         # Navigate to job page (same tab)
+#                         driver.execute_script("window.open(arguments[0], '_self');", job_url)
+#                         time.sleep(2)
+
+#                         try:
+#                             WebDriverWait(driver, 7).until(
+#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
+#                             )
+#                             description = driver.find_element(By.ID, "jobDescriptionText").text.strip()
+#                         except:
+#                             description = "N/A"
+
+#                         skills = extract_skills(description, skill_matrix)
+
+#                         job = {
+#                             "title": title,
+#                             "company": company,
+#                             "job_location": location_text,
+#                             "job_state": job_state,
+#                             "date": datetime.today().date(),
+#                             "site": "Indeed",
+#                             "job_description": description,
+#                             "salary": "N/A",
+#                             "url": job_url,
+#                             "applied": False,
+#                             "search_term": keyword,
+#                             "skills": skills,
+#                         }
+
+#                         insert_job_to_db(job)
+#                         jobs_scraped.append(job)
+
+#                         # Return to search results
+#                         driver.execute_script("window.history.go(-1)")
+#                         time.sleep(2)
+
+#                     except Exception as e:
+#                         print(f"❌ Error on job scrape: {e}")
+#                         traceback.print_exc()
+#                         try:
+#                             driver.execute_script("window.history.go(-1)")
+#                             time.sleep(2)
+#                         except:
+#                             pass
+#                         continue
+
+#                 try:
+#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
+#                     if next_btn.is_enabled():
+#                         driver.execute_script("arguments[0].click();", next_btn)
+#                         time.sleep(2)
+#                     else:
+#                         break
+#                 except:
+#                     break
+
+#     finally:
+#         try:
+#             driver.quit()
+#         except:
+#             pass
+
+#     if jobs_scraped:
+#         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+#         with open(f"crawl4ai_indeed_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
+#             writer = csv.DictWriter(f, fieldnames=list(jobs_scraped[0].keys()))
+#             writer.writeheader()
+#             writer.writerows(jobs_scraped)
+#         print(f"📁 Saved to crawl4ai_indeed_jobs_{ts}.csv")
+
+#     cleanup(days)
+#     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
+#     return jobs_scraped
+
+
+# if __name__ == "__main__":
+#     jobs = get_jobs_from_crawl4ai()
+#     print(f"🎯 Finished scraping. {len(jobs)} jobs returned.")
+
 
 
 # import sys
@@ -202,34 +555,33 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 # import csv
 # import traceback
 # from datetime import datetime, timedelta
+# import json
+# import undetected_chromedriver as uc
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as EC
-# import undetected_chromedriver as uc
+
+# from app.services.skills import extract_skills, load_skill_matrix
 # from app.db.connect_database import get_db_connection
 # from app.db.cleanup import cleanup
-# from app.scraper.indeed_scraper import TECH_KEYWORDS  # reuse shared keywords
+# from app.scraper.indeed_scraper import TECH_KEYWORDS
 
 # LOCATION = "remote"
-# PAGES_PER_KEYWORD = 2
-# MAX_DAYS = 15
+# MAX_DAYS = 5
+# skill_matrix = load_skill_matrix()
+
 
 # def configure_webdriver():
 #     options = uc.ChromeOptions()
-#     options.add_argument("--headless")
 #     options.add_argument("--no-sandbox")
 #     options.add_argument("--disable-dev-shm-usage")
 #     options.add_argument("--disable-blink-features=AutomationControlled")
-#     # options.add_experimental_option("excludeSwitches", ["enable-automation"])
-#     # options.add_experimental_option("useAutomationExtension", False)
 #     options.add_argument(
 #         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 #         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36"
 #     )
 
 #     driver = uc.Chrome(options=options, headless=False)
-
-#     # 🛡 Add stealth script to bypass navigator.webdriver detection
 #     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
 #         "source": """
 #             Object.defineProperty(navigator, 'webdriver', {
@@ -237,8 +589,9 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #             })
 #         """
 #     })
-
 #     return driver
+
+
 # def parse_date(raw: str):
 #     raw = raw.lower()
 #     if "today" in raw or "just posted" in raw:
@@ -249,8 +602,350 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #     except:
 #         return datetime.today().date()
 
+
 # def is_tech_job(title: str) -> bool:
 #     return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
+
+
+# def insert_job_to_db(job: dict):
+#     conn = get_db_connection()
+#     cur = conn.cursor()
+#     try:
+#         cur.execute("""
+#             INSERT INTO jobs (
+#                 id, title, company, job_location, job_state, date, site,
+#                 job_description, salary, url, applied, search_term, skills, inserted_at
+#             ) VALUES (
+#                 gen_random_uuid(), %s, %s, %s, %s, %s, %s,
+#                 %s, %s, %s, %s, %s, %s, NOW()
+#             )
+#             ON CONFLICT (url) DO NOTHING;
+#         """, (
+#             job["title"], job["company"], job["job_location"], job["job_state"],
+#             job["date"], job["site"], job["job_description"], job["salary"],
+#             job["url"], job["applied"], job["search_term"], json.dumps(job["skills"])
+
+#         ))
+#         conn.commit()
+#     except Exception as e:
+#         print(f"❌ DB insert error: {e}")
+#         traceback.print_exc()
+#     finally:
+#         cur.close()
+#         conn.close()
+
+# def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
+#     print(f"🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
+#     base_url = "https://www.indeed.com"
+#     driver = configure_webdriver()
+#     jobs_scraped = []
+#     skill_matrix = load_skill_matrix()
+
+#     try:
+#         for keyword in TECH_KEYWORDS:
+#             print(f"\n🔍 '{keyword}'")
+#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
+
+#             try:
+#                 driver.get(url)
+#                 with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
+#                     f.write(driver.page_source)
+#                 time.sleep(2)
+#             except Exception as e:
+#                 print(f"🚫 Failed to load search page: {e}")
+#                 continue
+
+#             while True:
+#                 try:
+#                     WebDriverWait(driver, 12).until(
+#                         EC.presence_of_element_located((By.CSS_SELECTOR, "div.job_seen_beacon"))
+#                     )
+#                 except:
+#                     print("⚠️ Job listings didn’t load.")
+#                     break
+
+#                 cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                 print(f"📄 Found {len(cards)} job cards")
+
+#                 for card in cards:
+#                     try:
+#                         title = card.find_element(By.CSS_SELECTOR, "h2.jobTitle span").text.strip()
+#                         if not is_tech_job(title):
+#                             continue
+
+#                         company = card.find_element(By.CSS_SELECTOR, "[data-testid='company-name']").text.strip()
+#                         location_text = card.find_element(By.CSS_SELECTOR, "[data-testid='text-location']").text.strip()
+#                         job_state = location_text.lower()
+
+#                         href = card.find_element(By.CSS_SELECTOR, "a").get_attribute("href") or ""
+#                         job_url = href if href.startswith("http") else f"{base_url}{href}"
+
+#                         # Visit job page in same tab
+#                         driver.execute_script("window.open(arguments[0], '_self');", job_url)
+#                         time.sleep(2)
+
+#                         try:
+#                             WebDriverWait(driver, 7).until(
+#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
+#                             )
+#                             description = driver.find_element(By.ID, "jobDescriptionText").text.strip()
+#                         except:
+#                             description = "N/A"
+
+#                         skills = extract_skills(description, skill_matrix)
+
+#                         job = {
+#                             "title": title,
+#                             "company": company,
+#                             "job_location": location_text,
+#                             "job_state": job_state,
+#                             "date": datetime.today().date(),
+#                             "site": "Indeed",
+#                             "job_description": description,
+#                             "salary": "N/A",
+#                             "url": job_url,
+#                             "applied": False,
+#                             "search_term": keyword,
+#                             "skills": skills,
+#                         }
+
+#                         insert_job_to_db(job)
+#                         jobs_scraped.append(job)
+
+#                         # Go back to previous search results
+#                         driver.execute_script("window.history.go(-1)")
+#                         time.sleep(2)
+
+#                     except Exception as e:
+#                         print(f"❌ Error on job scrape: {e}")
+#                         traceback.print_exc()
+#                         try:
+#                             driver.execute_script("window.history.go(-1)")
+#                             time.sleep(2)
+#                         except:
+#                             pass
+#                         continue
+
+#                 # Pagination
+#                 try:
+#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
+#                     if next_btn.is_enabled():
+#                         driver.execute_script("arguments[0].click();", next_btn)
+#                         time.sleep(2)
+#                     else:
+#                         break
+#                 except:
+#                     break
+
+#     finally:
+#         try: driver.quit()
+#         except: pass
+
+#     if jobs_scraped:
+#         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+#         with open(f"crawl4ai_indeed_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
+#             writer = csv.DictWriter(f, fieldnames=list(jobs_scraped[0].keys()))
+#             writer.writeheader()
+#             writer.writerows(jobs_scraped)
+#         print(f"📁 Saved to crawl4ai_indeed_jobs_{ts}.csv")
+
+#     cleanup(days)
+#     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
+#     return jobs_scraped
+# def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
+#     print(f"🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
+#     base_url = "https://www.indeed.com"
+#     driver = configure_webdriver()
+#     jobs_scraped = []
+
+#     try:
+#         for keyword in TECH_KEYWORDS:
+#             print(f"\n🔍 '{keyword}'")
+#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
+
+#             if not driver.session_id:
+#                 print("💥 Driver session expired. Restarting...")
+#                 try: driver.quit()
+#                 except: pass
+#                 driver = configure_webdriver()
+
+#             try:
+#                 driver.get(url)
+#                 with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
+#                     f.write(driver.page_source)
+#                     print(f"📝 Saved HTML snapshot for '{keyword}'")
+#                 time.sleep(2)
+#             except Exception as e:
+#                 print(f"🚫 Failed to load job search page: {e}")
+#                 continue
+
+#             while True:
+#                 try:
+#                     WebDriverWait(driver, 15).until(
+#                         EC.presence_of_element_located((By.CSS_SELECTOR, "div.job_seen_beacon"))
+#                     )
+#                 except:
+#                     print("⚠️ Job container did not load.")
+#                     break
+
+#                 cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                 print(f"📄 Found {len(cards)} job cards.")
+
+#                 for card in cards:
+#                     try:
+#                         title = card.find_element(By.CSS_SELECTOR, "h2.jobTitle span").text.strip()
+#                         if not is_tech_job(title):
+#                             continue
+
+#                         company = card.find_element(By.CSS_SELECTOR, "[data-testid='company-name']").text.strip()
+#                         location_text = card.find_element(By.CSS_SELECTOR, "[data-testid='text-location']").text.strip()
+#                         job_state = location_text.lower()
+#                         href = card.find_element(By.CSS_SELECTOR, "a").get_attribute("href") or ""
+#                         job_url = href if href.startswith("http") else f"{base_url}{href}"
+
+#                         driver.execute_script("window.open(arguments[0]);", job_url)
+#                         time.sleep(1)
+
+#                         try:
+#                             handles = driver.window_handles
+#                             driver.switch_to.window(handles[-1])
+#                             WebDriverWait(driver, 7).until(
+#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
+#                             )
+#                             description = driver.find_element(By.ID, "jobDescriptionText").text.strip()
+#                         except:
+#                             description = "N/A"
+#                         finally:
+#                             try:
+#                                 driver.close()
+#                                 handles = driver.window_handles
+#                                 if handles:
+#                                     driver.switch_to.window(handles[0])
+#                                 else:
+#                                     raise Exception("💀 No remaining tabs. Session likely dead.")
+#                             except Exception as e:
+#                                 print(f"⚠️ Could not return to main window: {e}. Restarting driver.")
+#                                 try: driver.quit()
+#                                 except: pass
+#                                 driver = configure_webdriver()
+#                                 break  # Exit inner loop and retry keyword cleanly
+
+
+
+#                         matched_skills = extract_skills(description, skill_matrix)
+
+#                         job = {
+#                             "title": title,
+#                             "company": company,
+#                             "job_location": location_text,
+#                             "job_state": job_state,
+#                             "date": datetime.today().date(),
+#                             "site": "Indeed",
+#                             "job_description": description,
+#                             "salary": "N/A",
+#                             "url": job_url,
+#                             "applied": False,
+#                             "search_term": keyword,
+#                             "skills": matched_skills,
+#                         }
+
+#                         insert_job_to_db(job)
+#                         jobs_scraped.append(job)
+
+#                     except Exception as e:
+#                         print(f"❌ Error parsing job: {e}")
+#                         traceback.print_exc()
+#                         continue
+
+#                 try:
+#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
+#                     if next_btn.is_enabled():
+#                         driver.execute_script("arguments[0].click();", next_btn)
+#                         time.sleep(2)
+#                     else:
+#                         break
+#                 except:
+#                     break
+
+#     finally:
+#         try: driver.quit()
+#         except: pass
+
+#     if jobs_scraped:
+#         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+#         with open(f"crawl4ai_indeed_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
+#             writer = csv.DictWriter(f, fieldnames=list(jobs_scraped[0].keys()))
+#             writer.writeheader()
+#             writer.writerows(jobs_scraped)
+#         print(f"📁 Saved to crawl4ai_indeed_jobs_{ts}.csv")
+
+#     cleanup(days)
+#     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
+#     return jobs_scraped
+
+
+if __name__ == "__main__":
+    jobs = get_jobs_from_crawl4ai()
+    print(f"🎯 Finished scraping. {len(jobs)} jobs returned.")
+
+# import sys
+# import time
+# import random
+# import csv
+# import traceback
+# from datetime import datetime, timedelta
+
+# import undetected_chromedriver as uc
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from app.services.skills import extract_skills
+# from app.db.connect_database import get_db_connection
+# from app.db.cleanup import cleanup
+# from app.scraper.indeed_scraper import TECH_KEYWORDS 
+
+# LOCATION = "remote"
+# MAX_DAYS = 5
+
+
+# def configure_webdriver():
+#     options = uc.ChromeOptions()
+#     # options.add_argument("--headless")
+#     options.add_argument("--no-sandbox")
+#     options.add_argument("--disable-dev-shm-usage")
+#     options.add_argument("--disable-blink-features=AutomationControlled")
+#     options.add_argument(
+#         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+#         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.50 Safari/537.36"
+#     )
+
+#     driver = uc.Chrome(options=options, headless=False)
+
+#     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+#         "source": """
+#             Object.defineProperty(navigator, 'webdriver', {
+#                 get: () => undefined
+#             })
+#         """
+#     })
+
+#     return driver
+
+
+# def parse_date(raw: str):
+#     raw = raw.lower()
+#     if "today" in raw or "just posted" in raw:
+#         return datetime.today().date()
+#     try:
+#         days_ago = int(raw.strip().split()[0])
+#         return datetime.today().date() - timedelta(days=days_ago)
+#     except:
+#         return datetime.today().date()
+
+
+# def is_tech_job(title: str) -> bool:
+#     return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
+
 
 # def insert_job_to_db(job: dict):
 #     conn = get_db_connection()
@@ -278,6 +973,7 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #         cur.close()
 #         conn.close()
 
+
 # def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #     print(f"🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
 #     base_url = "https://www.indeed.com"
@@ -288,59 +984,73 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #         for keyword in TECH_KEYWORDS:
 #             print(f"\n🔍 '{keyword}'")
 #             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
-#             driver.get(url)
-#             with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
-#                 f.write(driver.page_source)
-#                 print(f"📝 Saved HTML snapshot for '{keyword}'")
 
-#             time.sleep(2)
+#             try:
+#                 if not driver.session_id:
+#                     raise Exception("WebDriver session invalid")
+
+#                 driver.get(url)
+#                 with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
+#                     f.write(driver.page_source)
+#                     print(f"📝 Saved HTML snapshot for '{keyword}'")
+#                 time.sleep(2)
+
+#             except Exception as e:
+#                 print(f"🚫 Failed to load job search page: {e}")
+#                 break
 
 #             while True:
 #                 try:
 #                     WebDriverWait(driver, 15).until(
-#                         EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'mainContentTable')]"))
+#                         EC.presence_of_element_located((By.CSS_SELECTOR, "div.job_seen_beacon"))
 #                     )
 #                 except:
-#                     print("⚠️ Container did not load.")
+#                     print("⚠️ Job container did not load.")
 #                     break
 
-#                 cards = driver.find_elements(
-#                     By.XPATH, "//ul[contains(@class,'jobsearch-ResultsList')]/li//table[contains(@class,'mainContentTable')]"
-#                 )
+#                 cards = driver.find_elements(By.CSS_SELECTOR, "div.job_seen_beacon")
+#                 print(f"📄 Found {len(cards)} job cards.")
 
-#                 for table in cards:
+#                 for card in cards:
 #                     try:
-#                         title_el = table.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]/a/span")
-#                         title = title_el.text.strip()
+#                         title = card.find_element(By.CSS_SELECTOR, "h2.jobTitle span").text.strip()
 #                         if not is_tech_job(title):
 #                             continue
 
-#                         company_el = table.find_element(By.XPATH, ".//span[@data-testid='company-name']")
-#                         location_el = table.find_element(By.XPATH, ".//div[@data-testid='text-location']")
-#                         date_el = table.find_element(By.XPATH, ".//span[contains(@class, 'date')]")
-#                         link_el = table.find_element(By.XPATH, ".//a[@data-jk]")
+#                         company = card.find_element(By.CSS_SELECTOR, "[data-testid='company-name']").text.strip()
+#                         location_text = card.find_element(By.CSS_SELECTOR, "[data-testid='text-location']").text.strip()
+#                         job_state = location_text.lower()
 
-#                         job_url = f"{base_url}/viewjob?jk={link_el.get_attribute('data-jk') or ''}"
-#                         date_posted = parse_date(date_el.text.strip())
+#                         href = card.find_element(By.CSS_SELECTOR, "a").get_attribute("href") or ""
+#                         job_url = href if href.startswith("http") else f"{base_url}{href}"
 
-#                         driver.execute_script("arguments[0].scrollIntoView(true);", table)
-#                         link_el.click()
-#                         time.sleep(2)
+#                         # Open in new tab
+#                         driver.execute_script("window.open(arguments[0]);", job_url)
+#                         time.sleep(1)
 
 #                         try:
-#                             desc_el = WebDriverWait(driver, 5).until(
+#                             handles = driver.window_handles
+#                             driver.switch_to.window(handles[-1])
+#                             WebDriverWait(driver, 7).until(
 #                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
 #                             )
-#                             description = desc_el.text.strip()
+#                             description = driver.find_element(By.ID, "jobDescriptionText").text.strip()
 #                         except:
 #                             description = "N/A"
+#                         finally:
+#                             try:
+#                                 driver.close()
+#                                 driver.switch_to.window(driver.window_handles[0])
+#                             except:
+#                                 print("⚠️ Could not switch back to main window. Ending loop.")
+#                                 break
 
 #                         job = {
 #                             "title": title,
-#                             "company": company_el.text.strip() or "N/A",
-#                             "job_location": location_el.text.strip() or location,
-#                             "job_state": location.lower(),
-#                             "date": date_posted,
+#                             "company": company,
+#                             "job_location": location_text,
+#                             "job_state": job_state,
+#                             "date": datetime.today().date(),
 #                             "site": "Indeed",
 #                             "job_description": description,
 #                             "salary": "N/A",
@@ -354,6 +1064,7 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 
 #                     except Exception as e:
 #                         print(f"❌ Error parsing job: {e}")
+#                         traceback.print_exc()
 #                         continue
 
 #                 try:
@@ -365,6 +1076,180 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #                         break
 #                 except:
 #                     break
+
+#     finally:
+#         try:
+#             driver.quit()
+#         except:
+#             pass
+
+#     if jobs_scraped:
+#         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+#         with open(f"crawl4ai_indeed_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
+#             writer = csv.DictWriter(f, fieldnames=list(jobs_scraped[0].keys()))
+#             writer.writeheader()
+#             writer.writerows(jobs_scraped)
+#         print(f"📁 Saved to crawl4ai_indeed_jobs_{ts}.csv")
+
+#     cleanup(days)
+#     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
+#     return jobs_scraped
+
+# if __name__ == "__main__":
+#     jobs = get_jobs_from_crawl4ai()
+#     print(f"🎯 Finished scraping. {len(jobs)} jobs returned.")
+
+
+
+
+
+
+
+
+# import sys
+# import time
+# import random
+# import csv
+# import traceback
+# from datetime import datetime, timedelta
+
+# from ..utils.write_jobs import write_jobs_csv
+# from app.db.sync_jobs import insert_job_to_db, sync_job_data_folder_to_supabase
+# from app.db.cleanup import cleanup
+# from app.utils.common import (
+#     TECH_KEYWORDS,
+#     LOCATION,
+#     PAGES_PER_KEYWORD,
+#     MAX_DAYS,
+#     configure_driver
+# )
+# from app.utils.skill_utils import load_flat_skills, extract_flat_skills
+
+# import undetected_chromedriver as uc
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+
+
+# def parse_date(raw: str):
+#     raw = raw.lower()
+#     if "today" in raw or "just posted" in raw:
+#         return datetime.today().date()
+#     try:
+#         days_ago = int(raw.strip().split()[0])
+#         return datetime.today().date() - timedelta(days=days_ago)
+#     except:
+#         return datetime.today().date()
+
+
+# def is_tech_job(title: str) -> bool:
+#     return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
+
+
+# def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
+#     print(f"🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
+#     base_url = "https://www.indeed.com"
+#     driver = configure_driver()
+#     jobs_scraped = []
+
+#     # ✅ Load skills once
+#     skill_list = load_flat_skills("app/resources/skills.txt")
+
+#     try:
+#         for keyword in TECH_KEYWORDS:
+#             print(f"\n🔍 '{keyword}'")
+#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
+#             driver.get(url)
+
+#             with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
+#                 f.write(driver.page_source)
+#                 print(f"📝 Saved HTML snapshot for '{keyword}'")
+
+#             time.sleep(3)
+
+#             while True:
+#                 try:
+#                     WebDriverWait(driver, 15).until(
+#                         EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'mainContentTable')]"))
+#                     )
+#                 except:
+#                     print("⚠️ Container did not load.")
+#                     break
+
+#                 cards = driver.find_elements(By.XPATH, "//table[contains(@class,'mainContentTable')]")
+
+#                 for table in cards:
+#                     try:
+#                         title = table.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]/a/span").text.strip()
+#                         if not is_tech_job(title):
+#                             continue
+
+#                         company = table.find_element(By.XPATH, ".//span[@data-testid='company-name']").text.strip()
+#                         job_location = table.find_element(By.XPATH, ".//div[@data-testid='text-location']").text.strip()
+#                         job_state = job_location.split(",")[-1].strip() if "," in job_location else job_location
+
+#                         try:
+#                             date_posted = parse_date(
+#                                 table.find_element(By.XPATH, ".//span[contains(text(), 'Posted') or contains(text(), 'Just posted')]").text.strip()
+#                             )
+#                         except:
+#                             date_posted = datetime.today().date()
+
+#                         job_url = f"{base_url}/viewjob?jk={table.find_element(By.XPATH, './/a[@data-jk]').get_attribute('data-jk') or ''}"
+
+#                         driver.execute_script("arguments[0].scrollIntoView(true);", table)
+#                         table.find_element(By.XPATH, ".//a[@data-jk]").click()
+#                         time.sleep(2)
+
+#                         try:
+#                             full_desc = WebDriverWait(driver, 5).until(
+#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
+#                             ).text.strip()
+#                         except:
+#                             full_desc = "N/A"
+
+#                         skills = extract_flat_skills(full_desc, skill_list)
+
+#                         job = {
+#                             "title": title,
+#                             "company": company,
+#                             "job_location": job_location,
+#                             "job_state": job_state,
+#                             "date": date_posted,
+#                             "site": "Indeed",
+#                             "job_description": full_desc,
+#                             "salary": "N/A",
+#                             "url": job_url,
+#                             "applied": False,
+#                             "saved": False,
+#                             "search_term": keyword,
+#                             "skills": skills,
+#                             "priority": 0,
+#                             "status": "new",
+#                             "category": None,
+#                             "inserted_at": datetime.utcnow(),
+#                             "last_verified": None,
+#                             "user_id": None
+#                         }
+#                         job["date"] = datetime.today().date()
+#                         insert_job_to_db(job)
+#                         jobs_scraped.append(job)
+
+#                     except Exception as e:
+#                         print(f"❌ Error parsing job: {e}")
+#                         traceback.print_exc()
+#                         continue
+
+#                 try:
+#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
+#                     if next_btn.is_enabled():
+#                         driver.execute_script("arguments[0].click();", next_btn)
+#                         time.sleep(2)
+#                     else:
+#                         break
+#                 except:
+#                     break
+
 #     finally:
 #         driver.quit()
 
@@ -381,6 +1266,25 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #     return jobs_scraped
 
 
+# def main():
+#     print("📡 Indeed Crawler Starting…")
+#     jobs = get_jobs_from_crawl4ai()
+#     print(f"\n🗂️ Total jobs collected: {len(jobs)}")
+
+#     write_jobs_csv(jobs, folder_name="debugged", label="indeed_crawl")
+#     print("🔁 Ensuring database is synced with CSV...")
+#     sync_job_data_folder_to_supabase(folder="server/job_data")
+
+#     cleanup(MAX_DAYS)
+
+
+# if __name__ == "__main__":
+#     main()
+
+
+
+
+
 
 
 
@@ -390,44 +1294,30 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 
 # import sys
 # import time
-# import uuid
 # import random
-# import traceback
-# import pandas as pd
 # import csv
+# import traceback
 # from datetime import datetime, timedelta
-
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
+# from app.utils.write_jobs import write_jobs_csv
+# from app.db.sync_jobs import insert_job_to_db
 # import undetected_chromedriver as uc
-
-# from db.connect_database import get_db_connection
-# from db.cleanup import cleanup
-
-# # ✅ Dynamic keyword input
-# TECH_KEYWORDS = sys.argv[1].split(",") if len(sys.argv) > 1 else [
-#     "software engineer", "front-end developer", "back-end developer",
-#     # ... add the rest of your keywords ...
-#     "web content manager"
-# ]
-
-# LOCATION = "remote"
-# PAGES_PER_KEYWORD = 2
-# MAX_DAYS = 15
-
-# def configure_webdriver():
-#     options = uc.ChromeOptions()
-#     options.add_argument("--headless")
-#     options.add_argument("--no-sandbox")
-#     options.add_argument("--disable-dev-shm-usage")
-#     return uc.Chrome(options=options)
-
-# def is_tech_job(title: str) -> bool:
-#     return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from app.db.cleanup import cleanup
+# from app.utils.common import (
+#     TECH_KEYWORDS,
+#     LOCATION,
+#     PAGES_PER_KEYWORD,
+#     MAX_DAYS,
+#     configure_driver
+# )
+# from app.db.sync_jobs import sync_job_data_folder_to_supabase
+# from app.utils.skill_utils import load_flat_skills, extract_flat_skills
 
 # def parse_date(raw: str):
-#     if "today" in raw.lower() or "just posted" in raw.lower():
+#     raw = raw.lower()
+#     if "today" in raw or "just posted" in raw:
 #         return datetime.today().date()
 #     try:
 #         days_ago = int(raw.strip().split()[0])
@@ -435,44 +1325,28 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #     except:
 #         return datetime.today().date()
 
-# def insert_job_to_db(job: dict):
-#     conn = get_db_connection()
-#     cur = conn.cursor()
-#     try:
-#         cur.execute("""
-#             INSERT INTO jobs (
-#                 id, title, company, job_location, job_state, date, site,
-#                 job_description, salary, url, applied, search_term, inserted_at
-#             )
-#             VALUES (
-#                 gen_random_uuid(), %s, %s, %s, %s, %s, %s,
-#                 %s, %s, %s, %s, %s, NOW()
-#             )
-#             ON CONFLICT (url) DO NOTHING;
-#         """, (
-#             job["title"], job["company"], job["job_location"], job["job_state"],
-#             job["date"], job["site"], job["job_description"], job["salary"],
-#             job["url"], job["applied"], job["search_term"]
-#         ))
-#         conn.commit()
-#     except Exception as e:
-#         print(f"❌ DB insert error: {e}")
-#         traceback.print_exc()
-#     finally:
-#         cur.close()
-#         conn.close()
+# def is_tech_job(title: str) -> bool:
+#     return any(keyword.lower() in title.lower() for keyword in TECH_KEYWORDS)
 
-# def scrape_jobs(location, days=MAX_DAYS):
+# def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
+#     print(f"🌐 Crawl4AI (Indeed) → {location} (last {days} days)")
 #     base_url = "https://www.indeed.com"
-#     driver = configure_webdriver()
+#     driver = configure_driver()
 #     jobs_scraped = []
+
+#     skill_list = load_flat_skills("app/resources/skills.txt")
 
 #     try:
 #         for keyword in TECH_KEYWORDS:
-#             print(f"\n🔍 Searching '{keyword}' in '{location}'...")
+#             print(f"\n🔍 '{keyword}'")
 #             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
 #             driver.get(url)
-#             time.sleep(2)
+
+#             with open(f"debug_{keyword.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
+#                 f.write(driver.page_source)
+#                 print(f"📝 Saved HTML snapshot for '{keyword}'")
+
+#             time.sleep(3)
 
 #             while True:
 #                 try:
@@ -480,14 +1354,12 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #                         EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'mainContentTable')]"))
 #                     )
 #                 except:
-#                     print("⚠️ Job container did not load.")
+#                     print("⚠️ Container did not load.")
 #                     break
 
-#                 job_cards = driver.find_elements(
-#                     By.XPATH, "//ul[contains(@class,'jobsearch-ResultsList')]/li//table[contains(@class,'mainContentTable')]"
-#                 )
+#                 cards = driver.find_elements(By.XPATH, "//table[contains(@class,'mainContentTable')]")
 
-#                 for table in job_cards:
+#                 for table in cards:
 #                     try:
 #                         title_el = table.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]/a/span")
 #                         title = title_el.text.strip()
@@ -495,44 +1367,63 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #                             continue
 
 #                         company_el = table.find_element(By.XPATH, ".//span[@data-testid='company-name']")
+#                         company = company_el.text.strip()
+
 #                         location_el = table.find_element(By.XPATH, ".//div[@data-testid='text-location']")
-#                         date_el = table.find_element(By.XPATH, ".//span[contains(@class, 'date')]")
+#                         job_location = location_el.text.strip()
+#                         job_state = job_location.split(",")[-1].strip() if "," in job_location else job_location
+
+#                         try:
+#                             date_el = table.find_element(By.XPATH, ".//span[contains(text(), 'Posted') or contains(text(), 'Just posted')]")
+#                             date_posted = parse_date(date_el.text.strip())
+#                         except:
+#                             date_posted = datetime.today().date()
+
 #                         link_el = table.find_element(By.XPATH, ".//a[@data-jk]")
-
 #                         job_url = f"{base_url}/viewjob?jk={link_el.get_attribute('data-jk') or ''}"
-#                         date_posted = parse_date(date_el.text.strip())
 
-#                         driver.execute_script("arguments[0].scrollIntoView(true);", table)
-#                         link_el.click()
+#                         driver.execute_script("arguments[0].scrollIntoView(true);", link_el)
+#                         driver.execute_script("arguments[0].click();", link_el)
 #                         time.sleep(2)
 
 #                         try:
 #                             desc_el = WebDriverWait(driver, 5).until(
 #                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
 #                             )
-#                             full_description = desc_el.text.strip()
+#                             full_desc = desc_el.text.strip()
 #                         except:
-#                             full_description = "N/A"
+#                             full_desc = "N/A"
+
+#                         skills = extract_flat_skills(full_desc, skill_list)
 
 #                         job = {
 #                             "title": title,
-#                             "company": company_el.text.strip() if company_el else "N/A",
-#                             "job_location": location_el.text.strip() if location_el else location,
-#                             "job_state": location.lower(),
+#                             "company": company,
+#                             "job_location": job_location,
+#                             "job_state": job_state,
 #                             "date": date_posted,
 #                             "site": "Indeed",
-#                             "job_description": full_description,
+#                             "job_description": full_desc,
 #                             "salary": "N/A",
 #                             "url": job_url,
 #                             "applied": False,
-#                             "search_term": keyword
+#                             "saved": False,
+#                             "search_term": keyword,
+#                             "skills": skills,
+#                             "priority": 0,
+#                             "status": "new",
+#                             "category": None,
+#                             "inserted_at": datetime.utcnow(),
+#                             "last_verified": None,
+#                             "user_id": None
 #                         }
 
 #                         insert_job_to_db(job)
 #                         jobs_scraped.append(job)
 
 #                     except Exception as e:
-#                         print(f"❌ Error parsing job card: {e}")
+#                         print(f"❌ Error parsing job: {e}")
+#                         traceback.print_exc()
 #                         continue
 
 #                 try:
@@ -546,295 +1437,31 @@ def get_jobs_from_crawl4ai(location=LOCATION, days=MAX_DAYS):
 #                     break
 
 #     finally:
-#         if driver:
-#             driver.quit()
+#         driver.quit()
 
-    
 #     if jobs_scraped:
 #         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-#         with open(f"crawl4ai_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
+#         with open(f"crawl4ai_indeed_jobs_{ts}.csv", "w", newline="", encoding="utf-8") as f:
 #             writer = csv.DictWriter(f, fieldnames=list(jobs_scraped[0].keys()))
 #             writer.writeheader()
 #             writer.writerows(jobs_scraped)
-#         print(f"📁 CSV saved to crawl4ai_jobs_{ts}.csv")
+#         print(f"📁 Saved to crawl4ai_indeed_jobs_{ts}.csv")
 
 #     cleanup(days)
-#     print(f"\n✅ Crawl4AI finished. Total jobs collected: {len(jobs_scraped)}")
+#     print(f"\n✅ Crawl4AI (Indeed) collected {len(jobs_scraped)} jobs.")
 #     return jobs_scraped
 
+# def main():
+#     print("📡 Indeed Crawler Starting…")
+#     jobs = get_jobs_from_crawl4ai()
+#     print(f"\n🗂️ Total jobs collected: {len(jobs)}")
+    
+#     write_jobs_csv(jobs, folder_name="debugged", label="indeed_crawl")
+#     print("🔁 Ensuring database is synced with CSV...")
+#     sync_job_data_folder_to_supabase(folder="server/job_data")
+    
+#     cleanup(MAX_DAYS)
 
-# # import time
-# import random
-# from datetime import datetime
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium import webdriver
+# if __name__ == "__main__":
+#     main()
 
-# from db.connect_database import get_db_connection
-# from scraper.indeed_scraper import TECH_KEYWORDS, is_tech_job, parse_date
-
-# def configure_webdriver():
-#     options = webdriver.ChromeOptions()
-#     options.add_argument("--headless")
-#     options.add_argument("--no-sandbox")
-#     options.add_argument("--disable-dev-shm-usage")
-#     driver = webdriver.Chrome(options=options)
-#     return driver
-
-# def insert_job_to_db(job):
-#     conn = get_db_connection()
-#     cur = conn.cursor()
-#     try:
-#         cur.execute("""
-#             INSERT INTO jobs (
-#                 id, title, company, job_location, job_state, date, site,
-#                 job_description, salary, url, applied, search_term
-#             ) VALUES (
-#                 gen_random_uuid(), %s, %s, %s, %s, %s, %s,
-#                 %s, %s, %s, %s, %s
-#             ) ON CONFLICT (url) DO NOTHING
-#         """, (
-#             job["title"], job["company"], job["job_location"], job["job_state"],
-#             job["date"], job["site"], job["job_description"], job["salary"],
-#             job["url"], job["applied"], job["search_term"]
-#         ))
-#         conn.commit()
-#     except Exception as e:
-#         print(f"❌ DB insert error: {e}")
-#     finally:
-#         cur.close()
-#         conn.close()
-
-# def get_jobs_from_crawl4ai(location="remote", days=30):
-#     print(f"🌐 Scraping Indeed via Crawl4AI for location='{location}'")
-#     base_url = "https://www.indeed.com"
-#     jobs_scraped = []
-#     driver = configure_webdriver()
-
-#     try:
-#         for keyword in TECH_KEYWORDS:
-#             print(f"\n🔍 Searching '{keyword}' in '{location}'...")
-#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
-#             driver.get(url)
-#             driver.execute_script("window.scrollBy(0, 400);")
-#             time.sleep(random.uniform(1.5, 3))
-
-#             while True:
-#                 try:
-#                     WebDriverWait(driver, 15).until(
-#                         EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'mainContentTable')]"))
-#                     )
-#                 except Exception:
-#                     print("⚠️ Job container did not load.")
-#                     break
-
-#                 job_cards = driver.find_elements(
-#                     By.XPATH, "//ul[contains(@class, 'jobsearch-ResultsList')]/li//table[contains(@class, 'mainContentTable')]"
-#                 )
-#                 print(f"🧾 Found {len(job_cards)} job cards.")
-
-#                 for table in job_cards:
-#                     try:
-#                         if not table.find_elements(By.XPATH, ".//a[@data-jk]"):
-#                             continue
-
-#                         title_el = table.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]/a/span")
-#                         title = title_el.text.strip()
-#                         if not is_tech_job(title):
-#                             continue
-
-#                         company_el = table.find_element(By.XPATH, ".//span[@data-testid='company-name']")
-#                         location_el = table.find_element(By.XPATH, ".//div[@data-testid='text-location']")
-#                         link_el = table.find_element(By.XPATH, ".//a[@data-jk]")
-
-#                         try:
-#                             date_el = table.find_element(By.XPATH, ".//span[contains(@class, 'date')]")
-#                             raw_date = date_el.text.strip()
-#                         except:
-#                             raw_date = ""
-#                         date_posted = parse_date(raw_date)
-
-#                         jk_value = link_el.get_attribute("data-jk")
-#                         if jk_value:
-#                             job_url = base_url + "/viewjob?jk=" + jk_value
-#                         else:
-#                             job_url = ""
-#                         driver.execute_script("arguments[0].scrollIntoView(true);", table)
-#                         link_el.click()
-#                         time.sleep(2)
-
-#                         try:
-#                             desc_el = WebDriverWait(driver, 5).until(
-#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
-#                             )
-#                             full_description = desc_el.text.strip()
-#                         except:
-#                             full_description = "N/A"
-
-#                         job = {
-#                             "title": title,
-#                             "company": company_el.text.strip() if company_el else "N/A",
-#                             "job_location": location_el.text.strip() if location_el else location,
-#                             "job_state": location.lower(),
-#                             "date": date_posted,
-#                             "site": "Indeed",
-#                             "job_description": full_description,
-#                             "salary": "N/A",
-#                             "url": job_url,
-#                             "applied": False,
-#                             "search_term": keyword
-#                         }
-
-#                         insert_job_to_db(job)
-#                         jobs_scraped.append(job)
-
-#                     except Exception as e:
-#                         print(f"❌ Error parsing job card: {e}")
-#                         continue
-
-#                 try:
-#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
-#                     if next_btn.is_enabled():
-#                         print("➡️ Moving to next page...")
-#                         driver.execute_script("arguments[0].click();", next_btn)
-#                         time.sleep(2)
-#                     else:
-#                         print("🚫 Next button disabled.")
-#                         break
-#                 except:
-#                     print("ℹ️ No next page.")
-#                     break
-
-#     finally:
-#         if driver:
-#             try:
-#                 driver.quit()
-#             except Exception:
-#                 pass
-
-#     print(f"\n✅ Crawl4AI finished. Total jobs collected: {len(jobs_scraped)}")
-#     return jobs_scraped
-# import time
-# import random
-# from datetime import datetime
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-# # Make sure to import or define insert_job_to_db before using it
-# # from .db_utils import insert_job_to_db
-
-# from selenium import webdriver
-
-# def configure_webdriver():
-#     options = webdriver.ChromeOptions()
-#     options.add_argument("--headless")
-#     options.add_argument("--no-sandbox")
-#     options.add_argument("--disable-dev-shm-usage")
-#     driver = webdriver.Chrome(options=options)
-#     return driver
-
-# def get_jobs_from_crawl4ai(location="remote", days=30):
-#     print(f"🌐 Scraping Indeed via Crawl4AI for location='{location}'")
-#     base_url = "https://www.indeed.com"
-#     jobs_scraped = []
-#     driver = configure_webdriver()
-
-#     try:
-#         for keyword in TECH_KEYWORDS:
-#             print(f"\n🔍 Searching '{keyword}' in '{location}'...")
-#             url = f"{base_url}/jobs?q={'+'.join(keyword.split())}&l={location}&fromage={days}&forceLocation=0"
-#             driver.get(url)
-#             driver.execute_script("window.scrollBy(0, 400);")
-#             time.sleep(random.uniform(1.5, 3))
-
-#             while True:
-#                 try:
-#                     WebDriverWait(driver, 15).until(
-#                         EC.presence_of_element_located((By.XPATH, "//table[contains(@class, 'mainContentTable')]"))
-#                     )
-#                 except Exception:
-#                     print("⚠️ Job container did not load.")
-#                     break
-
-#                 job_cards = driver.find_elements(
-#                     By.XPATH, "//ul[contains(@class, 'jobsearch-ResultsList')]/li//table[contains(@class, 'mainContentTable')]"
-#                 )
-#                 print(f"🧾 Found {len(job_cards)} job cards.")
-
-#                 for table in job_cards:
-#                     try:
-#                         if not table.find_elements(By.XPATH, ".//a[@data-jk]"):
-#                             continue
-
-#                         title_el = table.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]/a/span")
-#                         title = title_el.text.strip()
-#                         if not is_tech_job(title):
-#                             continue
-
-#                         company_el = table.find_element(By.XPATH, ".//span[@data-testid='company-name']")
-#                         location_el = table.find_element(By.XPATH, ".//div[@data-testid='text-location']")
-#                         link_el = table.find_element(By.XPATH, ".//a[@data-jk]")
-
-#                         try:
-#                             date_el = table.find_element(By.XPATH, ".//span[contains(@class, 'date')]")
-#                             raw_date = date_el.text.strip()
-#                         except:
-#                             raw_date = ""
-#                         date_posted = parse_date(raw_date)
-
-#                         job_url = base_url + "/viewjob?jk=" + link_el.get_attribute("data-jk")
-#                         driver.execute_script("arguments[0].scrollIntoView(true);", table)
-#                         link_el.click()
-#                         time.sleep(2)
-
-#                         try:
-#                             desc_el = WebDriverWait(driver, 5).until(
-#                                 EC.presence_of_element_located((By.ID, "jobDescriptionText"))
-#                             )
-#                             full_description = desc_el.text.strip()
-#                         except:
-#                             full_description = "N/A"
-
-#                         job = {
-#                             "title": title,
-#                             "company": company_el.text.strip() if company_el else "N/A",
-#                             "job_location": location_el.text.strip() if location_el else location,
-#                             "job_state": location.lower(),
-#                             "date": date_posted,
-#                             "site": "Indeed",
-#                             "job_description": full_description,
-#                             "salary": "N/A",
-#                             "url": job_url,
-#                             "applied": False,
-#                             "search_term": keyword
-#                         }
-
-#                         insert_job_to_db(job)
-#                         jobs_scraped.append(job)
-
-#                     except Exception as e:
-#                         print(f"❌ Error parsing job card: {e}")
-#                         continue
-#                 try:
-#                     next_btn = driver.find_element(By.XPATH, "//a[@aria-label='Next Page']")
-#                     if next_btn.is_enabled():
-#                         print("➡️ Moving to next page...")
-#                         driver.execute_script("arguments[0].click();", next_btn)
-#                         time.sleep(2)
-#                     else:
-#                         print("🚫 Next button disabled.")
-#                         break
-#                 except:
-#                     print("ℹ️ No next page.")
-#                     break
-
-#     finally:
-#         if driver:
-#             try:
-#                 driver.quit()
-#             except Exception:
-#                 pass  # Silences WinError 6 from undetected_chromedriver on __del__
-
-#     print(f"\n✅ Crawl4AI finished. Total jobs collected: {len(jobs_scraped)}")
-#     return jobs_scraped
