@@ -1,15 +1,26 @@
-import re
+from app.services.supabase_client import supabase
+
+def load_skill_matrix():
+    response = supabase.table("skill_categories").select("*").execute()
+    return response.data  # [{ "category": ..., "skills": [...] }]
 
 def extract_skills(description: str, skill_matrix: list[dict]) -> list[str]:
-    """
-    Scan job description against your Supabase skill_matrix:
-    [ { category: str, skills: [str,...] }, ... ]
-    and return a deduped list of matched skills.
-    """
+    """Extract a deduplicated list of skills found in the job description."""
     found = set()
-    text = (description or "").lower()
-    for bucket in skill_matrix:
-        for skill in bucket.get("skills", []):
-            if skill.lower() in text:
+    lowered_desc = (description or "").lower()
+    for section in skill_matrix:
+        for skill in section.get("skills", []):
+            if skill.lower() in lowered_desc:
                 found.add(skill)
     return sorted(found)
+
+
+def extract_skills_by_category(description: str, skill_matrix: list[dict]) -> dict:
+    """Return a dictionary of matched skills grouped by category."""
+    matches = {}
+    lowered = (description or "").lower()
+    for section in skill_matrix:
+        found = [s for s in section.get("skills", []) if s.lower() in lowered]
+        if found:
+            matches[section["category"]] = found
+    return matches

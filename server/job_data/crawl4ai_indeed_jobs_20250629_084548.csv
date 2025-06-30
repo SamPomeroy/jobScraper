@@ -1,0 +1,976 @@
+title,company,job_location,job_state,date,site,job_description,salary,url,applied,search_term
+Senior Software Engineer - AI Trainer,DataAnnotation,"Remote in Grand Rapids, MI",remote,2025-06-29,Indeed,"We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots that we are building in order to measure their progress, as well as write and evaluate code.
+To apply to this role, you will need to be proficient in either Python and/or JavaScript. Your role will require proficiency in at least one programming language/framework (JavaScript, TypeScript, Python, C, C#, C++, HTML/CSS, React, Go, Java, Kotlin, SQL, or Swift) in order to solve coding problems (think LeetCode, HackerRank, etc). For each coding problem, you must be able to explain how your solution solves the problem.
+As part of the application process, you will be asked to complete an assessment. If you pass, you will gain access to projects. Based on the quality of your work, you will continue to receive projects regularly. We find our most successful candidates work between 5-20 hours per week, up to 40 hours.
+Benefits:
+This is a full-time or part-time REMOTE position
+You’ll be able to choose which projects you want to work on
+You can work on your own schedule
+Projects are paid hourly, with bonuses on high-quality and high-volume work
+Responsibilities:
+Come up with diverse problems and solutions for a coding chatbot
+Write high-quality answers and code snippets
+Evaluate code quality produced by AI models for correctness and performance
+Qualifications:
+Fluency in English
+Proficient in either Python and/or JavaScript
+Detail-oriented
+Excellent writing and grammar skills
+A bachelor's degree (completed or in progress)
+Note: Payment is made via PayPal. We will never ask for any money from you.
+#INDUSSD
+Job Type: Contract
+Pay: From $40.00 per hour
+Benefits:
+Flexible schedule
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=e115e4d2e9efea35,False,software engineer
+Software Engineer,Communication Links,Remote,remote,2025-06-29,Indeed,"Role
+We are seeking an experienced Software Engineer to join our dynamic team at Communication Links. In this role, you will play a pivotal part in developing innovative products and contributing to the success of our projects. The individual MUST have strong experience in developing full-stack applications, with a particular focus on front-end development, building intuitive user interfaces, integrating with back-end services, and ensuring a seamless user experience across web applications. Additionally, the individual SHALL proactively recommend and implement improvements to existing software applications as needed.
+Responsibilities
+Develops, and tests software for Air Force-based products.
+Develops both front-end and back-end of software MVPs, components, and tools that can be leveraged to create new mobile and web applications.
+Collaborate in formulating strategies for rapid MVP development, ensuring efficient and scalable solutions that align with project goals and timelines
+Will adhere to plans, road maps, software design strategies. Helps to design and develop software requirements for Air Force based products including the software architectures, APIs, frameworks, and libraries.
+Analyzes and decomposes activities and requirements to software designs that are allocated across systems components/sub-components, classification system levels, etc.
+Works with Product Managers, UX Designers and other engineers to help in composing cohesive and sound software designs that form the basis of scalable software solutions.
+Helps to optimize software designs and architectures to deliver desired performance targets. Captures, develops, and reports reference architectures and documenting compliance standards.
+Junior engineers SHALL be proficient in discussing future limitations and a forward-thinking approach in resolving roadblocks presented by current strategy
+Stays informed on latest software architectures and trends from design patterns to DevSecOps and systems architecture patterns.
+Aids in making technical decisions in order to integrate systems to the cloud
+Optimizes software designs and architectures to deliver desired performance targets and devises tooling and methodologies to profile execution and capture performance metrics.
+Implements and practices DevOps Enablement and helps more junior/less experienced developers to do same
+Is a mentor to other engineers regarding troubleshooting techniques, design patterns, and testing strategies.
+Requirements
+Experience building modern front-end applications using frameworks like React.js, Node.js, and other JavaScript frameworks (e.g., Vue, Angular), or equivalent experience.
+Experience integrating web applications with GraphQL and/or REST APIs
+Be a hands-on engineer spending significant percentage of their time writing code or debugging tricky issues
+Knowledge of professional software engineering practices for the full software development life cycle including coding standards, code reviews, source control management, build processes, testing, and operations
+Proficiency in Computer Science fundamentals – object-oriented design, data structures, algorithm -design, problem solving, and complexity analysis.
+Proficiency with JavaScript, Java, and preferably one more programming language (Python, etc.)
+Proficiency with container technologies such as Docker or Kubernetes
+MUST be eligible to obtain a minimum of a Secret clearance.
+Required: Strong communication/general soft skills
+Excellent time management and organizational skills
+Proven ability to work effectively with remote development teams
+US Citizenship or Permanent US Resident
+Benefits:
+401(k)
+Dental insurance
+Flexible spending account
+Health insurance
+Health savings account
+Life insurance
+Paid time off
+Vision insurance
+Job Types: Full-time, Part-time
+Pay: $60.00 - $70.00 per hour
+Expected hours: 40 per week
+Benefits:
+401(k)
+Dental insurance
+Flexible schedule
+Health insurance
+Life insurance
+Paid time off
+Vision insurance
+Compensation Package:
+Bonus opportunities
+Hourly pay
+Schedule:
+Monday to Friday
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=dc3e0ab46cd2ee33,False,software engineer
+"Software Engineer, Test Platform",DoorDash,"Remote in Los Angeles, CA",remote,2025-06-29,Indeed,"Job ID: 3030655
+DoorDash, Inc.
+Los Angeles, CA; New York, NY; San Francisco, CA; Seattle, WA; Sunnyvale, CA
+About the Team
+Our mission is to improve the DoorDash developer velocity by providing them with a robust paved path development experience with rapid feedback loops. As a central infrastructure team reimagining the software development process, we are committed to removing as much unnecessary manual work and toil as possible from engineers so they can focus on what really matters - building products for our customers. We empower engineers to move faster with more confidence by making the development loop blazing fast, making it possible to rapidly develop & test changes with high fidelity and start working on new codebases in minutes. The team has the opportunity to interface with nearly every part of the company and has significant autonomy to innovate and leverage best-in-class technologies to build those delightful solutions for our engineers.
+About the Role
+As a Software Engineer on the Test Platform team, you will be building developer tools, frameworks and libraries as part of a central platform that powers the Software Development Lifecycle across all engineering teams at DoorDash. For instance, you will help build DoorDash’s next generation development environment using devcontainers open source technology, and a safe but realistic sandbox environment where engineers can test their code on their laptop or their phones just like it were in production. You will work closely with engineers, technical product managers, and engineering managers across all parts of the engineering organization to deliver large and impactful initiatives. Additionally, you will be a culture carrier in your team through mentorship, education, and uplifting of your peers.
+You’re excited about this opportunity because you will…
+Develop and maintain foundational components to enable DoorDash Engineers to excel at all aspects of their software development lifecycle.
+Play a foundational role in guiding the future of DoorDash’s software development strategy, by building, extending, and operating a central platform used by all DoorDash engineering teams.
+Be at the forefront of developing new technologies and have the opportunity to leverage and contribute to open source tech.
+Work on cross-functional projects by designing large scale systems with engineering excellence, long-term maintainability, and risk in mind.
+Work with a team of highly talented and motivated teammates.
+Join a growing company and grow right along with us.
+We’re excited about you because…
+You are a builder and have 2+ years of experience working on backend platform and infrastructure teams.
+Proficiency in at least one OOP language (Java, Kotlin, or Go).
+Experience building & maintaining platform components at scale.
+You apply a product mindset to platform problems and feel accomplished enabling others.
+You strive for design simplicity and consistency above all else.
+You solve problems using software to automate or prevent toil.
+
+Notice to Applicants for Jobs Located in NYC or Remote Jobs Associated With Office in NYC Only
+We use Covey as part of our hiring and/or promotional process for jobs in NYC and certain features may qualify it as an AEDT in NYC. As part of the hiring and/or promotion process, we provide Covey with job requirements and candidate submitted applications. We began using Covey Scout for Inbound from August 21, 2023, through December 21, 2023, and resumed using Covey Scout for Inbound again on June 29, 2024.
+The Covey tool has been reviewed by an independent auditor. Results of the audit may be viewed here: Covey
+Compensation
+
+The successful candidate's starting pay will fall within the pay range listed below and is determined based on job-related factors including, but not limited to, skills, experience, qualifications, work location, and market conditions. Base salary is localized according to an employee’s work location. Ranges are market-dependent and may be modified in the future.
+In addition to base salary, the compensation for this role includes opportunities for equity grants. Talk to your recruiter for more information.
+DoorDash cares about you and your overall well-being. That’s why we offer a comprehensive benefits package to all regular employees, which includes a 401(k) plan with employer matching, 16 weeks of paid parental leave, wellness benefits, commuter benefits match, paid time off and paid sick leave in compliance with applicable laws (e.g. Colorado Healthy Families and Workplaces Act). DoorDash also offers medical, dental, and vision benefits, 11 paid holidays, disability and basic life insurance, family-forming assistance, and a mental health program, among others.
+To learn more about our benefits, visit our careers page here.
+See below for paid time off details:
+For salaried roles: flexible paid time off/vacation, plus 80 hours of paid sick time per year.
+For hourly roles: vacation accrued at about 1 hour for every 25.97 hours worked (e.g. about 6.7 hours/month if working 40 hours/week; about 3.4 hours/month if working 20 hours/week), and paid sick time accrued at 1 hour for every 30 hours worked (e.g. about 5.8 hours/month if working 40 hours/week; about 2.9 hours/month if working 20 hours/week).
+The national base pay ranges for this position within the United States, including Illinois and Colorado.
+I4
+$130,600—$192,000 USD
+I5
+$159,800—$235,000 USD
+I6
+$193,800—$285,000 USD
+About DoorDash
+At DoorDash, our mission to empower local economies shapes how our team members move quickly, learn, and reiterate in order to make impactful decisions that display empathy for our range of users—from Dashers to merchant partners to consumers. We are a technology and logistics company that started with door-to-door delivery, and we are looking for team members who can help us go from a company that is known for delivering food to a company that people turn to for any and all goods.
+
+DoorDash is growing rapidly and changing constantly, which gives our team members the opportunity to share their unique perspectives, solve new challenges, and own their careers. We're committed to supporting employees’ happiness, healthiness, and overall well-being by providing comprehensive benefits and perks including premium healthcare, wellness expense reimbursement, paid parental leave and more.
+Our Commitment to Diversity and Inclusion
+We’re committed to growing and empowering a more inclusive community within our company, industry, and cities. That’s why we hire and cultivate diverse teams of people from all backgrounds, experiences, and perspectives. We believe that true innovation happens when everyone has room at the table and the tools, resources, and opportunity to excel.
+Statement of Non-Discrimination: In keeping with our beliefs and goals, no employee or applicant will face discrimination or harassment based on: race, color, ancestry, national origin, religion, age, gender, marital/domestic partner status, sexual orientation, gender identity or expression, disability status, or veteran status. Above and beyond discrimination and harassment based on “protected categories,” we also strive to prevent other subtler forms of inappropriate behavior (i.e., stereotyping) from ever gaining a foothold in our office. Whether blatant or hidden, barriers to success have no place at DoorDash. We value a diverse workforce – people who identify as women, non-binary or gender non-conforming, LGBTQIA+, American Indian or Native Alaskan, Black or African American, Hispanic or Latinx, Native Hawaiian or Other Pacific Islander, differently-abled, caretakers and parents, and veterans are strongly encouraged to apply. Thank you to the Level Playing Field Institute for this statement of non-discrimination.
+Pursuant to the San Francisco Fair Chance Ordinance, Los Angeles Fair Chance Initiative for Hiring Ordinance, and any other state or local hiring regulations, we will consider for employment any qualified applicant, including those with arrest and conviction records, in a manner consistent with the applicable regulation.
+If you need any accommodations, please inform your recruiting contact upon initial connection.
+Flexible Work
+Discover how we’re evolving & leading the way for the future of work
+Learn More About Flexible Work
+Stay Connected
+Be the first to hear about our latest job openings, recruiting events, and exciting breakthroughs.
+(Rejoignez notre French Talent Network lci)
+Join Our Talent Network",N/A,https://www.indeed.com/viewjob?jk=9fb8bd7db5d856c1,False,software engineer
+Software Engineer - Frontend,Pano AI,"Remote in San Francisco, CA",remote,2025-06-29,Indeed,"Who we are
+
+The problem: Every minute matters in fire response. As climate change amplifies the intensity of wildfires—with longer fire seasons, dryer fuels, and faster winds—new ignitions spread faster and put more communities at risk. Today, most wildfires are detected by bystanders and reported via 911, meaning it can take hours to detect a fire, verify its exact location and size, and dispatch first responders. Fire authorities need a faster way to detect, confirm, and pinpoint fires so that they can quickly respond—preventing small flare-ups from becoming devastating infernos.
+
+About Pano: Pano AI is a 100+ person growth stage start-up, headquartered in San Francisco, that is the leader in early wildfire detection and intelligence, helping fire professionals respond to fires faster and more safely—with the right equipment, timely information, and enhanced coordination—so that they can stop a new ignition before it grows. Pano AI combines advanced hardware, software, and artificial intelligence into an easy-to-use, web-based platform. Leveraging a network of ultra-high-definition, 360-degree cameras atop high vantage points, as well as satellite and other data feeds, Pano AI produces a real-time picture of threats in a geographic region and delivers immediate, actionable intelligence.
+
+MIT Technology Review listed Pano as one of the top 15 climate tech companies to watch in 2024 and Fast Company named Pano AI one of the Top 10 most innovative companies in AI of 2023. We’ve also been featured in the Wall Street Journal, Bloomberg, CNBC News, and a national TV commercial produced by strategic partner T-Mobile. Pano AI’s dozens of government and enterprise customers span 10 states in the U.S., five states in Australia, and BC, Canada, helping protect more than 30 million acres of land. Pano AI has raised $89M in venture capital funding from Giant Ventures, Liberty Mutual Ventures, Tokio Marine Future Fund, Congruent Ventures, Initialized Capital, Salesforce Ventures, and T-Mobile Ventures. Learn more at https://www.pano.ai/.
+
+The Role
+
+The Frontend Engineer will strategize, design, and execute the user interface and experience for a single-page application dedicated to early wildfire detection. Responsibilities include collaborating closely with the product team to enhance map functionality, enhancing our custom canvas video player, and extending React application functionality. The engineer will deliver thoroughly tested, accessible solutions while adhering to best practices and ensuring cross-device compatibility.
+What you’ll do
+Feature Development: Lead the development of new features, ensuring they align with project goals and enhance overall functionality.
+Code Maintenance: Maintain and enhance existing codebase to optimize extensibility and address evolving requirements.
+Code Review: Conduct thorough code reviews, providing constructive feedback to maintain code quality and adherence to best practices.
+Code Quality Advocate: Championing the creation of readable code with predictable patterns to enhance collaboration and maintainability. Prioritize code quality by emphasizing accessibility principles, incorporating security best practices, and writing testable code.
+Best Practices Evolution: Actively contribute to evolving coding standards and best practices within the development team.
+Technology Evaluation: Participate in evaluating new technologies and tools, ensuring the adoption of effective solutions that align with project needs.
+Tech Debt Prioritization: Collaborate in prioritizing and addressing technical debt to maintain a healthy and sustainable codebase.
+Legacy Application Management: Successfully navigate and contribute to our existing application, striking a balance between addressing technical debt and delivering new features.
+Expert Debugging Skills: Possess strong debugging capabilities to identify and resolve issues promptly, ensuring the stability and reliability of React applications.
+REST API Integration: Proficient in utilizing RESTful APIs to facilitate smooth communication between the frontend and backend of React applications.
+What you’ll bring
+2+ years of Frontend Engineer Experience: Demonstrate a robust background in developing Frontend applications, showcasing proficiency and expertise in creating efficient and scalable solutions.
+Technical Proficiency: Experience with the following technologies HTML, CSS, Typescript, React, React Testing Library, Jest, and a state management solution like Redux (we use Recoil). Bonus points for HTML Canvas, or Map Technologies.
+Design System and Component Library Proficiency: Proven expertise in utilizing Design Systems like Material Design and component libraries such as Material-UI, showcasing efficiency and consistency in development processes.
+Effective Communication: Ability to communicate efficiently within the team, sharing insights and updates, and collaborating effectively to achieve project goals.
+Cross-functional Team Experience: Collaborate with cross-functional teams, including QA, Product, and Backend, to plan and execute project initiatives.
+Preference for someone in PST or MT time zone
+Final salary offered is based upon multiple factors, including individual job-related qualifications, education, experience, knowledge, skills, and location. In addition to salary, this position is also eligible for stock options. We offer comprehensive health insurance, paid time off, and 401k.
+Pano is an equal opportunity employer committed to recruiting and supporting our team-members regardless of where they come from. We do not discriminate on the basis of race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, disability, age, or veteran status.",N/A,https://www.indeed.com/viewjob?jk=567f8ba085d31cbc,False,software engineer
+Staff Software Engineer - Authentication,Pindrop,Remote,remote,2025-06-29,Indeed,"Who we are
+Are you passionate about innovating at the intersection of technology and personal security? At Pindrop, we recognize that the human voice is a unique personal identifier, increasingly susceptible to sophisticated fraud, including the threat of deepfakes. We're leading the way in developing cutting-edge authentication, fraud prevention, and deepfake detection. Our mission is to provide seamless and secure digital experiences, safeguarding the most personal aspect of our identity: our voice. Here, you'll be part of a team driven by values of Innovation, Customer Advocacy, Excellence, and Impact. We're not just creating a safer digital landscape by fortifying trust and integrity with those we serve, we're also building a dynamic, supportive workplace where your contributions make a real difference.
+Headquartered in Atlanta, GA, Pindrop is backed by world-class investors such as Andreessen-Horowitz, IVP, and CapitalG.
+
+What you'll do
+Design, develop, test, deploy, and monitor high-performance services and APIs.
+Develop applications in Golang and Python on top of a modern cloud-focused platform.
+Develop and maintain services using AWS native products such as Kinesis, DynamoDB, and S3 as well as GCP native products.
+Deliver production-ready code from start to finish.
+Review code to maintain quality with an eye towards performance, scale, and security.
+Work in a cross-functional environment composed of software engineers, test engineers, research scientists, and product managers.
+Identify and evaluate new technologies for implementation.
+Contribute to improving software engineering best practices.
+Part of On-call rotation with night/weekend work required.
+Who you are
+You have strong verbal and written communication skills.
+You enjoy working within a collaborative environment across multiple departments.
+You love solving hard problems and finding ways to improve the efficiency of processes.
+You have a proven track record of providing stable and secure code in production environments.
+You are able to contribute to the feature development in the platform/product with minimal supervision.
+You can deliver production-ready code from start to finish with an eye towards performance, scale and security and with an understanding of how code could impact cloud scalability.
+You are resilient in the face of challenges, change, and ambiguity.
+You are optimistic and believe that you can make a problem into a solution.
+You are resourceful, excited to uncover innovative solutions and teach yourself something new when needed.
+You take accountability, do the things you say you'll do, under-promise and over-deliver.
+You are nimble and adaptable when priorities change and continue to see the ""forest through the trees"".
+You are happy in a role in which a week in the life might include context switching between application diagnostic troubleshooting using industry standard tools such as Prometheus and Grafana, triaging production issues using tools such as Google Logging and Cloud Trace, troubleshooting regression tests in different environments, designing new product solutions, improving current product features, and coding.
+Your skill-set
+8+ years of software development experience
+Experience with designing and implementing highly scalable cloud based APIs
+Experience with multiple programming languages such as Python and Go
+Expertise in Data Structures, Algorithms and Concurrency
+2+ years of experience in DevOps practices towards deployment of SaaS services, including hands on experience with Jenkins, Github Actions, implementing and maintaining CI/CD pipelines, as well as experience with managing and maintaining applications in a multi-container environment, such as Kubernetes
+Knowledge of different Data Storage technologies such as Redis, MySQL, etc
+Knowledge of Docker and container orchestration frameworks such as Kubernetes
+Experience developing and maintaining services using AWS native products such as Kinesis, DynamoDB, and S3
+Linux Proficiency
+What's in it for you
+As a Pindropper, you join a rapidly growing company making technology more human with the power of voice. You will work alongside some of the best and brightest. We're a passionate group committed to excellence - but that doesn't stop us from enjoying the journey as a team with chess and poker tournaments, catered lunches and happy hours, wellness programming, and more. Because we take our jobs seriously, we add in time for rest with Unlimited PTO, and Company-wide Rest Days.
+Within 30 days, you'll
+Ramp up on development process
+Build relationships with others on the team
+Participate in the grooming and planning meetings
+Pick up a small bug fix or code implementation/testing project
+Complete onboarding and attend New Employee Orientation sessions with other new Pindroppers
+Understand and know the product architecture as well as system design
+Within 60 days, you'll
+Start working on a bigger project/feature
+Deliver small code changes going through the complete SDL
+Actively participate in the team meetings
+Within 90 days, you'll
+Drive some of the task breakdown in grooming and planning meetings
+Deliver a major feature design or implementation
+Teach us something new
+Able to pick up any tasks coming out of the planning meetings
+What we offer
+As a part of Pindrop, you'll have a direct impact on our growing list of products and the future of security in the voice-driven economy. We hire great people and take care of them. Here's a snapshot of the benefits we offer:
+Competitive compensation, including equity for all employees
+Unlimited Paid Time Off (PTO)
+4 company-wide rest days in 2025 where the entire company rests and recharges!
+Generous health and welfare plans to choose from - including one employer-paid ""employee-only"" plan!
+Best-in-class Health Savings Account (HSA) employer contribution
+Affordable vision and dental plans for you and your family
+Employer-provided life and disability coverage with additional supplemental options
+Paid Parental Leave - Equal for all parents, including birth, adoptive & foster parents
+One year of diaper delivery for your newest addition to the family! It's our way of welcoming new Pindroplets to the family!
+Identity protection through Norton LifeLock
+Recurring monthly Phone and Internet allowance
+One Time home office allowance
+Remote first environment – meaning you have flexibility in your day!
+Company holidays
+Annual professional development and learning benefit
+Pick your own Apple MacBook Pro
+Retirement plan with competitive 401(k) match
+Wellness Program including Employee Assistance Program, 24/7 Telemedicine
+The base pay for this position is generally between $130,000 and $180,000. Please note that the base pay range is a general guideline only. Pindrop considers factors such as (but not limited to) scope and responsibilities of the position, a candidate's work experience, education/training, and key skills, as well as market and business considerations, when extending an offer.
+
+What we live by
+At Pindrop, our Core Values are fundamental beliefs at the center of all we do. They are our guiding principles that dictate our actions and behaviors. Our Values are deeply embedded into our culture in big and small ways and even help us decide right from wrong when the path forward is unclear. At Pindrop, we believe in taking accountability to make decisions and act in a way that reflects who we are. We truly believe that making decisions and acting with our Core Values in mind will help us to achieve our goals and keep Pindrop a great place to work:
+Audaciously Innovate - We continue to change the world, and the way people safely engage and interact with technology. As first principle thinkers, we challenge standards, take risks and learn from our mistakes in order to make positive change and continuous improvement. We believe nothing is impossible.
+Evangelical Customers for Life - We delight, inspire and empower customers from day one and for life. We create a partnership and experience that results in a shared passion. We are champions for our customers, and our customers become our champions, creating a universal commitment to one another.
+Execution Excellence - We do what we say and say what we do. We are accountable for making the tough decisions and necessary tradeoffs to deliver quality and effective solutions on time.
+Win as a Company - Every time we win, we win as a company. Every time we lose, we lose as a company. We break down silos, support one another, embrace diversity and celebrate our successes. We are better together.
+Make a Difference - Every day we have the opportunity to make a positive impact. We operate with dedication, passion, and uncompromising integrity, creating a safer, more secure world.
+Not sure if this is you?
+We want a diverse, global team, with a broad range of experience and perspectives. If this job sounds great, but you're not sure if you qualify, apply anyway! We carefully consider every application and will either move forward with you, find another team that might be a better fit, keep in touch for future opportunities, or thank you for your time.
+
+Pindrop is an Equal Opportunity Employer
+Here at Pindrop, it is our mission to create and maintain a diverse and inclusive work environment. As an equal opportunity employer, all qualified applicants receive consideration for employment without regard to race, color, age, religion, sex, gender, gender identity or expression, sexual orientation, national origin, genetic information, disability, marital and/or veteran status.
+
+This position will be posted for 80 days after April 15, 2025.
+#LI-Remote",N/A,https://www.indeed.com/viewjob?jk=2f267707cca6075d,False,software engineer
+FULL STACK SOFTWARE ENGINEER,Reveleer,Remote,remote,2025-06-29,Indeed,"Full Stack Software Engineer
+Reveleer
+Remote Opportunity
+As the industry's pioneering value-based care (VBC) technology platform, Reveleer is purpose-built to solve the most pressing real-world challenges faced by providers and health-plan organizations today. By unifying retrieval, clinical intelligence, risk adjustment, quality improvement, and member management solutions into one intelligent, AI-powered system, Reveleer streamlines fragmented workflows to supercharge productivity, enhance care quality, and optimize performance on high-priority value-based initiatives.
+
+Responsibilities:
+Create beautiful web surfaces and interactive dashboard experiences using technologies such as React, JavaScript, CSS
+Build the backend & APIs that power these experiences, defining composable data models and durable interfaces
+Debug production issues across services and multiple levels of the stack with an eye towards improving maintainability over the long term
+Scope, design, and lead technical projects, laying the groundwork for early-stage products to iteratively evolve and scale
+Solve product problems and build delightful user experiences for our users
+Partner closely with other engineers and scientists to build highly scalable, ML driven system(s), help run experiments, and surface insights across all points of customer interactions
+Resolve problems and provide daily troubleshooting, analysis, and problem definition for production issues
+Qualifications:
+3+ years of professional hands-on software development experience
+You are an expert at building web applications using HTML, CSS, and at least one JavaScript framework like React.js, AngularJS or Backbone.js
+You have implemented server-side APIs in dynamic languages like NodeJS, Python, working with document and relational datastores (especially Mongo)
+You enjoy spelunking through new datasets
+You have excellent oral and written communication
+You have proven ability to thrive in a collaborative environment involving different stakeholders and subject matter experts
+You are a first principle thinker and enjoy putting yourself in the shoes of the target customer
+Highly motivated, self-learner with great attention to details
+Thrive in a collaborative environment involving different functions, stakeholders, and subject matter experts
+Additional desired skills:
+Typescript
+Use of MongoDB at scale
+Python
+Serverless architectures
+Understanding of ML, LLMs & Vector databases
+UI/UX Design using Figma
+What You'll Receive:
+
+Competitive pay
+Medical, Dental and Vision benefits including HSA/FSA
+401k with Employer Match
+100% paid short term and long-term disability insurance
+PTO plan and 10 paid company holidays
+Salary Range: $125,000 - $175,000 / annually
+Our compensation reflects the cost of labor across several US geographic markets. Pay is based on several factors including market location and may vary depending on job-related knowledge, skills, and experience.
+Reveleer E-Verifies all new hires.
+Reveleer is an equal opportunity employer. We do not discriminate on the basis of race, religion, color, national origin, gender, gender identity, sexual orientation, age, marital status, veteran status, disability status or genetic information, in compliance with applicable federal, state and local law.",N/A,https://www.indeed.com/viewjob?jk=8046ebefbf2331b2,False,software engineer
+Backend Software Engineer,"Olympiah, Inc.",Remote,remote,2025-06-29,Indeed,"Overview
+We are seeking a skilled Back End Developer to join our dynamic team. The ideal candidate will be responsible for designing, developing, and maintaining server-side applications that support our web and mobile platforms. This role requires a strong understanding of back-end technologies and a commitment to delivering high-quality software solutions. You will work closely with front-end developers and other stakeholders to ensure seamless integration and optimal performance.
+Duties
+Develop and maintain server-side applications using ASP.NET and IIS.
+Design RESTful APIs to facilitate communication between the server and client-side applications.
+Implement database solutions using PL/SQL, ensuring data integrity and performance.
+Collaborate with cross-functional teams throughout the Software Development Life Cycle (SDLC) to gather requirements and deliver effective solutions.
+Utilize UML for system design documentation, ensuring clarity in project specifications.
+Apply Object-Oriented Programming (OOP) principles to create scalable and maintainable code.
+Troubleshoot and resolve issues related to application performance, security, and reliability.
+Participate in code reviews, providing constructive feedback to peers.
+Qualifications
+Proficiency in back-end development technologies including ASP.NET, IIS, and RESTful services.
+Experience with database management systems, particularly PL/SQL.
+Familiarity with Software Development Life Cycle (SDLC) methodologies.
+Strong understanding of UML for effective system design documentation.
+Knowledge of Object-Oriented Programming (OOP) principles is essential.
+Ability to work collaboratively in a team environment while also being self-motivated.
+Excellent problem-solving skills and attention to detail.
+If you are passionate about back-end development and eager to contribute to innovative projects, we encourage you to apply for this exciting opportunity.
+Job Types: Full-time, Part-time
+Pay: $25.00 - $27.50 per hour
+Expected hours: 1 – 40 per week
+Schedule:
+Choose your own hours
+Application Question(s):
+What is the link to your LinkedIn?
+What is the link to your GitHub?
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=1fc5668aad910483,False,software engineer
+Software Engineer,"Frontpoint Security Solutions, LLC",Remote,remote,2025-06-29,Indeed,"Who We Are:
+Frontpoint is a leading technology and services company in the $60 billion home automation and home security industry. With our prominence in the industry comes the responsibility to do things not just fast, but smart. We envision a better way, a better product, a better solution, and that starts with YOU. If you have a desire to work collaboratively to bring forward solutions and deliver results in a culture defined by our ability to make an impact—YOU belong at Frontpoint!
+Who You Are:
+We are looking for a full stack Software Engineer to join our exceptional development team. Frontpoint is a fast paced, enterprise scale, B2C environment. Our developers build software for all components of the company and our customers. This year we are continuing to scale by focusing on the company's e-commerce experience. A successful candidate is someone who can tackle front and back-end systems as well as mobile application development.
+If asked to join our team, your daily tasks will involve creative problem solving and immediate contributions to the design of in-flight solutions. All Frontpoint developers contribute to the pressing needs of the company, and everyone collaborates on the architecture of larger projects.
+What is Expected of You:
+Ensure the on-time delivery of sprint commitments
+Maintain a thorough understanding of the system architecture, business rules and subject domain
+Accomplish development tasks with minimal assistance, across full stack of solutions
+Provide support to address issues with the production environment as needed
+Perform analysis of requirements and design
+Keep current on new technologies and identify opportunities to improve solutions and processes
+What You Bring:
+3-5 years of experience in software development within the .Net stack required
+BS in Computer Science (or related field) preferred
+Experience with deploying code Azure App Services and Function Apps
+Experience with designing queries in TSQL for SQL Server or similar
+Knowledge of HTML, CSS, JavaScript and Web Services
+Familiarity with a SPA framework, preferably AngularJS
+Understanding of modern software design and development concepts (Ex. IoC, TDD, Object oriented vs. alternative paradigms, CI/CD, etc.)
+Excellent problem-solving skills with an innovative approach to engineering
+Ability to communicate complex technical concepts to company stakeholders in an easy-to-understand manner
+Aptitude and desire to learn new technologies
+Comfortable working both independently and collaborating in a team environment
+Perks and Benefits Include:
+Medical, Dental, Vision, Life w/Medical
+Paid Time Off, which includes Community Service
+401(k) Match
+Legal Resources & Pet Insurance
+100% Remote Work
+EEO Statement:
+Frontpoint is an equal opportunity employer that values diversity. We conduct our business without regard to actual or perceived age, race, color, religion, disability, caregiver, marital or partnership status, pregnancy (including childbirth, breastfeeding, or related medical conditions), ancestry, national origin and citizenship, sex, gender identity and expression, sexual orientation, sexual and reproductive health decisions, military or veteran status, creed, genetic predisposition, carrier status or any other category protected by federal, state and local law. Frontpoint is committed to a policy of nondiscrimination, which applies to recruiting, hiring, placement, promotions, training, discipline, terminations, layoffs, recall, transfers, leaves of absence, compensation and all other terms and conditions of employment.
+Making it Effortless to Protect What Matters Most!
+Job Type: Full-time
+Pay: $91,120.24 - $119,736.21 per year
+Benefits:
+401(k)
+401(k) matching
+AD&D insurance
+Dental insurance
+Disability insurance
+Employee assistance program
+Flextime
+Health insurance
+Life insurance
+Paid holidays
+Vision insurance
+Volunteer time off
+Work from home
+Compensation Package:
+Yearly bonus
+Yearly pay
+Schedule:
+8 hour shift
+Monday to Friday
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=1e0c27c68143cd23,False,software engineer
+Software Engineer,Blueprint Technologies,"Remote in Redmond, WA",remote,2025-06-29,Indeed,"Who is Blueprint?
+We are a technology solutions firm headquartered in Bellevue, Washington, with a strong presence across the United States. Unified by a shared passion for solving complicated problems, our people are our greatest asset. We use technology as a tool to bridge the gap between strategy and execution, powered by the knowledge, skills, and expertise of our teams, who all have unique perspectives and years of experience across multiple industries. We're bold, smart, agile, and fun.
+What does Blueprint do?
+Blueprint helps organizations unlock value from existing assets by leveraging cutting-edge technology to create additional revenue streams and new lines of business. We connect strategy, business solutions, products, and services to transform and grow companies.
+Why Blueprint?
+At Blueprint, we believe in the power of possibility and are passionate about bringing it to life. Whether you join our bustling product division, our multifaceted services team or you want to grow your career in human resources, your ability to make an impact is amplified when you join one of our teams. You'll focus on solving unique business problems while gaining hands-on experience with the world's best technology. We believe in unique perspectives and build teams of people with diverse skillsets and backgrounds. At Blueprint, you'll have the opportunity to work with multiple clients and teams, such as data science and product development, all while learning, growing, and developing new solutions. We guarantee you won't find a better place to work and thrive than at Blueprint.
+In this role:
+As a Software Engineer, you will contribute to high-impact, large-scale initiatives across device supply chain, manufacturing, fulfillment, and services. You'll work in a dynamic operations technology team focused on optimizing and modernizing systems through cloud-native solutions and intelligent automation. This role emphasizes hands-on engineering, API development, Azure integration, and live site support — all critical to ensuring efficiency, scalability, and resilience in complex device operations.
+Responsibilities:
+Design, develop, test, and maintain scalable systems and applications in a cloud environment.
+Modify and optimize existing databases and API systems for performance and reliability.
+Collaborate with cross-functional teams to define project scope, timelines, and deliverables.
+Write detailed logical and physical database descriptions and guide others in implementation.
+Review technical requirements and project requests to assess feasibility, time, and cost.
+Build, deploy, and manage RESTful APIs using C# and Azure-native tools.
+Support production systems with proactive monitoring, troubleshooting, and incident resolution.
+Integrate AI services (e.g., Azure Cognitive Services, Azure OpenAI) to enhance system capabilities.
+Contribute to live site engineering practices, including telemetry, alerting, and system reliability strategies.
+Required Qualifications:
+Experience: Minimum of 8–10 years of software engineering experience.
+Cloud Expertise: Strong hands-on knowledge of Microsoft Azure services, including:
+Azure App Services
+Azure Functions
+Azure Storage
+Azure Key Vault
+Azure DevOps
+Programming Skills: Advanced proficiency in C#, with a proven track record of developing and maintaining RESTful APIs.
+Database & API Design: Experience with logical and physical database design and modification.
+Systems Knowledge: Solid understanding of computer hardware and software fundamentals.
+Full SDLC Understanding: Knowledge of the entire software development lifecycle, from requirements gathering to deployment and maintenance.
+Live Production Support: Demonstrated experience supporting live systems, including root cause analysis and performance tuning.
+Preferred Qualifications:
+Experience with development tools such as SQL and Visual Basic.
+Familiarity with prompt engineering and integration of Azure AI services into enterprise applications.
+Ability to work independently in fast-paced environments.
+Strong communication and interpersonal skills.
+Mentoring capabilities to support junior engineers or team members.
+Salary Range
+Pay ranges vary based on multiple factors including, without limitation, skill sets, education, responsibilities, experience, and geographical market. The pay range for this position reflects geographic based ranges for Washington state: $120,000 to $130,000 USD/annually. The salary/wage and job title for this opening will be based on the selected candidate's qualifications and experience and may be outside this range.
+Equal Opportunity Employer
+Blueprint Technologies, LLC is an equal employment opportunity employer. Qualified applicants are considered without regard to race, color, age, disability, sex, gender identity or expression, orientation, veteran/military status, religion, national origin, ancestry, marital, or familial status, genetic information, citizenship, or any other status protected by law.
+If you need assistance or a reasonable accommodation to complete the application process, please reach out to: recruiting@bpcs.com
+Blueprint believe in the importance of a healthy and happy team, which is why our comprehensive benefits package includes:
+Medical, dental, and vision coverage
+Flexible Spending Account
+401k program
+Competitive PTO offerings
+Parental Leave
+Opportunities for professional growth and development",N/A,https://www.indeed.com/viewjob?jk=4b46c9bf3ffca92c,False,software engineer
+"Software Engineer, Interop",Mysten Labs,Remote,remote,2025-06-29,Indeed,"Location
+USA (Remote)
+Employment Type
+Full time
+Location Type
+Remote
+Department
+Engineering
+Compensation
+$200K – $225K
+The US base salary range for this full-time position is $200,000 - $225,000. Our salary ranges are determined by role and level, but not location (within the US). The salary range displayed on each job posting reflects the minimum and maximum target for new hire salaries for the position across all US locations. Within this range, individual pay is determined by additional factors including job-related skills, experience, and relevant education or training.
+Our total compensation package also includes: tokens + equity compensation, benefits, and eligibility to participate in the annual equity and token refresh grant programs.
+Our benefits package for US employees also includes:
+
+Comprehensive health insurance including medical, dental, and vision covered for you and your dependents; including Tax Savings Benefits such as HSAs and FSAs.
+
+18 weeks of paid Parental Leave
+
+Complimentary access to wellbeing programs, such as family planning support, gender affirming care, and hormone replacement therapy as well as physical fitness/nutrition apps. We also provide mental health support and counseling and EAP (Employee Assistance Program) for financial/legal assistance, home life referrals, and more
+
+️ Short Term and Long Term Disability coverage as well as Life Insurance and Accident Insurance, and other coverage options.
+
+Traveler Insurance
+
+401(k)
+
+Complimentary privacy protection service
+
+Flexible paid time off and 11 paid holidays per year
+
+✈️ Team offsites and annual all-company retreat
+
+Mysten Labs believes that decentralized and open protocols are the bedrock of the internet of value. This is why at Mysten Labs, we are creating foundational infrastructure to accelerate the adoption of decentralized protocols based on blockchain technologies.
+We're building a new team, Interop, a systems-focused team that extends the Data Platform team's responsibilities to support a broader set of RPC and data-heavy services built on top of Sui. The Interop Layer provides systems support for the services that run on top of Sui, in all of their aspects of Sui interactions, state management, production reliability and release management.
+The Interop team would own horizontal systems that interface directly with the Sui network — such as the Sui RPC nodes and support verticals that span teams including Cryptography, Move Platform, and Walrus by productionizing their externally-facing services.
+What You'll Have:
+Have 5+ years of experience in hands-on software engineering, including methodologies to ensure correctness and performance of implemented components.
+Be fluent in a systems’ language such as Rust which is used within Mysten or C++ etc
+Had a substantial role in the design and implementation of a large distributed system.
+Have experience with the design and evaluation of secure systems, incl. secure programming, appropriate use of cryptography, and prevention of DoS attacks.
+Be fluent in writing design documentation as well as participating in technical discussions and reviews synchronously, asynchronously, in person or remotely.
+Have a level of expertise in one or more of networking, distributed systems, storage, databases, operating systems, and runtimes to be able to read research papers in the field and design systems based on them.
+Have a lay persons’ interest in open, decentralized, permissionless technologies, and the intersection of contemporary technology, economics, finance and governance.
+We especially encourage engineers that fulfill some of the above with no prior experience of working on blockchain technologies
+Employment is contingent upon the successful completion of a background check, which may include verification of employment history, education credentials, criminal history, and other relevant information.
+Regarding the recent rash of technology job scams: Be aware that emails from genuine Mysten Labs group recruiters will always come from the @mystenlabs.com domain or related subdomains (e.g., mystenlabs.com/careers). Remember: you can always verify positions on our job boards at www.mystenlabs.com/careers.
+Our team is remote first and we are hiring across the world. Here at Mysten Labs, you’ll be joining a world-class team with tremendous growth potential as we bring the next billion users to web3. We raised a $300M Series B round from top Silicon Valley led venture funds like Jump Crypto, Andreessen Horowitz (a16z), Binance Labs, Redpoint, Lightspeed, Coinbase Ventures, Electric Capital, Standard Crypto, NFX, Slow Ventures, Scribble Ventures, Samsung Next, Lux Capital, among other investment firms and strategic partners. Come join us and build the future of web3!",N/A,https://www.indeed.com/viewjob?jk=99868b1e969a6e1b,False,software engineer
+Front-End Developer,NextGen | GTA Telecom,Remote,remote,2025-06-29,Indeed,"We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots that we are building in order to measure their progress, as well as write and evaluate code.
+To apply to this role, you will need to be proficient in either Python and/or JavaScript. Your role will require proficiency in at least one programming language/framework (JavaScript, TypeScript, Python, C, C#, C++, HTML/CSS, React, Go, Java, Kotlin, SQL, or Swift) in order to solve coding problems (think LeetCode, HackerRank, etc). For each coding problem, you must be able to explain how your solution solves the problem.
+As part of the application process, you will be asked to complete an assessment. If you pass, you will gain access to projects. Based on the quality of your work, you will continue to receive projects regularly. We find our most successful candidates work between 5-20 hours per week, up to 40 hours.
+Benefits:
+This is a full-time or part-time REMOTE position
+You’ll be able to choose which projects you want to work on
+You can work on your own schedule
+Projects are paid hourly, with bonuses on high-quality and high-volume work
+Responsibilities:
+Come up with diverse problems and solutions for a coding chatbot
+Write high-quality answers and code snippets
+Evaluate code quality produced by AI models for correctness and performance
+Qualifications:
+Fluency in English
+Proficient in either Python and/or JavaScript
+Detail-oriented
+Excellent writing and grammar skills
+A bachelor's degree (completed or in progress)
+Note: Payment is made via PayPal. We will never ask for any money from you.
+#INDUSSD
+Job Type: Contract
+Pay: From $40.00 per hour
+Benefits:
+Flexible schedule
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=b1f2e3b5739bdb38,False,front-end developer
+Senior Front-end Developer (VM),Blue Coding,Remote,remote,2025-06-29,Indeed,"We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots that we are building in order to measure their progress, as well as write and evaluate code.
+To apply to this role, you will need to be proficient in either Python and/or JavaScript. Your role will require proficiency in at least one programming language/framework (JavaScript, TypeScript, Python, C, C#, C++, HTML/CSS, React, Go, Java, Kotlin, SQL, or Swift) in order to solve coding problems (think LeetCode, HackerRank, etc). For each coding problem, you must be able to explain how your solution solves the problem.
+As part of the application process, you will be asked to complete an assessment. If you pass, you will gain access to projects. Based on the quality of your work, you will continue to receive projects regularly. We find our most successful candidates work between 5-20 hours per week, up to 40 hours.
+Benefits:
+This is a full-time or part-time REMOTE position
+You’ll be able to choose which projects you want to work on
+You can work on your own schedule
+Projects are paid hourly, with bonuses on high-quality and high-volume work
+Responsibilities:
+Come up with diverse problems and solutions for a coding chatbot
+Write high-quality answers and code snippets
+Evaluate code quality produced by AI models for correctness and performance
+Qualifications:
+Fluency in English
+Proficient in either Python and/or JavaScript
+Detail-oriented
+Excellent writing and grammar skills
+A bachelor's degree (completed or in progress)
+Note: Payment is made via PayPal. We will never ask for any money from you.
+#INDUSSD
+Job Type: Contract
+Pay: From $40.00 per hour
+Benefits:
+Flexible schedule
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=86617670a868831f,False,front-end developer
+Graph Data Engineer & Front-End Developer,National Association of State Workforce Agencies,Remote,remote,2025-06-29,Indeed,"We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots that we are building in order to measure their progress, as well as write and evaluate code.
+To apply to this role, you will need to be proficient in either Python and/or JavaScript. Your role will require proficiency in at least one programming language/framework (JavaScript, TypeScript, Python, C, C#, C++, HTML/CSS, React, Go, Java, Kotlin, SQL, or Swift) in order to solve coding problems (think LeetCode, HackerRank, etc). For each coding problem, you must be able to explain how your solution solves the problem.
+As part of the application process, you will be asked to complete an assessment. If you pass, you will gain access to projects. Based on the quality of your work, you will continue to receive projects regularly. We find our most successful candidates work between 5-20 hours per week, up to 40 hours.
+Benefits:
+This is a full-time or part-time REMOTE position
+You’ll be able to choose which projects you want to work on
+You can work on your own schedule
+Projects are paid hourly, with bonuses on high-quality and high-volume work
+Responsibilities:
+Come up with diverse problems and solutions for a coding chatbot
+Write high-quality answers and code snippets
+Evaluate code quality produced by AI models for correctness and performance
+Qualifications:
+Fluency in English
+Proficient in either Python and/or JavaScript
+Detail-oriented
+Excellent writing and grammar skills
+A bachelor's degree (completed or in progress)
+Note: Payment is made via PayPal. We will never ask for any money from you.
+#INDUSSD
+Job Type: Contract
+Pay: From $40.00 per hour
+Benefits:
+Flexible schedule
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=554ad7c4fc54d232,False,front-end developer
+Sr. Software Engineer - Front End (JavaScript/React),SWBC,Remote,remote,2025-06-29,Indeed,"Are you a talented frontend software engineer looking to make a significant impact? SWIVEL is on the hunt for a passionate individual to develop and maintain our cutting-edge Software as a Service (SaaS) solutions and core partner integrations. In this role, you'll work within self-organized teams to ensure our software exceeds customer expectations while guiding and mentoring fellow developers. We are looking for frontend expertise to work on our most utilized web application at SWIVEL.
+
+Why You'll Love This Role:
+
+SWIVEL is seeking a talented individual to build innovative technology to solve complex problems and mentor other developers. With our dynamic product portfolio, you'll have numerous opportunities to learn and implement new technologies as we continue our journey into cloud-native development. We can't wait to welcome you as the newest member of our growing team!
+Essential duties include the following:
+Builds systems to interface with SWIVEL clientele.
+Automates processes to improve efficiency.
+Builds tools to eliminate repetitive tasks.
+Participates in self-organizing teams working toward a common goal.
+Responds to issues as they arise and product support teams to run issues to ground.
+Works with product partners to understand requirements and goals.
+Prepares wireframes and mock-ups for proposed designs.
+Conducts peer reviews to ensure that development and security standards are enforced.
+Guides and mentors junior and mid-level developers on the team.
+Performs all other duties as assigned.
+Serious candidates will possess the minimum qualifications:
+Bachelor’s Degree from an accredited college or four-year university or equivalent experience required.
+Minimum of five (5) years of experience required, including demonstrated knowledge of OOP and SOLID principles and design patterns; strong background in frontend technologies, JavaScript, React, and Typscript; creating and maintaining web applications.
+Strong background in Frontend Technologies such as, JavaScript, React, and Typescript.
+Understanding of Frontend best practices around development and testing
+Efficiency in various programming languages, including React, Node.js, JavaScript, TypeScript, HTML/CSS, etc.
+Exposure to microservice architecture and cloud-native services (preferably AWS), such as AWS Lambda, Amazon API Gateway, AWS Fargate, SNS, SQS, CloudFront, CloudFormation, etc.
+General knowledge of domain-driven design (DDD), three-tier architecture, factory, and other design patterns.
+Knowledge of Agile principles with experience in Scrum or Kanban.
+Experience integrating REST microservices into frontend web applications.
+Experience with team development and source control tools (e.g., Visual Studio, Azure DevOps, JIRA, GIT).
+Knowledge of application security practices, including secure coding, authentication (OAuth2, SAML), and encryption.
+Willingness and ability to adapt and learn new technologies/processes.
+Experience with financial payments technologies, including credit card gateways, ACH, instant payments, and reconciliation systems preferred.
+Experience in a continuous integration (CI) environment with Build, Release, and Deployment preferred.
+Able to sit for long periods of time analyzing, modifying, and testing software programs.
+Able to lift or move 20-40 lbs. of computer-related objects, manuals, or other office items.
+Compensation:
+At SWBC, our pay structure is based upon the market data for each role and we have established compensation ranges to ensure that we remain competitive. Any offer of employment is based upon individual experience, market data, and geographic location for each role. This role may be eligible for additional incentive compensation in the form of either commission or performance bonus.
+The base salary range for this position is:
+$102,991.20 - $164,788.00
+SWBC offers*:
+Competitive overall compensation package
+Work/Life balance
+Employee engagement activities and recognition awards
+Years of Service awards
+Career enhancement and growth opportunities
+Emerging Professionals and Mentor Program
+Continuing education and career certifications
+Variety of healthcare coverage options
+Traditional and Roth 401(k) retirement plans
+Lucrative Wellness Program
+Based upon employee eligibility
+
+Additional Information:
+
+SWBC is a Substance-Free Workplace and requires pre-employment drug testing.
+
+Please note, SWBC does not hire tobacco users as allowed by law.
+
+To learn more about SWBC, visit our website at www.SWBC.com. If interested, please click the appropriate apply button.",N/A,https://www.indeed.com/viewjob?jk=a05d4a1fa255d601,False,front-end developer
+"Lead Software Engineer - Full Stack, Front End Focus",Stitch Fix,Remote,remote,2025-06-29,Indeed,"About Stitch Fix, Inc.
+Stitch Fix (NASDAQ: SFIX) is the leading online personal styling service that helps people discover the styles they will love that fit perfectly so they always look - and feel - their best. Few things are more personal than getting dressed, but finding clothing that fits and looks great can be a challenge. Stitch Fix solves that problem. By pairing expert stylists with best-in-class AI and recommendation algorithms, the company leverages its assortment of exclusive and national brands to meet each client's individual tastes and needs, making it convenient for clients to express their personal style without having to spend hours in stores or sifting through endless choices online. Stitch Fix, which was founded in 2011, is headquartered in San Francisco.
+About The Role
+Stitch Fix’s Fix Experience Engineering team is looking for a curious, empathetic, and self-aware Lead Engineer with a focus on front end but comfortability in back end systems. If you’re looking for client obsessed, high profile and impactful work, this team is for you. We are responsible for pivotal client-facing experiences once our client is onboarded until checkout. We are always striving to make the fix experience better for our clients. We work closely with our product, design, UX, data science, data engineering and iOS partners using data to innovate and refine our product.
+You will be working with a team of full stack engineers with varied backgrounds who thrive in a collaborative environment. We operate in an agile-inspired manner across multiple time zones within the United States. We build modern software with modern techniques like TDD, continuous delivery, DevOps, and service-oriented architecture. We focus on high-value solutions for clearly identified problems but are designed in a sustainable way and deliver long term value.
+We are excited about you because...
+You get excited about solving problems using frontend technologies, including TypeScript, React, and CSS.
+Experience programming in back end services, Ruby on Rails preferably.
+Experience with GraphQL.
+You have roughly 5+ years of professional programming experience.
+1+ years of technical leadership experience
+You are bright, kind, and motivated by challenge.
+You thrive in collaborative teams and treasure helping your team members grow and learn.
+You practice curiosity, kindness, and making change.
+You believe that strong teams are built on trust with clear and honest communication.
+You clearly set and share your priorities with your team and partners.
+You understand and focus on what is right for the client.
+You build high-quality solutions and are pragmatic about weighing project scope and value.
+You are flexible, dedicated to your craft, and curious.
+You might be product focused and enjoy brainstorming around features with our partners.
+You might have prior experience working with design systems.
+You might have prior experience with accessibility best practices.
+You might have prior experience with Next.js.
+
+About the Technology
+Technologies we rely on to pursue solutions to business problems include things like:
+React & Next.js
+JavaScript / TypeScript
+CSS / SCSS
+GraphQL
+Figma
+Datadog
+Node.js
+Rails
+While experience with any of these is a bonus, our primary focus is hiring an engineer that enjoys solving problems for and with people.
+You'll Love Working At Stitch Fix Because We
+Are a technologically and data-driven business.
+Are at the forefront of tech and fashion, redefining shopping for the next generation.
+Are passionate about our clients and live/breathe the client experience.
+Get to be creative every day.
+We cultivate a community of diverse perspectives— all voices are heard and valued.
+Believe in autonomy & taking initiative.
+Full support for remote work.
+Offer transparent, equitable, and competitive compensation based on your level to help eliminate bias in salaries, as well as equity and comprehensive health benefits.
+Are serious about our commitment to life-work balance, and have generous parental leave policies.
+Compensation and Benefits
+
+This role will receive a competitive salary, benefits, and equity. The salary for US-based employees hired into this role will be aligned with the range below, which includes our three geographic areas. A variety of factors are considered when determining someone’s compensation–including a candidate’s professional background, experience, location, and performance.This position is eligible for new hire and ongoing grants of restricted stock units depending on employee and company performance. In addition, the position is eligible for medical, dental, vision, and other benefits. Applicants should apply via our internal or external careers site.
+Salary Range
+$136,700—$201,000 USD
+This link leads to the machine readable files that are made available in response to the federal Transparency in Coverage Rule and includes negotiated service rates and out-of-network allowed amounts between health plans and healthcare providers. The machine-readable files are formatted to allow researchers, regulators, and application developers to more easily access and analyze data.
+Please review Stitch Fix's US Applicant Privacy Policy and Notice at Collection here: https://stitchfix.com/careers/workforce-applicant-privacy-policy
+Recruiting Fraud Alert:
+To all candidates: your personal information and online safety are top of mind for us. At Stitch Fix, recruiters only direct candidates to apply through our official career pages at https://www.stitchfix.com/careers/jobs or https://web.fountain.com/c/stitch-fix.
+Recruiters will never request payments, ask for financial account information or sensitive information like social security numbers. If you are unsure if a message is from Stitch Fix, please email careers@stitchfix.com.
+You can read more about Recruiting Scam Awareness on our FAQ page here: https://support.stitchfix.com/hc/en-us/articles/1500007169402-Recruiting-Scam-Awareness",N/A,https://www.indeed.com/viewjob?jk=b79019a9fab32144,False,front-end developer
+"Senior Back-end Developer - PHP, Payments Team (Remote in EMEA)",Printify,Remote,remote,2025-06-29,Indeed,"Remote, Poland
+Group: Office
+Location: Remote, Poland
+
+In November 2024, Printful and Printify came together as two equals and merged to form a global on-demand powerhouse. This role will involve working across our two platforms and brands, a unique and special challenge. To learn more about the merger, check out our blog post.
+About Us:
+Both Printify and Printful are pioneering production on-demand companies and platforms established in Latvia but with a global customer base.
+Printify is bringing the dream of financial freedom and business ownership to the world by connecting e-commerce entrepreneurs with over 100 print-on-demand facilities around the globe.
+Printful has built world-class in-house production facilities and helps people to build their brands, empowering thousands of businesses—including iconic names like Coca-Cola and MTV.
+Our team is at the heart of our success. You’ll be part of a culture where everyone is respected, included, and encouraged to grow. We value continuous learning, uphold a high work ethic, and have fun along the way.
+About the Team:
+The Payments Product Squad is dedicated to ensuring a seamless and efficient payment experience for both our merchants and their customers. Key Responsibilities - Payment Method Integration, Payment Routing, Back-Office Support, Subscription Management, Multicurrency Support, User Experience, Collaboration (with our sister squads - Finance and Fraud).
+About the Role:
+As a Senior Back-end Software Engineer, your main task is to improve our Payments systems, ensuring they are scalable, robust, and capable of handling the growing demands of the organization.
+Your role involves enhancing the extracting of the existing payments system, porting it to Temporal.io workflows, to manage high loads efficiently. You'll focus on creating a smooth and accurate payment experience for our merchants, including reliable financial transactions and reporting. Additionally, you will add new payment options and work on a Payment Orchestration Platform.
+A key part of your job is to transform the Payments module into a separate Payments service, ing best practices from Domain-Driven Design (DDD) and Event Sourcing.
+Your Daily Tasks Will Entail:
+You will work alongside the product teams and product managers to iterate on new features within the joint organization
+You will take responsibility in the design and execution of your own initiatives
+You will help identify areas of improvement in the codebase and help contribute to making it better
+You will frequently pair with teammates to give and receive feedback from a code review to boost knowledge-sharing, and learning and improve the platform
+You will fix any prioritized bugs/issues tracked within the platforms
+You will participate as a presenter or attendee, in weekly coding or knowledge-sharing sessions
+You will learn, develop your soft skills and spend time discussing best practices and technologies with your peers
+
+Your Qualifications:
+
+Good level of English (spoken and written)
+5+ years' experience with PHP
+Experience with DDD (Domain-Driven Design)
+Experience with CQRS (Command Query Responsibility Segregation)
+Experience with Distributed Systems
+Quality-oriented: follow best practices (Testing (ideally TDD), pair programming, continuous integration/deployment, Agile methodologies) and SOLID principles
+Experience with mentoring team members
+Preferred Qualifications:
+
+Experience with Event Sourcing
+Experience with Monolith extraction into Microservices
+Our Tech Stack:
+
+Backend: PHP 8.1+, Symfony, Laravel & Yii2, Doctrine, PhpUnit, static code analysis tools.
+Databases: MySQL, PostgreSQL, MongoDB, Redis.
+Engineering Tools: Postman, Git, GitLab, GitHub Copilot, PhpStorm, Grafana, Kibana, Prometheus, AWS, Kubernetes, Docker,
+Remote work Tools: Tuple, Jira, Miro, Google Workspace, Slack.
+Development Practices: Pair Programming, Code Reviews, Continuous Integration/Deployment.
+What We Offer:
+
+Be part of a friendly, inclusive, and global team
+An opportunity to work remotely or in a modern and welcoming office in Rīga or Tallinn, or our co-working space in Barcelona
+Flexible working hours (start your day as late as 11 a.m.)
+Health insurance
+Access to mentorship, internal meetups, and hackathons both on-site and online
+Exciting team-building events and parties you’ll never forget!
+Free and healthy lunch if you work from the Rīga office
+Apple MacBook laptop as your standard work equipment
+We are an equal-opportunity workplace. We’re committed to diversity and inclusion and make hiring decisions based solely on qualifications, merit, and work experience.
+If you think you’d excel in this role, send us your resume in English, showing us why you are the right person for the job.
+Interested, but don’t think this is the right fit for you? Feel free to share it with friends and check out other open positions at our career site. We’re always looking for creative and driven minds to join our ever-growing team!
+AS Printful Latvia (Reģ.nr. LV40203050078)",N/A,https://www.indeed.com/viewjob?jk=fba5aef32ba634b8,False,back-end developer
+Front-End Developer,NextGen | GTA Telecom,Remote,remote,2025-06-29,Indeed,"We need someone with hands on experience (Senior Level) to do custom applications with Deck.GL web framework.
+They will be working on all JavaScript on custom maps for displays on customer-facing websites (mostly all front-end).
+A new team that has several developers offshore.
+They should be familiar with / entire framework and be more of a full-stack developer who leans front-end (Deck.GL)
+Having expeirence with Deck.GL or Web.GL is a must.
+Job Type: Contract
+Benefits:
+Dental insurance
+Health insurance
+Vision insurance
+Application Question(s):
+How much experience do you have overall?
+How much experience do you have with front-end development?
+Do you have experience with Deck.GL or Web.GL?
+Current visa status
+Desired Salary
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=b1f2e3b5739bdb38,False,back-end developer
+Graph Data Engineer & Front-End Developer,National Association of State Workforce Agencies,Remote,remote,2025-06-29,Indeed,"Background on NASWA
+The National Association of State Workforce Agencies (NASWA) is the national organization representing all 50 state workforce agencies, D.C. and U.S. territories. These agencies deliver training, employment, career, and business services, in addition to administering unemployment insurance (UI), veteran reemployment, and labor market information programs. NASWA provides policy expertise, shares promising state practices, and promotes state innovation and leadership in workforce development.
+Background on UI Integrity Center
+The NASWA UI Integrity Center (“The Center”) is a component of NASWA Services which provides a wide range of supportive services to NASWA members. The Center provides services to assist states with the detection and prevention of UI fraud and improper payments.
+One of the projects managed by the NASWA UI Integrity Center is the Integrity Data Hub (IDH). The IDH allows participating states to submit Unemployment Insurance (UI) claims data for cross-matching and analysis to support the detection and prevention of UI fraud and improper payments. The IDH contains an increasingly expanding set of data sources to provide advanced data cross-matching and data analytics capabilities.
+--------------------------------------
+We are seeking a talented and experienced Graph Data Engineer & Front-End Developer to join our team and lead our efforts around link analysis. This multifaceted role will involve developing and maintaining complex graph-based systems, utilizing Amazon Neptune for graph database management, and creating advanced queries to extract and manipulate data. Additionally, you will be responsible for building and maintaining dynamic, real-time link analysis visualizations using React.js and Regraph SDK.
+The ideal candidate will have a strong background in both back-end graph database management and front-end development, with the ability to create a seamless integration between the two. You'll be responsible for the entire flow—designing the data models, optimizing queries, and crafting the user interfaces that display this data in an interactive and user-friendly way.
+Key Responsibilities:
+Lead the design, development, and optimization of graph data systems using Amazon Neptune.
+Build and optimize complex queries (including Lambda queries) to mine and manipulate large datasets housed in Redshift and integrated into Neptune.
+Design and implement data models in Amazon Neptune, ensuring that the structure supports efficient link analysis.
+Build, update, and maintain dynamic React.js-based user interfaces for displaying graph data and link analysis visualizations.
+Use the Regraph SDK (or similar graph visualization tools) to create interactive and real-time graph visualizations for internal users.
+Collaborate closely with cross-functional teams to integrate back-end data with front-end visualizations, ensuring a seamless user experience.
+Optimize performance for both back-end queries and front-end visualizations, ensuring a smooth, responsive interface for users interacting with large datasets.
+Provide technical leadership and guidance, mentoring junior team members, as necessary.
+Required Qualifications:
+3+ years of experience in graph database technologies, with a strong focus on Amazon Neptune.
+Proven expertise in Lambda queries and manipulating large datasets in graph databases.
+Strong experience in front-end development using React.js, including building dynamic, data-driven interfaces.
+Proficient in working with Regraph SDK or other graph visualization libraries.
+Solid experience with AWS Redshift and data integration between relational and graph databases.
+Expertise in data modeling for graph databases and knowledge of graph algorithms.
+Ability to work independently and manage both back-end and front-end development tasks within a fast-paced environment.
+Strong problem-solving skills and attention to detail.
+Excellent communication skills, with the ability to clearly explain complex technical concepts to both technical and non-technical stakeholders.
+Strong understanding of JavaScript (ES6+), HTML, and CSS.
+Experience with state management libraries like Redux, Context API, or MobX.
+Strong experience with cloud platforms (e.g., AWS, Azure, GCP).
+Strong experience with other AWS services (e.g., API Gateway, S3, DynamoDB).
+Preferred Qualifications:
+Experience with other graph technologies like Neo4j or Apache TinkerPop.
+Familiarity with AWS Lambda and other AWS services.
+Experience in data analytics or machine learning to enhance link analysis.
+Experience with JavaScript frameworks/libraries (e.g., D3.js, other visualization libraries).
+Education
+Bachelor’s degree in computer science or a related field (or equivalent practical experience).
+Job Details
+Location: Remote/U.S. Based
+Reports to: Data Team Manager – Integrity Data Hub
+Position Type: Full Time
+Salary Range: $115,000-135,000
+Benefits: NASWA offers competitive benefits including a great health care package, 401(k), educational assistance, remote stipend, generous time off and other options.
+Travel: Requires 2-3 trips per year for approximately 2-3 days within the U.S.
+How to Apply: Please send resume and cover letter to recruiting@naswa.org. Position posting will close on 07/09/2025. We are interested in every qualified candidate who is eligible to work in the United States. However, we are not able to sponsor visas at this time.
+This job description is not designed to cover or contain a comprehensive listing of activities, duties or responsibilities that are required of the employee. Duties, responsibilities and activities may change, or new ones may be assigned at any time with or without notice.
+NASWA is an equal opportunity employer. NASWA does not unlawfully discriminate on the basis of race, color, religion, national origin, sex, age, marital status, military status, personal appearance, sexual orientation, gender identity or expression, family responsibilities, genetic information, disability, matriculation, political affiliation or any other characteristic protected by federal or District of Columbia law. Our non-discrimination policy applies to all facets of employment, including recruiting, hiring, employment, promotion, demotion, dismissal, compensation, and training opportunities.
+Job Type: Full-time
+Pay: $115,000.00 - $135,000.00 per year
+Benefits:
+401(k)
+Dental insurance
+Dependent health insurance coverage
+Disability insurance
+Flexible spending account
+Health insurance
+Life insurance
+Paid sick time
+Paid time off
+Prescription drug insurance
+Professional development assistance
+Vision insurance
+Work from home stipend
+Schedule:
+Monday to Friday
+Application Question(s):
+Do you have expertise in Lambda queries and large datasets?
+Education:
+Bachelor's (Preferred)
+Experience:
+Graph Database Technologies: 3 years (Required)
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=554ad7c4fc54d232,False,back-end developer
+Backend Software Engineer,"Olympiah, Inc.",Remote,remote,2025-06-29,Indeed,"Overview
+We are seeking a skilled Back End Developer to join our dynamic team. The ideal candidate will be responsible for designing, developing, and maintaining server-side applications that support our web and mobile platforms. This role requires a strong understanding of back-end technologies and a commitment to delivering high-quality software solutions. You will work closely with front-end developers and other stakeholders to ensure seamless integration and optimal performance.
+Duties
+Develop and maintain server-side applications using ASP.NET and IIS.
+Design RESTful APIs to facilitate communication between the server and client-side applications.
+Implement database solutions using PL/SQL, ensuring data integrity and performance.
+Collaborate with cross-functional teams throughout the Software Development Life Cycle (SDLC) to gather requirements and deliver effective solutions.
+Utilize UML for system design documentation, ensuring clarity in project specifications.
+Apply Object-Oriented Programming (OOP) principles to create scalable and maintainable code.
+Troubleshoot and resolve issues related to application performance, security, and reliability.
+Participate in code reviews, providing constructive feedback to peers.
+Qualifications
+Proficiency in back-end development technologies including ASP.NET, IIS, and RESTful services.
+Experience with database management systems, particularly PL/SQL.
+Familiarity with Software Development Life Cycle (SDLC) methodologies.
+Strong understanding of UML for effective system design documentation.
+Knowledge of Object-Oriented Programming (OOP) principles is essential.
+Ability to work collaboratively in a team environment while also being self-motivated.
+Excellent problem-solving skills and attention to detail.
+If you are passionate about back-end development and eager to contribute to innovative projects, we encourage you to apply for this exciting opportunity.
+Job Types: Full-time, Part-time
+Pay: $25.00 - $27.50 per hour
+Expected hours: 1 – 40 per week
+Schedule:
+Choose your own hours
+Application Question(s):
+What is the link to your LinkedIn?
+What is the link to your GitHub?
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=1fc5668aad910483,False,back-end developer
+Senior Software Engineer,Tyler Technologies,Remote,remote,2025-06-29,Indeed,"We are seeking an experienced Senior Software Engineer to be part of a team building scalable, distributed systems that empower access to critical government data. Our mission is to build cloud-based platforms and applications that streamline the flow of public data into the hands of citizens, developers, businesses, and researchers. You'll work with a dedicated team to design, develop, and maintain a cutting-edge, cloud-native platform that transforms how government data is accessed and used.
+As a Senior Software Engineer, you will work on a small team (4-6 engineers) responsible for building out the future of enterprise-level authentication and authorization features for the Data & Insights platform. We deliver innovative, scalable solutions for some of the most important data on the planet. We are looking for engineers who are eager to dive deep into development, share their expertise, and contribute to a collaborative culture that emphasizes continuous improvement and growth.
+This role can be performed remotely from anywhere in the U.S.
+Before we get to the list-y bit of the posting, a few key points:
+You must be a resident in the U.S. to be considered for this role.
+We are not considering candidates who require visa sponsorship for this position. This is a budgetary decision and due to the significant talent available currently who do not require such sponsorship.
+This is not a data analyst or data science role. This is a software engineer/software developer position with a focus on back-end development.
+
+Work with our transformative data solutions that help agencies address mission-critical outcomes. Our cloud-based data platform, open data solutions, and performance management solutions help agencies improve performance, transparency, and public engagement.
+Location
+Remote
+Responsibilities
+Design, build, and ship customer-facing features that enable advanced data reporting on government data.
+Maintain and improve our cloud platform running on AWS, ensuring it is scalable, reliable, and easy to use.
+Mentor and guide junior engineers to help them grow their technical skills and confidence.
+Collaborate with cross-functional teams, including engineering management, designers, and product owners, to develop effective solutions to business challenges.
+Proactively identify opportunities to simplify our systems and improve performance, security, and scalability.
+Qualifications
+We would love to talk to you if you…
+Care about scalable, robust, well-tested code.
+Consider yourself a full stack engineer, willing to work in any part of the stack required for the task. For a senior level role, we need you to have at least 4 years of experience.
+Have significant backend experience (specifically API development with Java cloud native frameworks).
+Have experience building enterprise-level AuthN and AuthZ features.
+Show a strong track record of shipping software in the face of ambiguity.
+Demonstrate experience in owning all aspects of a system lifecycle, from proper design, testing, deployment, metrics and monitoring .
+Enable other engineers’ success both through your code contributions and through direct mentorship.
+Share our passion for our clients’ success (no really, we mean it).
+Have experience exploring, or ideally working with, database technologies including relational databases (we use Postgres). Bonus points for experience with technologies like Elasticsearch and AWS.
+Are comfortable working in a heterogeneous development environment where you’ll be working with multiple development languages and technologies. This team owns significant portions of Java, Scala, and ruby code.
+You solve the problem, not the symptoms.
+Required to undergo and satisfactorily pass a fingerprint background check in accordance with CJIS requirements
+State-Specific Salary Range Disclosure Requirements
+Salary will generally fall between $66,585 - $130,000 before adjustment for geographic differences. Recruiter can confirm if position is incentive eligible.
+Taking Care of You & Your Family
+Your health and well-being are important to us. That’s why we invest in our team members by offering competitive benefits to support their health and financial wellness.
+Tyler is subject to regulations, guidelines, and/or client requirements relating to the qualifications of Tyler personnel performing certain client work. Because of the nature of this position, it is a requirement that the candidate can successfully pass a federal background check at the time an offer is extended and over the course of employment with Tyler.
+
+Requisition Number:2025-7107
+
+
+#LI-Remote
+#LI-ZJ1
+Tyler Technologies is proud to be an equal opportunity employer. All qualified applicants will receive consideration without regard to race, creed, gender, marital status, sexual orientation, citizenship status, color, religion, national origin, age, disability, protected veteran status, or any other status protected under local, state, or federal laws. If you require reasonable accommodation for any part of the application or hiring process due to a disability, please submit your request by emailing jobs@tylertech.com or by calling 800.646.2633 ext. 791008. Please keep in mind these methods are reserved for individuals who require accommodation due to a disability.",N/A,https://www.indeed.com/viewjob?jk=f6250cd04dc53c7a,False,back-end developer
+Frontend Software Engineer,"Olympiah, Inc.",Remote,remote,2025-06-29,Indeed,"Job Summary
+We are seeking a talented and motivated Front End Developer to join our dynamic team. In this role, you will be responsible for creating engaging and responsive web applications that enhance user experience. You will collaborate with designers and back-end developers to deliver high-quality software solutions that meet our clients' needs. The ideal candidate should have a strong foundation in front-end technologies and a passion for building intuitive interfaces.
+Duties
+Develop and maintain user-friendly web applications using modern front-end frameworks such as React or Angular.
+Collaborate with UX/UI designers to create wireframes and prototypes that align with project requirements.
+Implement responsive design principles to ensure applications function seamlessly across various devices.
+Write clean, maintainable code while adhering to best practices in software development, including unit testing.
+Participate in code reviews to ensure high-quality standards and share knowledge within the team.
+Work closely with back-end developers to integrate APIs and enhance system architecture.
+Utilize cloud services such as AWS for deployment and scalability of applications.
+Continuously optimize applications for performance, accessibility, and SEO.
+Experience
+Proficiency in front-end technologies including TypeScript, React, and Angular.
+Familiarity with .NET framework for full-stack development is a plus.
+Experience with PostgreSQL or similar relational databases for data management.
+Understanding of Object-Oriented Programming (OOP) principles and design patterns.
+Knowledge of wireframing tools to assist in the design process.
+Experience with unit testing frameworks to ensure code reliability.
+Strong problem-solving skills and ability to work collaboratively in a team environment.
+If you are passionate about front-end development and eager to contribute to innovative projects, we encourage you to apply. Join us in creating exceptional digital experiences!
+Job Type: Full-time
+Pay: $25.00 - $27.50 per hour
+Expected hours: 1 – 40 per week
+Schedule:
+Choose your own hours
+Application Question(s):
+If available, please enter a link to your LinkedIn.
+If available, please enter a link to your GitHub.
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=26df63688f4f1b32,False,back-end developer
+Software Engineer,Communication Links,Remote,remote,2025-06-29,Indeed,"Role
+We are seeking an experienced Software Engineer to join our dynamic team at Communication Links. In this role, you will play a pivotal part in developing innovative products and contributing to the success of our projects. The individual MUST have strong experience in developing full-stack applications, with a particular focus on front-end development, building intuitive user interfaces, integrating with back-end services, and ensuring a seamless user experience across web applications. Additionally, the individual SHALL proactively recommend and implement improvements to existing software applications as needed.
+Responsibilities
+Develops, and tests software for Air Force-based products.
+Develops both front-end and back-end of software MVPs, components, and tools that can be leveraged to create new mobile and web applications.
+Collaborate in formulating strategies for rapid MVP development, ensuring efficient and scalable solutions that align with project goals and timelines
+Will adhere to plans, road maps, software design strategies. Helps to design and develop software requirements for Air Force based products including the software architectures, APIs, frameworks, and libraries.
+Analyzes and decomposes activities and requirements to software designs that are allocated across systems components/sub-components, classification system levels, etc.
+Works with Product Managers, UX Designers and other engineers to help in composing cohesive and sound software designs that form the basis of scalable software solutions.
+Helps to optimize software designs and architectures to deliver desired performance targets. Captures, develops, and reports reference architectures and documenting compliance standards.
+Junior engineers SHALL be proficient in discussing future limitations and a forward-thinking approach in resolving roadblocks presented by current strategy
+Stays informed on latest software architectures and trends from design patterns to DevSecOps and systems architecture patterns.
+Aids in making technical decisions in order to integrate systems to the cloud
+Optimizes software designs and architectures to deliver desired performance targets and devises tooling and methodologies to profile execution and capture performance metrics.
+Implements and practices DevOps Enablement and helps more junior/less experienced developers to do same
+Is a mentor to other engineers regarding troubleshooting techniques, design patterns, and testing strategies.
+Requirements
+Experience building modern front-end applications using frameworks like React.js, Node.js, and other JavaScript frameworks (e.g., Vue, Angular), or equivalent experience.
+Experience integrating web applications with GraphQL and/or REST APIs
+Be a hands-on engineer spending significant percentage of their time writing code or debugging tricky issues
+Knowledge of professional software engineering practices for the full software development life cycle including coding standards, code reviews, source control management, build processes, testing, and operations
+Proficiency in Computer Science fundamentals – object-oriented design, data structures, algorithm -design, problem solving, and complexity analysis.
+Proficiency with JavaScript, Java, and preferably one more programming language (Python, etc.)
+Proficiency with container technologies such as Docker or Kubernetes
+MUST be eligible to obtain a minimum of a Secret clearance.
+Required: Strong communication/general soft skills
+Excellent time management and organizational skills
+Proven ability to work effectively with remote development teams
+US Citizenship or Permanent US Resident
+Benefits:
+401(k)
+Dental insurance
+Flexible spending account
+Health insurance
+Health savings account
+Life insurance
+Paid time off
+Vision insurance
+Job Types: Full-time, Part-time
+Pay: $60.00 - $70.00 per hour
+Expected hours: 40 per week
+Benefits:
+401(k)
+Dental insurance
+Flexible schedule
+Health insurance
+Life insurance
+Paid time off
+Vision insurance
+Compensation Package:
+Bonus opportunities
+Hourly pay
+Schedule:
+Monday to Friday
+Work Location: Remote",N/A,https://www.indeed.com/viewjob?jk=dc3e0ab46cd2ee33,False,back-end developer

@@ -25,4 +25,6 @@ export async function middleware(req: NextRequest) {
   return res;
 }
 
-export const config = { matcher: ["/", "/dashboard", "/home"] };
+export const config = {
+  matcher: ["/", "/dashboard", "/home", "/login", "/auth/callback"]
+};

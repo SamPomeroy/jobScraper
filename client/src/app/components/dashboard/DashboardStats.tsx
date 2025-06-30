@@ -3,7 +3,7 @@
 
 import React from "react";
 import { Search, Mail, Save, Bell } from "lucide-react";
-import { DashboardStats as StatsType } from "../../types/dashboard";
+import { DashboardStats as StatsType } from "../../types/application";
 
 interface DashboardStatsProps {
   stats: StatsType;
