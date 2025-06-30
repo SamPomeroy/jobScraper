@@ -23,7 +23,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   const tabs: Tab[] = [
     { id: "dashboard", label: "Job Tracker", icon: Search },
     { id: "applications", label: "Applications Sent", icon: Mail },
-    { id: "resumes", label: "Resumes", icon: FileText },
+    { id: "resume", label: "Resume", icon: FileText },
     { id: "settings", label: "Settings", icon: Settings },
     { id: "notifications", label: "Notifications", icon: Bell },
   ];

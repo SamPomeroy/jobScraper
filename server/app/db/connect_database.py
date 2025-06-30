@@ -8,6 +8,7 @@ from supabase import create_client
 load_dotenv()
 DATABASE_URL = os.getenv("SUPABASE_DATABASE")
 url = os.getenv("SUPABASE_URL")
+# key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 key = os.getenv("SUPABASE_ANON_KEY")
 
 if url is None or key is None:

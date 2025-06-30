@@ -1,244 +1,218 @@
 import { supabase } from "@/app/supabase/client";
-import { Job } from "../types/jobs";
+import { Job, UserJobStatus } from "../types/application";
 
 export class JobService {
-  static async getAllJobs(): Promise<Job[]> {
+  // 🔁 Fetch all jobs with user-specific status (FIXED VERSION)
+  static async getAllJobs(userId: string): Promise<(Job & Partial<UserJobStatus>)[]> {
     try {
-      const { data, error } = await supabase
+      // First, get ALL jobs (no user filtering)
+      const { data: jobsData, error: jobsError } = await supabase
         .from("jobs")
         .select("*")
         .order("date", { ascending: false });
 
-      if (error) {
-        console.error("Error fetching jobs:", error);
-        throw error;
-      }
+      if (jobsError) throw jobsError;
 
-      return (data || []).map(this.transformJobData);
+      // Then, get user-specific status for jobs this user has interacted with
+      const { data: statusData, error: statusError } = await supabase
+        .from("user_job_status")
+        .select("*")
+        .eq("user_id", userId);
+
+      if (statusError) throw statusError;
+
+      // Create a map of job statuses for quick lookup
+      const statusMap = new Map(
+        (statusData || []).map(status => [status.job_id, status])
+      );
+
+      // Combine the data - ALL jobs with their user status (if exists)
+      const combinedData = (jobsData || []).map(job => ({
+        ...job,
+        user_job_status: statusMap.get(job.id) || null // null if user hasn't interacted
+      }));
+
+      console.log(`📊 Total jobs fetched: ${jobsData?.length || 0}`);
+      console.log(`👤 User interactions found: ${statusData?.length || 0}`);
+
+      return combinedData.map(this.transformJobRecord);
     } catch (error) {
-      console.error("Error in getAllJobs:", error);
+      console.error("❌ Error in getAllJobs:", error);
       return [];
     }
   }
 
-  static async updateJob(
+  // 🔄 Update individual job status
+  static async updateUserJobStatus(
+    userId: string,
     jobId: string,
-    updates: Partial<Job>
-  ): Promise<Job | null> {
-    try {
-      const updateData = {
-        ...updates,
-        updated_at: new Date().toISOString(),
-      };
-
-      const { data, error } = await supabase
-        .from("jobs")
-        .update(updateData)
-        .eq("id", jobId)
-        .select()
-        .single();
-
-      if (error) {
-        console.error("Error updating job:", error);
-        throw error;
-      }
-
-      console.log("Job updated successfully:", data);
-      return this.transformJobData(data);
-    } catch (error) {
-      console.error("Error in updateJob:", error);
-      throw error; // Re-throw to handle in component
-    }
-  }
-
-  static async markJobAsApplied(jobId: string): Promise<Job | null> {
-    const updates: Partial<Job> = {
-      applied: true,
-      status: "applied",
-      applied_date: new Date().toISOString().split("T")[0], // Track when they applied
-      updated_at: new Date().toISOString(),
+    updates: Partial<UserJobStatus>
+  ): Promise<void> {
+    const payload = {
+      ...updates,
+      user_id: userId,
+      job_id: jobId,
+      updated_at: new Date().toISOString()
     };
+    
+    const { error } = await supabase
+      .from("user_job_status")
+      .upsert(payload, { onConflict: "user_id,job_id" });
 
-    try {
-      const result = await this.updateJob(jobId, updates);
-      console.log("Job marked as applied:", result);
-      return result;
-    } catch (error) {
-      console.error("Error marking job as applied:", error);
+    if (error) {
+      console.error("❌ Error updating user job status:", error);
       throw error;
     }
   }
 
-  static async updateJobStatus(
-    jobId: string,
-    status: Job["status"]
-  ): Promise<Job | null> {
-    const updates: Partial<Job> = {
-      status,
-      status_updated_at: new Date().toISOString(),
-    };
-
-    if (status === "applied") {
-      updates.applied = true;
-      updates.applied_date = new Date().toISOString().split("T")[0];
-    }
-
-    return this.updateJob(jobId, updates);
+  static toggleSaved(userId: string, jobId: string, current: boolean) {
+    return this.updateUserJobStatus(userId, jobId, { saved: !current });
   }
 
-  static async toggleJobSaved(
-    jobId: string,
-    currentSavedStatus: boolean
-  ): Promise<Job | null> {
-    return this.updateJob(jobId, {
-      saved: !currentSavedStatus,
-      saved_date: !currentSavedStatus
-        ? new Date().toISOString().split("T")[0]
-        : null,
+  static markAsApplied(userId: string, jobId: string) {
+    return this.updateUserJobStatus(userId, jobId, {
+      applied: true,
+      status: "applied"
     });
   }
 
-  static async getJobsByStatus(status: Job["status"]): Promise<Job[]> {
-    if (typeof status === "undefined") {
-      return [];
-    }
+  static updateStatus(userId: string, jobId: string, status: UserJobStatus["status"]) {
+    return this.updateUserJobStatus(userId, jobId, {
+      status,
+      applied: status === "applied"
+    });
+  }
+
+  // 📦 Batch update multiple jobs
+  static async batchUpdateUserJobs(
+    userId: string,
+    updates: Array<{ jobId: string; data: Partial<UserJobStatus> }>
+  ): Promise<void> {
     try {
-      const { data, error } = await supabase
+      const promises = updates.map(({ jobId, data }) =>
+        this.updateUserJobStatus(userId, jobId, data)
+      );
+      await Promise.all(promises);
+    } catch (error) {
+      console.error("❌ Batch update error:", error);
+    }
+  }
+
+  // 🔍 Job filtering and search (FIXED VERSION)
+  static async searchJobs(userId: string, searchTerm: string): Promise<(Job & Partial<UserJobStatus>)[]> {
+    try {
+      // Get all jobs matching search term
+      const { data: jobsData, error: jobsError } = await supabase
         .from("jobs")
         .select("*")
-        .eq("status", status)
+        .or(`title.ilike.%${searchTerm}%,company.ilike.%${searchTerm}%,job_location.ilike.%${searchTerm}%,search_term.ilike.%${searchTerm}%`)
         .order("date", { ascending: false });
 
-      if (error) {
-        console.error("Error fetching jobs by status:", error);
-        throw error;
-      }
+      if (jobsError) throw jobsError;
 
-      return (data || []).map(this.transformJobData);
-    } catch (error) {
-      console.error("Error in getJobsByStatus:", error);
-      return [];
-    }
-  }
-
-  static async getAppliedJobs(): Promise<Job[]> {
-    try {
-      const { data, error } = await supabase
-        .from("jobs")
+      // Get user status for these jobs
+      const jobIds = jobsData?.map(job => job.id) || [];
+      const { data: statusData, error: statusError } = await supabase
+        .from("user_job_status")
         .select("*")
-        .eq("applied", true)
-        .order("applied_date", { ascending: false });
+        .eq("user_id", userId)
+        .in("job_id", jobIds);
 
-      if (error) {
-        console.error("Error fetching applied jobs:", error);
-        throw error;
-      }
+      if (statusError) throw statusError;
 
-      return (data || []).map(this.transformJobData);
+      // Create status map
+      const statusMap = new Map(
+        (statusData || []).map(status => [status.job_id, status])
+      );
+
+      // Combine data
+      const combinedData = (jobsData || []).map(job => ({
+        ...job,
+        user_job_status: statusMap.get(job.id) || null
+      }));
+
+      return combinedData.map(this.transformJobRecord);
     } catch (error) {
-      console.error("Error in getAppliedJobs:", error);
+      console.error("❌ Search failed:", error);
       return [];
     }
   }
 
-  static async getSavedJobs(): Promise<Job[]> {
+  // 🔍 Get filtered jobs (FIXED VERSION)
+  static async getFilteredJobs(
+    userId: string,
+    filters: { filter?: string; category?: string; priority?: string; status?: string; searchTerm?: string }
+  ): Promise<(Job & Partial<UserJobStatus>)[]> {
     try {
-      const { data, error } = await supabase
-        .from("jobs")
-        .select("*")
-        .eq("saved", true)
-        .order("saved_date", { ascending: false });
+      // Start with all jobs
+      let jobQuery = supabase.from("jobs").select("*");
 
-      if (error) {
-        console.error("Error fetching saved jobs:", error);
-        throw error;
-      }
-
-      return (data || []).map(this.transformJobData);
-    } catch (error) {
-      console.error("Error in getSavedJobs:", error);
-      return [];
-    }
-  }
-
-  static async searchJobs(searchTerm: string): Promise<Job[]> {
-    try {
-      const { data, error } = await supabase
-        .from("jobs")
-        .select("*")
-        .or(
-          `title.ilike.%${searchTerm}%,company.ilike.%${searchTerm}%,job_location.ilike.%${searchTerm}%,search_term.ilike.%${searchTerm}%`
-        )
-        .order("date", { ascending: false });
-
-      if (error) {
-        console.error("Error searching jobs:", error);
-        throw error;
-      }
-
-      return (data || []).map(this.transformJobData);
-    } catch (error) {
-      console.error("Error in searchJobs:", error);
-      return [];
-    }
-  }
-
-  static async getFilteredJobs(filters: {
-    filter?: string;
-    category?: string;
-    priority?: string;
-    status?: string;
-    searchTerm?: string;
-  }): Promise<Job[]> {
-    try {
-      let query = supabase.from("jobs").select("*");
-
-      if (filters.filter && filters.filter !== "all") {
-        if (filters.filter === "applied") {
-          query = query.eq("applied", true);
-        } else if (filters.filter === "saved") {
-          query = query.eq("saved", true);
-        } else {
-          query = query.eq("status", filters.filter);
-        }
-      }
-
+      // Apply job-level filters
       if (filters.category && filters.category !== "all") {
-        query = query.eq("search_term", filters.category);
+        jobQuery = jobQuery.eq("search_term", filters.category);
       }
 
       if (filters.priority && filters.priority !== "all") {
-        query = query.eq("priority", filters.priority);
+        jobQuery = jobQuery.eq("priority", filters.priority);
+      }
+
+      if (filters.searchTerm?.trim()) {
+        const s = filters.searchTerm.trim();
+        jobQuery = jobQuery.or(`title.ilike.%${s}%,company.ilike.%${s}%,job_location.ilike.%${s}%`);
+      }
+
+      jobQuery = jobQuery.order("date", { ascending: false });
+      const { data: jobsData, error: jobsError } = await jobQuery;
+      if (jobsError) throw jobsError;
+
+      // Get user status
+      const jobIds = jobsData?.map(job => job.id) || [];
+      const { data: statusData, error: statusError } = await supabase
+        .from("user_job_status")
+        .select("*")
+        .eq("user_id", userId)
+        .in("job_id", jobIds);
+
+      if (statusError) throw statusError;
+
+      // Create status map
+      const statusMap = new Map(
+        (statusData || []).map(status => [status.job_id, status])
+      );
+
+      // Combine data
+      let combinedData = (jobsData || []).map(job => ({
+        ...job,
+        user_job_status: statusMap.get(job.id) || null
+      }));
+
+      // Apply user-status filters AFTER combining
+      if (filters.filter && filters.filter !== "all") {
+        const f = filters.filter;
+        combinedData = combinedData.filter(job => {
+          const userStatus = job.user_job_status;
+          if (f === "applied") return userStatus?.applied === true;
+          if (f === "saved") return userStatus?.saved === true;
+          if (f === "pending") return !userStatus?.applied;
+          return userStatus?.status === f;
+        });
       }
 
       if (filters.status && filters.status !== "all") {
-        query = query.eq("status", filters.status);
-      }
-
-      if (filters.searchTerm && filters.searchTerm.trim()) {
-        const searchTerm = filters.searchTerm.trim();
-        query = query.or(
-          `title.ilike.%${searchTerm}%,company.ilike.%${searchTerm}%,job_location.ilike.%${searchTerm}%`
+        combinedData = combinedData.filter(job => 
+          job.user_job_status?.status === filters.status
         );
       }
 
-      query = query.order("date", { ascending: false });
-
-      const { data, error } = await query;
-
-      if (error) {
-        console.error("Error fetching filtered jobs:", error);
-        throw error;
-      }
-
-      return (data || []).map(this.transformJobData);
+      return combinedData.map(this.transformJobRecord);
     } catch (error) {
-      console.error("Error in getFilteredJobs:", error);
+      console.error("❌ Filter error:", error);
       return [];
     }
   }
 
-  static async getJobStatistics(): Promise<{
+  // 📊 Statistics (UPDATED)
+  static async getJobStatistics(userId: string): Promise<{
     total: number;
     applied: number;
     saved: number;
@@ -248,110 +222,59 @@ export class JobService {
     rejected: number;
   }> {
     try {
-      const jobs = await this.getAllJobs();
-
+      const jobs = await this.getAllJobs(userId);
+      
       return {
         total: jobs.length,
-        applied: jobs.filter((job) => job.applied).length,
-        saved: jobs.filter((job) => job.saved).length,
-        pending: jobs.filter(
-          (job) => !job.applied && (!job.status || job.status === "pending")
-        ).length,
-        interviews: jobs.filter((job) => job.status === "interview").length,
-        offers: jobs.filter((job) => job.status === "offer").length,
-        rejected: jobs.filter((job) => job.status === "rejected").length,
+        applied: jobs.filter(j => j.applied).length,
+        saved: jobs.filter(j => j.saved).length,
+        pending: jobs.filter(j => !j.applied && (!j.status || j.status === "pending")).length,
+        interviews: jobs.filter(j => j.status === "interview").length,
+        offers: jobs.filter(j => j.status === "offer").length,
+        rejected: jobs.filter(j => j.status === "rejected").length
       };
     } catch (error) {
-      console.error("Error getting job statistics:", error);
+      console.error("❌ Statistics error:", error);
       return {
-        total: 0,
-        applied: 0,
-        saved: 0,
-        pending: 0,
-        interviews: 0,
-        offers: 0,
-        rejected: 0,
+        total: 0, applied: 0, saved: 0, pending: 0, interviews: 0, offers: 0, rejected: 0
       };
     }
   }
 
-  private static transformJobData(rawJob: any): Job {
-    return {
-      id: rawJob.id,
-      title: rawJob.title,
-      company: rawJob.company ?? undefined,
-      job_location: rawJob.job_location ?? undefined,
-      job_state: rawJob.job_state ?? undefined,
-      salary: rawJob.salary ?? undefined,
-      site: rawJob.site || "",
-      date: rawJob.date || new Date().toISOString().split("T")[0],
-      applied: rawJob.applied || false,
-      applied_date: rawJob.applied_date ?? undefined,
-      saved: rawJob.saved ?? undefined,
-      saved_date: rawJob.saved_date ?? undefined,
-      url: rawJob.url || "",
-      job_description: rawJob.job_description ?? undefined,
-      search_term: rawJob.search_term ?? undefined,
-      category: rawJob.category ?? undefined,
-      priority: rawJob.priority ?? undefined,
-      status: rawJob.status ?? undefined,
-      status_updated_at: rawJob.status_updated_at ?? undefined,
-      updated_at: rawJob.updated_at ?? undefined,
-      skills: rawJob.skills ?? [],
-      user_id: rawJob.user_id ?? undefined,
-      inserted_at: rawJob.inserted_at ?? undefined,
-     
-    };
-  }
-
-  static subscribeToJobChanges(callback: (jobs: Job[]) => void) {
-    const subscription = supabase
-      .channel("jobs_changes")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "jobs" },
-        async (payload) => {
-          console.log("Job database change detected:", payload);
-          // Fetch updated jobs and call callback
-          const updatedJobs = await this.getAllJobs();
-          callback(updatedJobs);
-        }
-      )
-      .subscribe();
-
-    return subscription;
-  }
-
-  static async batchUpdateJobs(
-    updates: Array<{ id: string; data: Partial<Job> }>
-  ): Promise<Job[]> {
-    try {
-      const updatePromises = updates.map(({ id, data }) =>
-        this.updateJob(id, data)
-      );
-
-      const results = await Promise.all(updatePromises);
-      return results.filter((result) => result !== null) as Job[];
-    } catch (error) {
-      console.error("Error in batch update:", error);
-      return [];
-    }
-  }
-
+  // 🧪 Connection check
   static async verifyConnection(): Promise<boolean> {
     try {
-      const { data, error } = await supabase.from("jobs").select("id").limit(1);
-
-      if (error) {
-        console.error("Database connection error:", error);
-        return false;
-      }
-
-      console.log("Database connection verified");
-      return true;
-    } catch (error) {
-      console.error("Error verifying database connection:", error);
+      const { error } = await supabase.from("jobs").select("id").limit(1);
+      return !error;
+    } catch {
       return false;
     }
+  }
+
+  // 🌀 Transform raw result (FIXED to handle null user_job_status)
+  private static transformJobRecord(record: any): Job & Partial<UserJobStatus> {
+    return {
+      id: record.id,
+      title: record.title,
+      company: record.company ?? undefined,
+      job_location: record.job_location ?? undefined,
+      job_state: record.job_state ?? undefined,
+      salary: record.salary ?? undefined,
+      site: record.site,
+      date: record.date,
+      inserted_at: record.inserted_at,
+      url: record.url,
+      job_description: record.job_description,
+      search_term: record.search_term,
+      category: record.category,
+      priority: record.priority,
+      skills: record.skills ?? [],
+      last_verified: record.last_verified,
+      // Default to false if no user interaction exists
+      saved: record.user_job_status?.saved ?? false,
+      applied: record.user_job_status?.applied ?? false,
+      status: record.user_job_status?.status ?? undefined,
+      updated_at: record.user_job_status?.updated_at ?? record.updated_at
+    };
   }
 }

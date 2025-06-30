@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    env_file:
+      - ./client/.env.local
+
+  server:
+    build: ./server
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./server/.env
+
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./n8n-data:/home/node/.n8n
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+    restart: unless-stopped
