@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Job } from "../../types/jobs";
+import { Job } from "../../types/application";
 
 interface NotificationsTabProps {
   jobs: Job[];

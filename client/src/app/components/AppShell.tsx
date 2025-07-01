@@ -133,15 +133,6 @@ export default function AppShell({
     setCurrentPage("dashboard");
     resetAuthTimeout(); // Start timeout timer
   };
-
-  const handleJobUpdate = (jobId: string, update: Partial<import("@/app/types/application").Job>) => {
-    // Optionally: send update to backend or show notification
-  };
-
-  const handleApplyStatusChange = (jobId: string, applied: boolean) => {
-    // Optionally: send update to backend or show notification
-  };
-
   const handleExtendSession = () => {
     resetAuthTimeout();
     setShowTimeoutWarning(false);

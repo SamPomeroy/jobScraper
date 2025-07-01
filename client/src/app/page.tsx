@@ -1,4 +1,4 @@
-// src/app/page.tsx
+
 import { getUserServer } from '@/app/supabase/user';
 import AppShell from '@/app/components/AppShell'; // or Dashboard if directly
 import type { AuthUser } from '@/app/types/application';

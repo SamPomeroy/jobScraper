@@ -30,7 +30,7 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
     fromDate: undefined,
     toDate: undefined,
   });
-  
+
   const [pendingJobId, setPendingJobId] = useState<string | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -41,14 +41,17 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
     return [...jobs].sort(
       (a, b) =>
         new Date(b.inserted_at ?? "").getTime() -
-      new Date(a.inserted_at ?? "").getTime()
+        new Date(a.inserted_at ?? "").getTime()
     )[0];
   }, [jobs]);
 
   useEffect(() => {
     console.log("📦 Jobs fetched:", jobs.length);
     console.log("📅 Top job date:", formatDate(newest?.date));
-    console.log("📥 Most recent job inserted:", formatDate(newest?.inserted_at));
+    console.log(
+      "📥 Most recent job inserted:",
+      formatDate(newest?.inserted_at)
+    );
   }, [jobs, newest]);
   console.log("Current userId →", userId);
 
@@ -85,7 +88,8 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
 
   const filteredJobs = useMemo(() => {
     return jobs.filter((job) => {
-      const { filter, category, status, searchTerm, fromDate, toDate } = filters;
+      const { filter, category, status, searchTerm, fromDate, toDate } =
+        filters;
 
       if (filter !== "all") {
         switch (filter) {
@@ -142,7 +146,11 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
   return (
     <>
       <DashboardStats stats={dashboardStats} darkMode={darkMode} />
-      <JobFilter filters={filters} onFilterChange={setFilters} darkMode={darkMode} />
+      <JobFilter
+        filters={filters}
+        onFilterChange={setFilters}
+        darkMode={darkMode}
+      />
 
       <div className="mt-6 space-y-4">
         {filteredJobs.map((job) => (
@@ -161,18 +169,28 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
               </div>
               <div className="flex gap-2">
                 <button
-                  onClick={() => onToggleSavedAction(job.id, job.saved ?? false)}
-                  className={`px-2 py-1 rounded text-sm ${
+                  onClick={() =>
+                  onToggleSavedAction(job.id, job.saved ?? false)
+                  }
+                  className={`px-2 py-1 rounded text-sm transition-colors
+                  ${
                     job.saved
-                      ? "bg-yellow-400 hover:bg-yellow-500"
-                      : "bg-gray-200 hover:bg-gray-300"
-                  }`}
+                    ? darkMode
+                      ? "bg-yellow-300 text-black hover:bg-yellow-400"
+                      : "bg-yellow-400 text-black hover:bg-yellow-500"
+                    : darkMode
+                    ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                    : "bg-gray-200 text-gray-600 hover:bg-gray-300"
+                  }
+                  `}
                 >
                   {job.saved ? "★ Unsave" : "☆ Save"}
                 </button>
 
                 <button
-                  onClick={() => onApplyStatusChangeAction(job.id, !job.applied)}
+                  onClick={() =>
+                    onApplyStatusChangeAction(job.id, !job.applied)
+                  }
                   className={`px-2 py-1 rounded text-sm ${
                     job.applied
                       ? "bg-green-600 hover:bg-green-700 text-white"
@@ -192,7 +210,9 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
               >
                 View Posting
               </a>
-              <p className="text-xs text-gray-400 mt-1">Posted on: {job.date}</p>
+              <p className="text-xs text-gray-400 mt-1">
+                Posted on: {job.date}
+              </p>
             </div>
           </div>
         ))}
@@ -232,5 +252,3 @@ export const JobTrackerTab: React.FC<JobTrackerTabProps> = ({
 };
 
 export default JobTrackerTab;
-
-

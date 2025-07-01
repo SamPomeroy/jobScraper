@@ -75,6 +75,7 @@ export interface SettingsProps {
 }
 
 export interface Resume {
+  file_path(file_path: any, arg1: string): void;
   resume_text?: string;
   id: string;
   name: string;
