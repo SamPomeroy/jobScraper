@@ -49,10 +49,15 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, darkMode }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
       {statCards.map((card) => (
-        <div key={card.title} className={`${darkMode ? "bg-gray-800" : "bg-white"} rounded-lg shadow p-6`}>
+          <div
+            key={card.title}
+            className={`group ${darkMode ? "bg-gray-800" : "bg-white"} rounded-lg shadow p-6 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg`}
+          >
           <div className="flex items-center">
             <div className={`w-12 h-12 ${card.bgColor} rounded-lg flex items-center justify-center`}>
-              <card.icon className={`w-6 h-6 ${card.textColor}`} />
+              <card.icon
+                className={`w-6 h-6 transition-transform duration-200 ease-out group-hover:scale-110 ${card.textColor}`}
+              />
             </div>
             <div className="ml-4">
               <h3 className="text-lg font-semibold">{card.title}</h3>

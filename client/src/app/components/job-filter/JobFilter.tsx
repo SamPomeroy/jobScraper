@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Filter, Search, CalendarDays } from 'lucide-react';
-import { JobFilterState } from '@/app/types/application';
+import { JobFilterState } from '@/app/types/jobs';
 
 interface Props {
   filters: JobFilterState;
