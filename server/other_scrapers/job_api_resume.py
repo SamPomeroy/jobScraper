@@ -325,7 +325,7 @@ async def get_jobs(
         if site:
             query = query.eq('site', site)
         
-        # Apply pagination
+
         query = query.range(offset, offset + limit - 1)
         
         # Order by most recent
