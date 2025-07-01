@@ -226,7 +226,7 @@ export default function Dashboard({ user }: DashboardProps) {
 
         {activeTab === "resume" && (
           <ResumeTab 
-            user={user}
+            user={{ ...user, email: user.email ?? "" }}
             darkMode={darkMode} 
           />
         )}
