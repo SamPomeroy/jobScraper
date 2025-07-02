@@ -31,7 +31,6 @@ export async function signIn(
   };
 }
 
-// ✅ Sign Up
 export async function signUp(
   email: string,
   password: string
@@ -51,13 +50,13 @@ export async function signUp(
   return data.user;
 }
 
-// ✅ Sign Out
+
 export async function signOut(): Promise<void> {
   const { error } = await supabase.auth.signOut();
   if (error) console.error("Logout error:", error.message);
 }
 
-// ✅ Get Logged-In User from Session
+
 export async function getUser(): Promise<User | null> {
 
   const {
@@ -87,7 +86,7 @@ export async function getUser(): Promise<User | null> {
 
   return user;
 }
-// ✅ Google Sign-In
+
 export async function signInWithGoogle(): Promise<void> {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
@@ -96,7 +95,7 @@ export async function signInWithGoogle(): Promise<void> {
   if (error) {
     console.error('Google login error:', error.message);
   } else {
-    // Redirection will handle the rest; no need to manually grab tokens here
+   
     console.log('Redirecting to Google for login...');
   }
 }

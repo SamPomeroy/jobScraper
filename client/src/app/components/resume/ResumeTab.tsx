@@ -2,9 +2,20 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { FileText, Upload, Trash2, Eye, Star } from "lucide-react";
-import { Resume } from "../../types/application";
-import type { AuthUser } from "../../types/application";
-import { supabase } from "../../supabase/client";
+
+interface Resume {
+  id: string;
+  file_name: string;
+  file_url: string;
+  is_default: boolean;
+  updated_at: string;
+  resume_text?: string;
+}
+
+interface AuthUser {
+  id: string;
+  email: string;
+}
 
 interface ResumeTabProps {
   user: AuthUser;
@@ -15,88 +26,60 @@ export const ResumeTab: React.FC<ResumeTabProps> = ({ user, darkMode }) => {
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [uploading, setUploading] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const [compareResults, setCompareResults] = useState<Record<
-    string,
-    { score: number; skills: string[] }
-  >>({});
-
-  const [showModal, setShowModal] = useState<{ id: string; visible: boolean }>({
-    id: "",
-    visible: false,
-  });
+  const [compareResults, setCompareResults] = useState<Record<string, { score: number; skills: string[] }>>({});
+  const [showModal, setShowModal] = useState<{ id: string; visible: boolean }>({ id: "", visible: false });
 
   useEffect(() => {
-    const fetchResumes = async () => {
-      const { data, error } = await supabase
-        .from("resumes")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false });
-
-      if (data) setResumes(data);
-      if (error) console.error("Fetch error:", error.message);
-    };
-
-    fetchResumes();
+    const stored = localStorage.getItem(`resumes-${user.id}`);
+    if (stored) setResumes(JSON.parse(stored));
   }, [user.id]);
+
+  const saveToLocal = (data: Resume[]) => {
+    localStorage.setItem(`resumes-${user.id}`, JSON.stringify(data));
+  };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
-    const filePath = `user-${user.id}/${file.name}`;
 
-    const { error: uploadError } = await supabase.storage
-      .from("resumes")
-      .upload(filePath, file, { upsert: true });
+    try {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const resumeText = reader.result?.toString() || "";
 
-    if (uploadError) {
-      console.error("Upload failed:", uploadError.message);
+        const newResume: Resume = {
+          id: `${Date.now()}-${Math.random()}`,
+          file_name: file.name,
+          file_url: URL.createObjectURL(file),
+          is_default: false,
+          updated_at: new Date().toISOString(),
+          resume_text: resumeText,
+        };
+
+        const updated = [newResume, ...resumes];
+        setResumes(updated);
+        saveToLocal(updated);
+        alert("Resume uploaded locally!");
+      };
+
+      reader.readAsText(file);
+    } catch (error) {
+      console.error("Upload error:", error);
+      alert("Upload failed.");
+    } finally {
       setUploading(false);
-      return;
+      if (fileInputRef.current) fileInputRef.current.value = '';
     }
-
-    const { data: publicUrlData } = supabase.storage
-      .from("resumes")
-      .getPublicUrl(filePath);
-
-    const publicUrl = publicUrlData?.publicUrl;
-
-    const { error: insertError } = await supabase.from("resumes").insert({
-      user_id: user.id,
-      file_name: file.name,
-      file_path: publicUrl,
-      is_default: false,
-      updated_at: new Date().toISOString(),
-    });
-
-    if (insertError) {
-      console.error("Insert failed:", insertError.message);
-    } else {
-      const { data: updatedResumes, error: fetchError } = await supabase
-        .from("resumes")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false });
-
-      if (updatedResumes) setResumes(updatedResumes);
-      if (fetchError) console.error("Refresh failed:", fetchError.message);
-    }
-
-    setUploading(false);
   };
 
   const handleCompare = async (resumeId: string, resumeText: string) => {
     try {
-      const response = await fetch("http://localhost:5678/compare-resume", {
+      const response = await fetch("http://snoe.app.n8n.cloud/webhook-test/compare-resume ", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user_id: user.id,
-          resume_text: resumeText,
-        }),
+        body: JSON.stringify({ user_id: user.id, resume_text: resumeText }),
       });
 
       const result = await response.json();
@@ -112,21 +95,20 @@ export const ResumeTab: React.FC<ResumeTabProps> = ({ user, darkMode }) => {
       setShowModal({ id: resumeId, visible: true });
     } catch (err) {
       console.error("Compare failed:", err);
-      alert("Something went wrong comparing this resume.");
+      alert("Error comparing resume.");
     }
   };
 
-  const setDefaultResume = (id: string): void => {
-    setResumes((prev) =>
-      prev.map((resume) => ({
-        ...resume,
-        is_default: resume.id === id,
-      }))
-    );
+  const setDefaultResume = (id: string) => {
+    const updated = resumes.map((r) => ({ ...r, is_default: r.id === id }));
+    setResumes(updated);
+    saveToLocal(updated);
   };
 
-  const deleteResume = (id: string): void => {
-    setResumes((prev) => prev.filter((resume) => resume.id !== id));
+  const deleteResume = (id: string) => {
+    const updated = resumes.filter((r) => r.id !== id);
+    setResumes(updated);
+    saveToLocal(updated);
   };
 
   return (
@@ -147,7 +129,7 @@ export const ResumeTab: React.FC<ResumeTabProps> = ({ user, darkMode }) => {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".pdf,.doc,.docx"
+          accept=".pdf,.docx,.txt"
           className="hidden"
           onChange={handleFileUpload}
         />
@@ -167,67 +149,36 @@ export const ResumeTab: React.FC<ResumeTabProps> = ({ user, darkMode }) => {
                 <div>
                   <h3 className={`font-medium flex items-center ${darkMode ? "text-gray-100" : "text-gray-900"}`}>
                     {resume.file_name}
-                    {resume.is_default && (
-                      <Star className="w-4 h-4 text-yellow-500 ml-2 fill-current" />
-                    )}
+                    {resume.is_default && <Star className="w-4 h-4 text-yellow-500 ml-2 fill-current" />}
                   </h3>
                   <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-                    {resume.updated_at
-                      ? `Updated ${new Date(resume.updated_at).toLocaleDateString()}`
-                      : "Updated time unknown"}
+                    Updated {new Date(resume.updated_at).toLocaleDateString()}
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <button
-                  onClick={() => window.open(resume.file_path, "_blank")}
-                  className={`p-2 hover:text-blue-600 transition-colors ${
-                    darkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                  title="View Resume"
-                >
-                  <Eye className="w-4 h-4" />
+                <button onClick={() => window.open(resume.file_url, "_blank")} title="View Resume">
+                  <Eye className="w-4 h-4 text-blue-600" />
+                </button>
+                <button onClick={() => setDefaultResume(resume.id)} title="Set as Default">
+                  <Star
+                    className={`w-4 h-4 ${
+                      resume.is_default ? "text-yellow-500" : darkMode ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  />
+                </button>
+                <button onClick={() => deleteResume(resume.id)} title="Delete Resume">
+                  <Trash2 className="w-4 h-4 text-red-500" />
                 </button>
                 <button
-                  onClick={() => setDefaultResume(resume.id)}
-                  className={`p-2 transition-colors ${
-                    resume.is_default
-                      ? "text-yellow-500"
-                      : `hover:text-yellow-500 ${darkMode ? "text-gray-400" : "text-gray-600"}`
-                  }`}
-                  title="Set as Default"
-                >
-                  <Star className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => deleteResume(resume.id)}
-                  className={`p-2 hover:text-red-600 transition-colors ${
-                    darkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
-                  title="Delete Resume"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={async () => {
-                    const { data, error } = await supabase
-                      .from("resumes")
-                      .select("resume_text")
-                      .eq("id", resume.id)
-                      .single();
-
-                    if (data?.resume_text) {
-                      handleCompare(resume.id, data.resume_text);
-                    } else {
-                      alert("No résumé text available for this file.");
-                    }
-                  }}
-                  className={`p-2 hover:text-green-600 transition-colors ${
-                    darkMode ? "text-gray-400" : "text-gray-600"
-                  }`}
+                  onClick={() =>
+                    resume.resume_text
+                      ? handleCompare(resume.id, resume.resume_text)
+                      : alert("Resume text not found for comparison.")
+                  }
                   title="Compare Resume"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M10 14L21 3m0 0v7m0-7h-7" />
                     <path d="M3 10v11h11" />
                   </svg>

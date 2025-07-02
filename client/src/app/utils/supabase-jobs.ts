@@ -241,7 +241,7 @@ export class JobService {
     }
   }
 
-  // 🧪 Connection check
+
   static async verifyConnection(): Promise<boolean> {
     try {
       const { error } = await supabase.from("jobs").select("id").limit(1);
@@ -251,7 +251,7 @@ export class JobService {
     }
   }
 
-  // 🌀 Transform raw result (FIXED to handle null user_job_status)
+ 
   private static transformJobRecord(record: any): Job & Partial<UserJobStatus> {
     return {
       id: record.id,
@@ -270,7 +270,7 @@ export class JobService {
       priority: record.priority,
       skills: record.skills ?? [],
       last_verified: record.last_verified,
-      // Default to false if no user interaction exists
+      
       saved: record.user_job_status?.saved ?? false,
       applied: record.user_job_status?.applied ?? false,
       status: record.user_job_status?.status ?? undefined,

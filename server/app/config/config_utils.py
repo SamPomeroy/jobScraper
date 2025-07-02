@@ -1,7 +1,6 @@
 import os
 
-MODE = os.environ.get("MODE", "prod")  # Can be "dev" or "prod"
-
+MODE = os.environ.get("MODE", "prod")  
 FOLDERS = {
     "dev": {
         "csv_output": "server/debugged",

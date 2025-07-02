@@ -8,7 +8,6 @@ from supabase import create_client
 load_dotenv()
 DATABASE_URL = os.getenv("SUPABASE_DATABASE")
 url = os.getenv("SUPABASE_URL")
-# key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 key = os.getenv("SUPABASE_ANON_KEY")
 
 if url is None or key is None:
@@ -26,11 +25,11 @@ def get_db_connection():
 
 def load_skill_matrix():
     response = supabase.table("skill_categories").select("*").execute()
-    return response.data  # List of { "category": ..., "skills": [...] }
+    return response.data 
 
 
 def main():
-    # Example usage: test the database connection
+    
     try:
         conn = get_db_connection()
         print("Database connection successful.")
