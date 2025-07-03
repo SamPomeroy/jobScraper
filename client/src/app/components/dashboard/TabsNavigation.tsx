@@ -29,7 +29,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-between">
+    <div className="flex flex-wrap items-center justify-between animate-fade-in">
       <div
         className={`flex flex-wrap gap-3 sm:gap-5 md:gap-6 overflow-x-auto pb-3 ${
           darkMode ? "border-gray-700" : "border-gray-200"
@@ -39,7 +39,7 @@ export const TabNavigation: React.FC<TabNavigationProps> = ({
           <button
             key={tab.id}
             onClick={() => onTabChangeAction(tab.id)}
-            className={`flex items-center gap-2 text-sm font-medium pb-2 border-b-2 transition-all ${
+            className={`flex items-center gap-2 text-sm font-medium pb-2 border-b-2 transition-all duration-300 transform hover:scale-105 ${
               activeTab === tab.id
                 ? "border-blue-500 text-blue-600"
                 : `border-transparent ${

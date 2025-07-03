@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -18,7 +17,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, darkMode }) => {
       icon: Search,
       color: "blue",
       bgColor: "bg-blue-100",
-      textColor: "text-blue-600"
+      textColor: "text-blue-600",
     },
     {
       title: "Applied",
@@ -26,7 +25,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, darkMode }) => {
       icon: Mail,
       color: "green",
       bgColor: "bg-green-100",
-      textColor: "text-green-600"
+      textColor: "text-green-600",
     },
     {
       title: "Saved",
@@ -34,7 +33,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, darkMode }) => {
       icon: Save,
       color: "yellow",
       bgColor: "bg-yellow-100",
-      textColor: "text-yellow-600"
+      textColor: "text-yellow-600",
     },
     {
       title: "Interviews",
@@ -42,26 +41,30 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, darkMode }) => {
       icon: Bell,
       color: "purple",
       bgColor: "bg-purple-100",
-      textColor: "text-purple-600"
-    }
+      textColor: "text-purple-600",
+    },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6 animate-fade-in">
       {statCards.map((card) => (
-          <div
-            key={card.title}
-            className={`group ${darkMode ? "bg-gray-800" : "bg-white"} rounded-lg shadow p-6 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg`}
-          >
+        <div
+          key={card.title}
+          className={`group ${darkMode ? "bg-gray-800" : "bg-white"} rounded-lg shadow p-6 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg`}
+        >
           <div className="flex items-center">
-            <div className={`w-12 h-12 ${card.bgColor} rounded-lg flex items-center justify-center`}>
+            <div
+              className={`w-12 h-12 ${card.bgColor} rounded-lg flex items-center justify-center`}
+            >
               <card.icon
                 className={`w-6 h-6 transition-transform duration-200 ease-out group-hover:scale-110 ${card.textColor}`}
               />
             </div>
             <div className="ml-4">
               <h3 className="text-lg font-semibold">{card.title}</h3>
-              <p className={`text-2xl font-bold ${card.textColor}`}>{card.value}</p>
+              <p className={`text-2xl font-bold ${card.textColor}`}>
+                {card.value}
+              </p>
             </div>
           </div>
         </div>

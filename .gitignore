@@ -1,40 +1,4 @@
 .env
 .env.local
 node_modules
-.venv
-.vscode/
-*.code-workspace
-*.sublime-*
-
-dist/
-build/
-*.log
-*.tmp
-# Next.js build output
-.next/
-out/
-
-# Tailwind CSS cache (if using JIT mode)
-.tailwind-cache/
-
-# Node dependencies
-node_modules/
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Editor settings
-.vscode/
-.idea/
-*.sublime-*
-
-# OS files
-.DS_Store
-Thumbs.db
+.next
